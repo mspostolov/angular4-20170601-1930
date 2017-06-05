@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="page-header">{{ title }}</h1>
+    </div>
+  </div>
+
+
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <app-user-card
+        *ngFor="let user of users"
+        [user]="user"
+        [isActive] = "activeCard === user"
+        (click)="activateCard(user)"
+      ></app-user-card>
+    </div>
+  </div>
+</div>
