@@ -1,0 +1,26 @@
+<h1
+    [class.active]="isActive"
+    [style.color]="myColor">
+  {{title}}
+</h1>
+
+<button (click)="isActive = !isActive">Click me</button>
+
+<input type="text"
+       #myinput
+       (input)="changeColor($event.target.value)"
+       (keyup.enter)="enterme($event.target.value)">
+
+
+
+<jsru-user *ngFor="let item of [1,2,3,4,5]" [user]="user"></jsru-user>
+
+<ul>
+  <li *ngFor="let item of [1,2,3,4,5]; let i = $index">
+    {{i}}
+  </li>
+</ul>
+
+
+
+
