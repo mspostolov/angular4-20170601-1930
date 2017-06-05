@@ -1,0 +1,8 @@
+.panel-info > .panel-heading {
+    transition: 0.25s ease-in-out;
+    transition-property: background color;
+}
+.active {
+    background: lightgreen;
+    color: brown;
+}
