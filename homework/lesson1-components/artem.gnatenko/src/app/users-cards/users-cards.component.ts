@@ -16,9 +16,15 @@ interface User {
   styleUrls: ['./users-cards.component.css']
 })
 export class UsersCardsComponent implements OnInit {
-  public users: User[];
-  public activeUser: User;
-  constructor() {
+  users: User[];
+  activeUser: User;
+  constructor() { }
+
+  setActiveUser(user) {
+    this.activeUser = this.activeUser === user ? null : user;
+  }
+
+  ngOnInit() {
     this.users = [
       {
         "id": 1,
@@ -48,13 +54,6 @@ export class UsersCardsComponent implements OnInit {
         "email": "ivanov@mail.ru"
       }
     ]
-  }
-
-  setActiveUser(user) {
-    this.activeUser = this.activeUser === user ? null : user;
-  }
-
-  ngOnInit() {
   }
 
 }

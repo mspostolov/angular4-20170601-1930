@@ -1,4 +1,5 @@
 .panel-info > .panel-heading {
+    cursor: pointer;
     transition: 0.25s ease-in-out;
     transition-property: background color;
 }

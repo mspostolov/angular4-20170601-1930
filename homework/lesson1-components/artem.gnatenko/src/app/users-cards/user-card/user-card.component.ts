@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 interface User {
   id: number,
   fullName: string,
@@ -20,7 +20,13 @@ export class UserCardComponent implements OnInit {
 
   @Input() isActive: Boolean;
 
+  @Output() onActivate = new EventEmitter<User>();
+
   constructor() { }
+
+  activate(user: User) {
+    this.onActivate.emit(user);
+  }
 
   ngOnInit() {
   }
