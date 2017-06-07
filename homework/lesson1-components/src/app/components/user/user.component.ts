@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { User } from 'app/models/user';
 
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.css']
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.css']
 })
-export class UserComponent implements OnInit {
+export class UserComponent {
+    @Input() user: User;
+    isSelected = false;
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+    onClick(): void {
+        this.isSelected = !this.isSelected;
+    }
 }

@@ -1,0 +1,14 @@
+.card {
+    width: 500px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.card>.table>tbody>tr>td {
+    padding-left: 15px;
+}
+
+.card-border {
+    border-color: #0000ff;
+    border-width: 2px;
+}
