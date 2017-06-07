@@ -11,7 +11,6 @@ export class UsersListComponent implements OnInit {
 
   constructor() {
     this.users = niceGuys;
-    console.log(this.users);
   }
 
   ngOnInit() {
