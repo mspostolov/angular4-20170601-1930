@@ -1,0 +1,30 @@
+<article [ngClass]="[active, user.cardStyle, 'material-card']" #userCard>
+  <h2>
+    <span>{{ user.name }}</span>
+    <strong>
+      <i class="fa fa-fw fa-star"></i>
+      {{ user.film }}
+    </strong>
+  </h2>
+  <div class="mc-content">
+    <div class="img-container">
+      <img class="img-responsive" [src]="user.picture"></div>
+    <div class="mc-description">
+      {{ user.content }}
+    </div>
+  </div>
+  <a class="mc-btn-action" (click)="toggleInfo()">
+    <i class="fa fa-bars"
+       [class.fa-spin-fast]="showSpinner"
+       [class.fa-bars]="!isOpen"
+       [class.fa-arrow-left]="isOpen">
+    </i>
+  </a>
+  <div class="mc-footer">
+    <h4>Social</h4>
+    <a class="fa fa-fw fa-facebook" href="" (click)="$event.preventDefault()"></a>
+    <a class="fa fa-fw fa-twitter" href="" (click)="$event.preventDefault()"></a>
+    <a class="fa fa-fw fa-linkedin" href="" (click)="$event.preventDefault()"></a>
+    <a class="fa fa-fw fa-google-plus" href="" (click)="$event.preventDefault()"></a>
+  </div>
+</article>
