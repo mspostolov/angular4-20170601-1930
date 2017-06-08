@@ -35,11 +35,8 @@ export class CardComponent implements OnInit {
     this.actionName = this.getActionName();
   }
 
-  clickTitle(target): void {
-    if (target.classList.contains('card__title')) {
-      let card: HTMLElement = target.closest('.card') as HTMLElement;
-      card.classList.toggle('card-selected');
-    }
+  toggleItem(item): void {
+    item.isSelected = !item.isSelected;
   }
 
   getActionName(): string {
