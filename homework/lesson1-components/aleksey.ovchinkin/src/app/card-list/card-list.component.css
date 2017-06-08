@@ -1,0 +1,22 @@
+.card-list {
+    width: 550px;
+    box-shadow: 0 0 5px 2px lightgray;
+    border-radius: 2px;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-list__title {
+    color: #406565;
+    font-size: 28px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.card-list__description {
+    font-style: italic;
+    font-size: 18px;
+    color: gray;
+}
