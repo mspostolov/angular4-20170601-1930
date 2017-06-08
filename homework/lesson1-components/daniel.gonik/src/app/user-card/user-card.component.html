@@ -1,4 +1,4 @@
-<article [ngClass]="[user.cardStyle, 'material-card']">
+<article [ngClass]="[active, user.cardStyle, 'material-card']" #userCard>
   <h2>
     <span>{{ user.name }}</span>
     <strong>
@@ -13,7 +13,12 @@
       {{ user.content }}
     </div>
   </div>
-  <a class="mc-btn-action"> <i class="fa fa-bars"></i>
+  <a class="mc-btn-action" (click)="toggleInfo()">
+    <i class="fa fa-bars"
+       [class.fa-spin-fast]="showSpinner"
+       [class.fa-bars]="!isOpen"
+       [class.fa-arrow-left]="isOpen">
+    </i>
   </a>
   <div class="mc-footer">
     <h4>Social</h4>
