@@ -1,0 +1,45 @@
+.coworkers{
+    padding: 15px;
+    list-style-type: none;
+    overflow: hidden;
+}
+.coworkers_layout{
+    width: 600px;    
+    background: #fff;
+    float: left;
+}
+
+/*coworker_item section*/
+.coworker_list_item{
+    width: 285px;
+    float: left;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.coworker_list_item.picked{
+    background: #eee;
+}
+.coworker_list_item:hover{
+    cursor: pointer;
+}
+.coworker_item{
+    overflow: hidden;
+    padding: 10px;
+}
+.coworker_item_photo, .coworker_item_name{
+    float: left;
+}
+.coworker_item_photo > img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+.coworker_item_name{
+    font-size: 13px;
+    line-height: 40px;
+    margin-left: 15px;
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
