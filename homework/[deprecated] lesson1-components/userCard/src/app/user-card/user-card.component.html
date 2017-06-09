@@ -1,0 +1,26 @@
+<div class="user_layout">
+  <div class="user_profile_top">
+    <div class="user_profile_image_main" [ngStyle]="{'background-image': 'url(' + user.photo + ')'}"></div>
+    <div class="user_profile_image_stable" [ngStyle]="{'background-image': 'url(' + user.photo + ')'}"></div>
+    <p class="user_profile_top_name">{{user.name}}</p>
+    <p class="user_profile_top_profession">{{user.profession}}</p>
+  </div>
+  <div class="user_profile_info">
+    <div class="user_profile_section">
+      <p class="user_profile_propery_header">Short Bio</p>
+      <p class="user_profile_propery_value">{{user.bio}}</p>
+    </div>
+    <div class="user_profile_section">
+      <p class="user_profile_propery_header">The direction of the profession</p>
+      <p class="user_profile_propery_value">{{user.direction}}</p>
+    </div>
+    <div class="user_profile_section">
+      <p class="user_profile_propery_header">Email Address</p>
+      <p class="user_profile_propery_value">{{user.email}}</p>
+    </div>
+    <div class="user_profile_section">
+      <p class="user_profile_propery_header">Phone Number</p>
+      <p class="user_profile_propery_value">{{user.phone}}</p>
+    </div>
+  </div>
+</div>
