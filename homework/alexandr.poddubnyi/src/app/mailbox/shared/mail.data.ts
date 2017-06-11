@@ -5,7 +5,7 @@ export const mailsData: Mail[] = [{
   lastName: 'Buckle',
   senderEmail: 'tbuckle0@amazon.co.uk',
   text: 'Bypass Abdominal Aorta to Bilateral Internal Iliac Arteries with Nonautologous Tissue Substitute, Percutaneous Endoscopic Approach',
-  date: '06/11/2017 15:40:00'
+  date: '06/11/2017 16:40:00'
 }, {
   firstName: 'Tedmund',
   lastName: 'Martt',
@@ -30,7 +30,10 @@ export const mailsData: Mail[] = [{
   senderEmail: 'jlilford4@howstuffworks.com',
   text: 'Planar Nuclear Medicine Imaging of Chest using Indium 111 (In-111)',
   date: '06/01/2017'
-}, {
+}];
+
+
+export const additionalMails: Mail[] = [{
   firstName: 'Hillel',
   lastName: 'Sleeny',
   senderEmail: 'hsleeny5@yahoo.com',

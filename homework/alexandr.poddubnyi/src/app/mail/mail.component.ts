@@ -10,8 +10,10 @@ import {
 })
 export class MailComponent implements OnInit, OnDestroy {
   lifeStart: Date;
+
   @Input() mail;
   @Output() deleteMail = new EventEmitter;
+  @Output() showMailLifeTime = new EventEmitter;
 
   constructor() { }
 
@@ -20,15 +22,10 @@ export class MailComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.warn(this.getDateDiffernce(this.lifeStart));
+    this.showMailLifeTime.emit(this.lifeStart);
   }
 
   delete() {
     this.deleteMail.emit(this.mail);
-  }
-
-  getDateDiffernce(start: Date, end: Date = new Date): number {
-    const timeDiff: number = start.getTime() - end.getTime();
-    return new Date(timeDiff).getSeconds();
   }
 }

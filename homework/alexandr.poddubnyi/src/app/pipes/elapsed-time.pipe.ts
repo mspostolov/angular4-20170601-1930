@@ -16,8 +16,7 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 
 @Pipe({
-  name: 'elapsedTime',
-  pure: false
+  name: 'elapsedTime'
 })
 export class ElapsedTimePipe implements PipeTransform, OnDestroy {
   private async: AsyncPipe;
@@ -30,7 +29,7 @@ export class ElapsedTimePipe implements PipeTransform, OnDestroy {
     this.async = new AsyncPipe(ref);
   }
 
-  public transform(obj: any, ...args: any[]): any {
+  transform(obj: any, ...args: any[]): any {
     if (obj == null) { return obj; }
 
     if (!(obj instanceof Date)) {
@@ -51,11 +50,7 @@ export class ElapsedTimePipe implements PipeTransform, OnDestroy {
     return this.async.transform(this.timer);
   }
 
-  public now(): Date {
-    return new Date();
-  }
-
-  public ngOnDestroy() {
+  ngOnDestroy() {
     this.isDestroyed = true;
     // on next interval, will complete
   }
@@ -75,7 +70,7 @@ export class ElapsedTimePipe implements PipeTransform, OnDestroy {
   };
 
   private elapsed(): string {
-    const now = this.now().getTime();
+    const now = new Date().getTime();
 
     // time since message was sent in seconds
     // const delta = (now - this.value.getTime()) / 1000 - this.value.getTimezoneOffset() * 60;
