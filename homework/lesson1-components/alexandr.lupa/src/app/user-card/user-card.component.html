@@ -1,4 +1,8 @@
-<div class="panel" [ngClass]="{ 'panel-info': !isActive, 'panel-primary': isActive }">
+<div
+  class="panel"
+  (click)="activate(user)"
+  [ngClass]="{ 'panel-info': !isActive, 'panel-primary': isActive }"
+>
   <div class="panel-heading">
     <h3 class="panel-title">{{ user.firstName }} {{ user.lastName }}</h3>
   </div>

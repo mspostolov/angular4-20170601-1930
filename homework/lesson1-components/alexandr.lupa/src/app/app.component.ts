@@ -45,6 +45,6 @@ export class AppComponent {
   ];
 
   activateCard(card: User): void {
-    this.activeCard = card;
+    this.activeCard = this.activeCard === card ? null : card;
   }
 }

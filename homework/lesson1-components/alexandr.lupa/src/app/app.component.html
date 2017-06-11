@@ -12,7 +12,7 @@
         *ngFor="let user of users"
         [user]="user"
         [isActive] = "activeCard === user"
-        (click)="activateCard(user)"
+        (onActivate)="activateCard(user)"
       ></app-user-card>
     </div>
   </div>
