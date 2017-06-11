@@ -47,7 +47,7 @@ export class MailboxComponent implements OnInit {
 
   getDateDiffernce(start: Date, end: Date = new Date): number {
     const timeDiff: number = end.getTime() - start.getTime();
-    return new Date(timeDiff).getSeconds();
+    return timeDiff / 1000;
   }
 
   private startMailsLoading(interval) {

@@ -16,7 +16,8 @@ import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/map';
 
 @Pipe({
-  name: 'elapsedTime'
+  name: 'elapsedTime',
+  pure: false
 })
 export class ElapsedTimePipe implements PipeTransform, OnDestroy {
   private async: AsyncPipe;
