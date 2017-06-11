@@ -2,12 +2,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { UserCardComponent } from './user-card/user-card.component';
+import { MailboxComponent } from './mailbox/mailbox.component';
+import { MailComponent } from './mailbox/mail/mail.component';
+import { MyDatePipePipe } from './my-date-pipe.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserCardComponent,
+    MailboxComponent,
+    MailComponent,
+    MyDatePipePipe
   ],
   imports: [
     BrowserModule

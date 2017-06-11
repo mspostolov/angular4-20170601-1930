@@ -1,10 +1,10 @@
-import { Stanislav.NovitckasPage } from './app.po';
+import { LessonTwoPage } from './app.po';
 
-describe('stanislav.novitckas App', () => {
-  let page: Stanislav.NovitckasPage;
+describe('lesson-two App', () => {
+  let page: LessonTwoPage;
 
   beforeEach(() => {
-    page = new Stanislav.NovitckasPage();
+    page = new LessonTwoPage();
   });
 
   it('should display welcome message', () => {
