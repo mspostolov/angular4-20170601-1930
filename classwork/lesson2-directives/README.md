@@ -1,6 +1,10 @@
 # Lesson2Directives
 
+<<<<<<< HEAD
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.0.
+=======
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.1.1.
+>>>>>>> 9a93399d5899d62154275311ba58e73acf54e7ad
 
 ## Development server
 

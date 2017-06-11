@@ -1,6 +1,6 @@
 import { browser, by, element } from 'protractor';
 
-export class Alexandr.LupaPage {
+export class Artem.GnatenkoPage {
   navigateTo() {
     return browser.get('/');
   }
