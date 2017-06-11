@@ -7,8 +7,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class UserCardComponent implements OnInit {
   @Input() user;
+  private clicked = false;
 
   constructor() { }
+  private clickHandler() {
+    this.clicked = !this.clicked;
+  }
 
   ngOnInit() {
   }
