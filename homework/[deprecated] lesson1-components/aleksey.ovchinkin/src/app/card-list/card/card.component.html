@@ -1,8 +1,0 @@
-<div [class]="'card'">
-  <div [class]="'card__title'"  (click)="selectItem(item)"
-        [ngClass]="'card-selected':item.isSelected">
-    <h3 [class]="'card__user-name'">{{shortName}}</h3>
-    <h4 [class]="'card__action'"  (click)="clickAction()">{{actionName}}</h4>
-  </div>
-  <app-card-data  *ngIf="isRenderData"  [user]="user"></app-card-data>
-</div>
