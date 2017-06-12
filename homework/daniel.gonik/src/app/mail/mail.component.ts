@@ -8,19 +8,27 @@ import { Http } from '@angular/http';
 })
 export class MailComponent implements OnInit {
 
-  emails: Array<any> = [];
+  private _cache: Array<any> = [];
+  public emails: Array<any> = [];
 
   constructor(private http: Http) {
     this.http.get('https://jsonplaceholder.typicode.com/posts')
       .map(response => response.json())
-      .subscribe(res => this.emails = res);
+      .subscribe(res => {
+        this._cache = res;
+        this._updateMailBox();
+      });
   }
 
   ngOnInit() {
   }
 
   private _updateMailBox() {
-
+    const mark = setInterval(() => {
+      this._cache.length
+        ? this.emails.push(this._cache.pop())
+        : clearInterval(mark);
+    }, 1000)
   }
 
 }
