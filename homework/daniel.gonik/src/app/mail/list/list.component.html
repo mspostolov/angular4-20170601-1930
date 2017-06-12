@@ -2,9 +2,11 @@
 
   <md-card-header>
     <div md-card-avatar class="material-icons mail-author-avatar">account_circle</div>
-    <md-card-title>{{ authors[email.userId].name }}</md-card-title>
-    <md-card-subtitle>{{ authors[email.userId].email }}</md-card-subtitle>
+    <md-card-title>{{ authors[email.userId] ? authors[email.userId].name : 'Unknown author' }}</md-card-title>
+    <md-card-subtitle>{{ authors[email.userId] ? authors[email.userId].email : '' }}</md-card-subtitle>
   </md-card-header>
+
+  <md-card-subtitle class="">{{ email.createdAt }}</md-card-subtitle>
 
   <md-card-content>
     <md-card-title>{{ email.title }}</md-card-title>
@@ -22,5 +24,9 @@
       <md-icon>delete</md-icon> DELETE
     </button>
   </md-card-actions>
+
+  <!-- <md-card-footer>
+    <md-card-subtitle>{{ email.createdAt }}</md-card-subtitle>
+  </md-card-footer> -->
 
 </md-card>
