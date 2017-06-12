@@ -36,4 +36,8 @@ export class ListComponent implements OnInit {
     });
     document.body.style.paddingRight = '';
   }
+
+  bookmark(index) {
+    this.emails[index].bookmarked = !this.emails[index].bookmarked;
+  }
 }

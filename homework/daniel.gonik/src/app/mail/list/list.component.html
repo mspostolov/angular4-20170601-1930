@@ -17,7 +17,9 @@
     <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
       <md-icon>remove_red_eye</md-icon> READ
     </button>
-    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
+    <button md-button (click)="bookmark(index)"
+            mdTooltip="{{ email.bookmarked ? 'Remove bookmark' : 'Add email to favorites' }}"
+            [mdTooltipPosition]="'below'">
       <i class="material-icons" [innerHtml]="email.bookmarked ? 'bookmark' : 'bookmark_border'"></i> BOOKMARK
     </button>
     <button md-button (click)="removeEmail(index)">
