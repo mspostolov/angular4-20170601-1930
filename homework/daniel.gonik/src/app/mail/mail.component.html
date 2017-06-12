@@ -1,11 +1,15 @@
 <md-tab-group class="mat-default">
   <md-tab label="Inbox">
+    <dg-list [emails]="emails"
+             [authors]="authorsHashMap">
+    </dg-list>
   </md-tab>
 
   <md-tab label="Settings">
+    <div id="page-padding">
+      <h1>Settings</h1>
+      <p>Here you can control the various settings associated with your app. There's no need to hit a save button, as the values are updated automatically.</p>
+      <label>Number of emails to show</label>
+    </div>
   </md-tab>
 </md-tab-group>
-
-<dg-list [emails]="emails"
-         [authors]="authorsHashMap">
-</dg-list>
