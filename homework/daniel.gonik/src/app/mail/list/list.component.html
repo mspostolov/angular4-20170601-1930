@@ -1,4 +1,4 @@
-<md-card *ngFor="let email of emails">
+<md-card *ngFor="let email of emails; let index = index;">
 
   <md-card-header>
     <div md-card-avatar class="material-icons mail-author-avatar">account_circle</div>
@@ -20,7 +20,7 @@
     <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
       <i class="material-icons" [innerHtml]="email.bookmarked ? 'bookmark' : 'bookmark_border'"></i> BOOKMARK
     </button>
-    <button md-button>
+    <button md-button (click)="removeEmail(index)">
       <md-icon>delete</md-icon> DELETE
     </button>
   </md-card-actions>

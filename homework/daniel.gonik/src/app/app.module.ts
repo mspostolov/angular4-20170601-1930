@@ -20,6 +20,7 @@ import { MailComponent } from './mail/mail.component';
 import { ListComponent } from './mail/list/list.component';
 import { ViewComponent } from './mail/view/view.component';
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,13 @@ import { RelativeDatePipe } from './pipes/relative-date.pipe';
     MdTooltipModule,
     MdIconModule
   ],
-  providers: [],
+  providers: [
+    SweetAlertService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static get parameters() {
+    return [[SweetAlertService]];
+  }
+}
