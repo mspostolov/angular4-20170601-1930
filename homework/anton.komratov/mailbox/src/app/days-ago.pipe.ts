@@ -15,16 +15,24 @@ export class DaysAgoPipe implements PipeTransform {
 
     if (daysAgo < 1) {
       return 'сегодня в ' + time;
-    } else if (daysAgo < 2) {
-      return 'вчера в ' + time;
-    } else if (daysAgo < 5) {
-      return String(daysAgo) + ' дня назад';
-    } else if (daysAgo < 7) {
-      return String(daysAgo) + ' дней назад';
-    } else if (daysAgo < 14) {
-      return 'на прошлой неделе';
-    } else {
-      return 'больше недели назад';
     }
+
+    if (daysAgo < 2) {
+      return 'вчера в ' + time;
+    }
+
+    if (daysAgo < 5) {
+      return String(daysAgo) + ' дня назад';
+    }
+
+    if (daysAgo < 7) {
+      return String(daysAgo) + ' дней назад';
+    }
+
+    if (daysAgo < 14) {
+      return 'на прошлой неделе';
+    }
+
+    return 'больше недели назад';
   }
 }
