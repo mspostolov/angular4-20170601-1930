@@ -24,8 +24,9 @@ export class MailComponent implements OnInit {
 
     this.http.get('https://jsonplaceholder.typicode.com/posts')
       .map(response => response.json())
-      .subscribe(res => {
-        this._cache = res;
+      .subscribe((emails = []) => {
+        emails.forEach(email => email.createdAt = Date.now())
+        this._cache = emails;
         this._updateMailBox();
       });
   }
@@ -34,11 +35,17 @@ export class MailComponent implements OnInit {
   }
 
   private _updateMailBox() {
+    this.emails.push(...this._cache.splice(0, 3));
     const mark = setInterval(() => {
       this._cache.length
-        ? this.emails.push(this._cache.pop())
+        ? this.emails.push(this._updateEmailDate(this._cache.pop()))
         : clearInterval(mark);
-    }, 1000)
+    }, 3000)
+  }
+
+  private _updateEmailDate(email) {
+    email.createdAt = Date.now();
+    return email;
   }
 
 }

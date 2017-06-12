@@ -13,6 +13,7 @@ import {
   MdToolbarModule,
   MdTabsModule,
   MdProgressSpinnerModule,
+  MdTooltipModule,
   MdIconModule
 } from '@angular/material';
 import { MailComponent } from './mail/mail.component';
@@ -37,6 +38,7 @@ import { ViewComponent } from './mail/view/view.component';
     MdToolbarModule,
     MdTabsModule,
     MdProgressSpinnerModule,
+    MdTooltipModule,
     MdIconModule
   ],
   providers: [],
