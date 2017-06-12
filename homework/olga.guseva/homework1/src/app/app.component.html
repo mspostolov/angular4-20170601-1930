@@ -1,0 +1,22 @@
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Карточки пользователей</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <app-user *ngFor="let user of users" 
+          [user]="user"
+          (click)="selectItem(user)" 
+          [class.selected]="user.isSelected"></app-user>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
