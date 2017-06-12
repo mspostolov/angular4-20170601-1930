@@ -10,10 +10,13 @@
 
   <md-card-actions>
     <button md-button>
-      <md-icon>favorite</md-icon> LIKE
+      <md-icon>remove_red_eye</md-icon> READ
     </button>
     <button md-button>
-      <md-icon>share</md-icon> SHARE
+      <i class="material-icons" [innerHtml]="email.bookmarked ? 'bookmark' : 'bookmark_border'"></i> BOOKMARK
+    </button>
+    <button md-button>
+      <md-icon>delete</md-icon> DELETE
     </button>
   </md-card-actions>
 
