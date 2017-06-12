@@ -1,0 +1,13 @@
+.mail-from {
+  font-size: 15px;
+}
+
+.mail-subject {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.mail-timestamp {
+  float: right;
+  padding-right: 10px;
+}
