@@ -1,0 +1,20 @@
+<md-card *ngFor="let email of emails">
+
+  <md-card-header>
+    <md-card-title>{{ email.title }}</md-card-title>
+  </md-card-header>
+
+  <md-card-content>
+    {{ email.body }}
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button>
+      <md-icon>favorite</md-icon> LIKE
+    </button>
+    <button md-button>
+      <md-icon>share</md-icon> SHARE
+    </button>
+  </md-card-actions>
+
+</md-card>

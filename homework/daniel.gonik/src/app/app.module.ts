@@ -12,12 +12,19 @@ import {
   MdMenuModule,
   MdToolbarModule,
   MdTabsModule,
+  MdProgressSpinnerModule,
   MdIconModule
 } from '@angular/material';
+import { MailComponent } from './mail/mail.component';
+import { ListComponent } from './mail/list/list.component';
+import { ViewComponent } from './mail/view/view.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MailComponent,
+    ListComponent,
+    ViewComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +36,7 @@ import {
     MdCardModule,
     MdToolbarModule,
     MdTabsModule,
+    MdProgressSpinnerModule,
     MdIconModule
   ],
   providers: [],
