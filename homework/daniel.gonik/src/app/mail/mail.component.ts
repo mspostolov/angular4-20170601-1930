@@ -19,4 +19,8 @@ export class MailComponent implements OnInit {
   ngOnInit() {
   }
 
+  private _updateMailBox() {
+
+  }
+
 }

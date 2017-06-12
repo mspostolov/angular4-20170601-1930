@@ -1,11 +1,14 @@
 <md-card *ngFor="let email of emails">
 
   <md-card-header>
-    <md-card-title>{{ email.title }}</md-card-title>
+    <div md-card-avatar class="material-icons mail-author-avatar">account_circle</div>
+    <md-card-title>Shiba Inu</md-card-title>
+    <md-card-subtitle>Dog Breed</md-card-subtitle>
   </md-card-header>
 
   <md-card-content>
-    {{ email.body }}
+    <md-card-title>{{ email.title }}</md-card-title>
+    <p>{{ email.body }}</p>
   </md-card-content>
 
   <md-card-actions>
