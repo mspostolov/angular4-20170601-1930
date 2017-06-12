@@ -10,8 +10,18 @@ export class MailComponent implements OnInit {
 
   private _cache: Array<any> = [];
   public emails: Array<any> = [];
+  public authorsHashMap: Object = {};
 
   constructor(private http: Http) {
+    this.http.get('https://jsonplaceholder.typicode.com/users')
+      .map(response => response.json())
+      .subscribe(authors => {
+        this.authorsHashMap = authors.reduce((map, author) => {
+          map[author.id] = author;
+          return map;
+        }, {});
+      });
+
     this.http.get('https://jsonplaceholder.typicode.com/posts')
       .map(response => response.json())
       .subscribe(res => {

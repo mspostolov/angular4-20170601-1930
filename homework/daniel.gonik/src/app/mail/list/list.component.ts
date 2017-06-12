@@ -7,9 +7,11 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  @Input() emails;
+  @Input() emails = [];
+  @Input() authors: Object = {}
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }
