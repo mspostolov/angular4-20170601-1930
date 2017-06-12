@@ -11,6 +11,7 @@ import {
   MdCardModule,
   MdMenuModule,
   MdToolbarModule,
+  MdTabsModule,
   MdIconModule
 } from '@angular/material';
 
@@ -27,6 +28,7 @@ import {
     MdMenuModule,
     MdCardModule,
     MdToolbarModule,
+    MdTabsModule,
     MdIconModule
   ],
   providers: [],

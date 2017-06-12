@@ -1,6 +1,6 @@
 <md-toolbar color="primary">
 
-  <span>MyCompany</span>
+  <span>MailApp</span>
   <span class="toolbar-spacer"></span>
   <button md-button [mdMenuTriggerFor]="appMenu"><md-icon>menu</md-icon> Menu</button>
 
@@ -11,13 +11,23 @@
   <button md-menu-item> Help </button>
 </md-menu>
 
+<md-tab-group class="mat-default">
+  <md-tab label="Inbox">
+  </md-tab>
 
-<md-card *ngFor="let data of (myData ? myData.slice(0,10): []); let i = index">
+  <md-tab label="Settings">
+  </md-tab>
+</md-tab-group>
 
-  <img md-card-image src="{{ data.url }}">
+<md-card *ngFor="let email of (emails ? emails.slice(0,10): []); let i = index">
+
   <md-card-header>
-    <md-card-title>{{ data.title }}</md-card-title>
+    <md-card-title>{{ email.title }}</md-card-title>
   </md-card-header>
+
+  <md-card-content>
+    {{ email.body }}
+  </md-card-content>
 
   <md-card-actions>
     <button md-button>

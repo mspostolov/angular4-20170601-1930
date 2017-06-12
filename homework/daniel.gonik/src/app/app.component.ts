@@ -7,11 +7,11 @@ import { Http } from '@angular/http';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  myData: Array<any>;
+  emails: Array<any>;
 
   constructor(private http: Http) {
-    this.http.get('https://jsonplaceholder.typicode.com/photos')
+    this.http.get('https://jsonplaceholder.typicode.com/posts')
       .map(response => response.json())
-      .subscribe(res => this.myData = res);
+      .subscribe(res => this.emails = res);
   }
 }
