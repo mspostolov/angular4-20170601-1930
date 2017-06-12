@@ -19,13 +19,15 @@ import {
 import { MailComponent } from './mail/mail.component';
 import { ListComponent } from './mail/list/list.component';
 import { ViewComponent } from './mail/view/view.component';
+import { RelativeDatePipe } from './pipes/relative-date.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MailComponent,
     ListComponent,
-    ViewComponent
+    ViewComponent,
+    RelativeDatePipe
   ],
   imports: [
     BrowserModule,
