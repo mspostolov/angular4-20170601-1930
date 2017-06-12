@@ -3,7 +3,7 @@
 <td>{{ mail.to }}</td>
 <td><strong>{{ mail.title }}</strong> - {{ mail.body }}</td>
 <td>
-  {{ mail.createdAt | elapsed }}
+  {{ mail.createdAt | date:'medium' | elapsed }}
 </td>
 <td style="width: 1%">
   <button
