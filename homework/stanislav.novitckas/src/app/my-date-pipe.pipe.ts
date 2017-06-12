@@ -6,7 +6,8 @@ import * as moment from 'moment';
 export class MyDatePipePipe implements PipeTransform {
 
   transform(value: any, args?: any): any {
-    return moment(value).fromNow();
+        moment.locale('ru');
+        return moment(value).fromNow();
   }
 
 }
