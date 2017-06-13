@@ -1,14 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { AlertModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
-import { UserCardComponent } from './user-card/user-card.component';
+import { MailBoxComponent } from './mail-box/mail-box.component';
+import { MailItemComponent } from './mail-box/mail-item/mail-item.component';
+import { TimePassedPipe } from './time-passed.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    UserCardComponent
+    MailBoxComponent,
+    MailItemComponent,
+    TimePassedPipe
   ],
   imports: [
     BrowserModule

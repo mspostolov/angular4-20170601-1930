@@ -1,0 +1,19 @@
+<div class="mail-box">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Автор</th>
+      <th>Тема</th>
+      <th>Дата</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tr app-mail-item
+        *ngFor="let mailItem of mailList; let index = index"
+        [mailItem]="mailItem"
+        [itemIndex]="index"
+        [mailList]="mailList"
+    >
+    </tr>
+  </table>
+</div>
