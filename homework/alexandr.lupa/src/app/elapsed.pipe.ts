@@ -17,66 +17,81 @@ interface IFullUnit {
 export class ElapsedPipe implements PipeTransform {
 
   transform(value: string, args?: any): string {
-    console.log(value);
-    const { years, months, days, hours, minutes, seconds } = this.getFullElapsedUnit(new Date(), new Date(value));
+    const {
+        years, months, days,
+        hours, minutes, seconds
+    } = this._getFullElapsedUnit(new Date(), new Date(value));
+
     let elapsed: string;
 
-    switch (true) {
-      case years > 0:
-        elapsed = `${years} ${ElapsedPipe.plural(years, 'year')}`;
+    if (years > 0) {
+      elapsed = this._yearsAgo(years, months);
 
-        if (months > 0) {
-          elapsed = `${elapsed} and ${months} ${ElapsedPipe.plural(months, 'month')}`
-        }
+    } else if (months > 0) {
+      elapsed = this._monthsAgo(months, days);
 
-        elapsed = `${elapsed} ago`;
-        break;
+    } else if (days > 0) {
+      elapsed = this._daysAgo(days);
 
+    } else if (hours > 0) {
+      elapsed = this._hoursAgo(hours);
 
-      case months > 0:
-        elapsed = `${months} ${ElapsedPipe.plural(months, 'month')}`;
+    } else if (minutes > 0) {
+      elapsed = this._minutesAgo(minutes);
 
-        if (days > 0) {
-          elapsed = `${elapsed} and ${days} ${ElapsedPipe.plural(days, 'days')}`
-        }
+    } else if (seconds > 0) {
+      elapsed = this._secondsAgo(seconds);
 
-        elapsed = `${elapsed} ago`;
-        break;
+    } else if (seconds === 0) {
+      elapsed = 'a moment ago';
 
-
-      case days > 0:
-        elapsed = `${days} ${ElapsedPipe.plural(days, 'day')} ago`;
-        break;
-
-
-      case hours > 0:
-        elapsed = `${hours} ${ElapsedPipe.plural(hours, 'hour')} ago`;
-        break;
-
-
-      case minutes > 0:
-        elapsed = `${minutes} ${ElapsedPipe.plural(minutes, 'minute')} ago`;
-        break;
-
-
-      case seconds > 0:
-        elapsed = `${seconds} ${ElapsedPipe.plural(seconds, 'second')} ago`;
-        break;
-
-
-      case seconds === 0:
-        elapsed = 'a moment ago';
-        break;
-
-
-      default:
-        elapsed = 'in future';
+    } else {
+      elapsed = 'in future';
     }
 
     return elapsed;
   }
 
-  private getFullElapsedUnit(now: Date, past: Date): IFullUnit {
+  private _yearsAgo(years: number, months: number): string {
+    let elapsed = `${years} ${ElapsedPipe._plural(years, 'year')}`;
+
+    if (months > 0) {
+      elapsed = `${elapsed} and ${months} ${ElapsedPipe._plural(months, 'month')}`
+    }
+
+    elapsed = `${elapsed} ago`;
+    return elapsed;
+  }
+
+  private _monthsAgo(months: number, days: number): string {
+    let elapsed = `${months} ${ElapsedPipe._plural(months, 'month')}`;
+
+    if (days > 0) {
+      elapsed = `${elapsed} and ${days} ${ElapsedPipe._plural(days, 'days')}`
+    }
+
+    elapsed = `${elapsed} ago`;
+
+    return elapsed;
+  }
+
+  private _daysAgo(days: number): string {
+    return `${days} ${ElapsedPipe._plural(days, 'day')} ago`;
+  }
+
+  private _hoursAgo(hours: number): string {
+    return `${hours} ${ElapsedPipe._plural(hours, 'hour')} ago`;
+  }
+
+  private _minutesAgo(minutes: number): string {
+    return `${minutes} ${ElapsedPipe._plural(minutes, 'minute')} ago`;
+  }
+
+  private _secondsAgo(seconds: number): string {
+    return `${seconds} ${ElapsedPipe._plural(seconds, 'second')} ago`;
+  }
+
+  private _getFullElapsedUnit(now: Date, past: Date): IFullUnit {
     let deltaTime = now.getTime() - past.getTime(),
 
         seconds = Math.floor(deltaTime / 1000),
@@ -129,7 +144,7 @@ export class ElapsedPipe implements PipeTransform {
     return { years, months, days, hours, minutes, seconds };
   }
 
-  private static plural(k: number, name: string): string {
+  private static _plural(k: number, name: string): string {
     return k > 1 ? `${name}s` : name;
   }
 
