@@ -12,6 +12,7 @@ import {
   MdMenuModule,
   MdToolbarModule,
   MdTabsModule,
+  MdSliderModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
   MdIconModule
@@ -40,6 +41,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MdCardModule,
     MdToolbarModule,
     MdTabsModule,
+    MdSliderModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdIconModule
