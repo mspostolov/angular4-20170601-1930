@@ -9,7 +9,7 @@ export class MailComponent implements OnInit, Input {
   private deleted = false;
   private lifeTime = 0;
   constructor() { }
-  private deleteThisMail() {
+  public deleteThisMail() {
     this.deleted = true;
     alert(`Письмо прожило ${this.lifeTime} секунд`)
   }
