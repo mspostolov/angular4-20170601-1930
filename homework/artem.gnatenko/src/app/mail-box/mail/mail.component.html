@@ -1,0 +1,11 @@
+<ul>
+  <li><a [href]="'mailto:'+mail.authorMail">{{mail.author}} <{{mail.authorMail}}></a></li>
+  <li class="subject">{{mail.subject}}</li>
+  <li class="description">{{mail.description}}</li>
+  <li>{{mail.date | timeElapsed}}</li>
+  <li>
+    <button type="button"
+      (click)="delete(mail)"
+    >Delete</button>
+  </li>
+</ul>
