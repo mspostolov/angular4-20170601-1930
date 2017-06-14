@@ -8,14 +8,17 @@
     position: relative;
 }
 
-.user_profile_image_main{
+.user_profile_image_main, .user_profile_image_main_empty{
     width: 400px;
     height: 300px;
     filter: blur(3px);
     background-position: 0% 0%;
     background-size: cover;
 }
-.user_profile_image_stable{
+.user_profile_image_main_empty{
+    background: #ccc;
+}
+.user_profile_image_stable, .user_profile_image_empty{
     position: absolute;
     top: 20px;
     left: 125px;

@@ -6,7 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  @Input() user: Dayoff.Employee;
+  @Input() user: Dayoff.User;
 
   constructor() { }
 
