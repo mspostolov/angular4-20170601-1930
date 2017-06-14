@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCardComponent } from './user-list/user-card/user-card.component';
-import {HttpModule} from "@angular/http";
+import {HttpModule} from '@angular/http';
 
 @NgModule({
   declarations: [
