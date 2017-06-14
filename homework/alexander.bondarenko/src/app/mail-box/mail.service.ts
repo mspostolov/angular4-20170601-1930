@@ -23,7 +23,7 @@ export class MailService {
 
   deleteMail(mail: Mail) {
     const i = this._mails.indexOf(mail);
-    if (i > 0) {
+    if (i => 0) {
       this._mails.splice(i, 1);
     }
   }
@@ -42,18 +42,21 @@ export class MailService {
     }
   }
 
-  startReceiving(interval: number) {
-    this.stopReceiving();
+  startReceiving(interval?: number) {
+    const self = this;
 
-    this._receivingTimer = setInterval(function () {
-      this.receive(Date.now() % 2 + 1);
+    self.stopReceiving();
+    self._receivingTimer = setInterval(function () {
+      self.receive(Date.now() % 2 + 1);
     }, interval && interval >= 0 ? interval : 5000);
   }
 
   stopReceiving() {
-    if (this._receivingTimer) {
-      clearInterval(this._receivingTimer);
-      this._receivingTimer = null;
+    const self = this;
+
+    if (self._receivingTimer) {
+      clearInterval(self._receivingTimer);
+      self._receivingTimer = null;
     }
   }
 

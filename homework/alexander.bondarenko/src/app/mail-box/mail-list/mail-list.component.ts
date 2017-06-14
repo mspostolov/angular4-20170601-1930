@@ -28,10 +28,11 @@ export class MailListComponent implements OnInit {
 
   processDeleted(mail) {
     this._mailService.deleteMail(mail);
+    this.getMails();
   }
 
   ngOnInit() {
-    this.detachChanges();
+    // this.detachChanges();
   }
 
 }

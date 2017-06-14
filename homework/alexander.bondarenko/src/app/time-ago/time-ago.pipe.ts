@@ -9,7 +9,9 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
 
   constructor(private changeDetectorRef: ChangeDetectorRef, private ngZone: NgZone) {}
 
-  transform(value:string) {
+  transform(value:Date, args?: any) : any {
+    if (!value) return;
+
     this.removeTimer();
 
     let d = new Date(value);
@@ -18,12 +20,12 @@ export class TimeAgoPipe implements PipeTransform, OnDestroy {
     let timeToUpdate = this.getSecondsUntilUpdate(seconds) *1000;
 
     this.timer = this.ngZone.runOutsideAngular(() => {
-      if (typeof window !== 'undefined') {
-        return window.setTimeout(() => {
-          this.ngZone.run(() => this.changeDetectorRef.markForCheck());
-        }, timeToUpdate);
-      }
-      return null;
+      return window.setTimeout(() => {
+        this.ngZone.run(() => this.changeDetectorRef.markForCheck());
+      }, timeToUpdate);
+      // if (typeof window !== 'undefined') {
+      // }
+      // return null;
     });
 
     let minutes = Math.round(Math.abs(seconds / 60));

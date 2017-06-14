@@ -4,10 +4,13 @@ import { MailBoxComponent } from './mail-box.component';
 import { MailListComponent } from './mail-list/mail-list.component';
 import { MailComponent } from './mail/mail.component';
 import {MailService} from "./mail.service";
+import {TimeAgoPipe} from "../time-ago/time-ago.pipe";
+import {TimeAgoModule} from "../time-ago/time-ago.module";
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    TimeAgoModule
   ],
   declarations: [MailBoxComponent, MailListComponent, MailComponent],
   exports: [MailBoxComponent]

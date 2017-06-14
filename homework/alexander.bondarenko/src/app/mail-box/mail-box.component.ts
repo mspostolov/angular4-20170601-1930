@@ -8,17 +8,21 @@ import {MailService} from "./mail.service";
 })
 export class MailBoxComponent implements OnInit {
 
-  constructor(private mailService: MailService) { }
+  constructor(private _mailService: MailService) { }
 
   ngOnInit() {
   }
 
-  startReceiving(evt) {
-
+  startReceiving() {
+    this._mailService.startReceiving();
   }
 
-  stopReceiving(evt) {
+  stopReceiving() {
+    this._mailService.stopReceiving();
+  }
 
+  receiveOnce() {
+    this._mailService.receive(5);
   }
 
 }

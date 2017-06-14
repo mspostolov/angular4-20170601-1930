@@ -13,20 +13,21 @@ import {
   MdMenuModule,
   MdInputModule
 } from "@angular/material";
-import { TimeAgoPipe } from './time-ago.pipe';
 import {MailService} from "./mail-box/mail.service";
+import {TimeAgoModule} from "./time-ago/time-ago.module";
 
 @NgModule({
   declarations: [
-    AppComponent,
-    TimeAgoPipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     MdButtonModule, MdListModule, MdGridListModule, MdMenuModule, MdInputModule,
-    MailBoxModule
+    MailBoxModule,
+    TimeAgoModule
   ],
+  exports: [],
   providers: [MailService],
   bootstrap: [AppComponent]
 })
