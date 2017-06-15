@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 @Component({
-  selector: 'dg-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.css']
+  selector: 'dg-mail-list',
+  templateUrl: './mail-list.component.html',
+  styleUrls: ['./mail-list.component.css']
 })
-export class ListComponent implements OnInit {
+export class MailListComponent implements OnInit {
 
   @Input() emails = [];
   @Input() authors: Object = {}
