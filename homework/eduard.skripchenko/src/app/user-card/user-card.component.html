@@ -1,0 +1,22 @@
+<div class="container-fluid card-container">
+    <div class="row">
+        <div class="col-xs-4">
+            <img [src]="user.photo ? user.photo : 'assets/user-200.png'" class="img-circle card-photo" />
+        </div>
+        <div class="col-xs-8">
+            <div class="row">
+                <div class="col-xs-4"><strong>First Name</strong></div>
+                <div class="col-xs-8">{{user.firstName}}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4"><strong>Surname</strong></div>
+                <div class="col-xs-8">{{user.surname}}</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4"><strong>Country</strong></div>
+                <div class="col-xs-8">{{user.country}}</div>
+            </div>
+        </div>
+    </div>
+</div>
+<br/>
