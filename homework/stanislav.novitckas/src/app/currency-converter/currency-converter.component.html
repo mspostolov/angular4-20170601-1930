@@ -1,8 +1,8 @@
-<select [style.width.px]="150">
-  <option *ngFor="let valute of valuteList" value={{valute.ID}}>{{valute.Name}}</option>
+<select (change)="leftSelectChange($event.target.value)" [style.width.px]="150">
+  <option *ngFor="let valute of valuteList" value={{valute.Value}}>{{valute.Name}}</option>
 </select>
-<input type="text">
-<input type="text">
-<select [style.width.px]="150">
-  <option *ngFor="let valute of valuteList" value={{valute.ID}}>{{valute.Name}}</option>
+<input #leftInput (blur)="leftInputBlur(leftInput.value)" type="number">
+<select (change)="rightSelectChange($event.target.value)" [style.width.px]="150">
+  <option *ngFor="let valute of valuteList" value={{valute.Value}}>{{valute.Name}}</option>
 </select>
+<div>Результат: {{result}}</div>

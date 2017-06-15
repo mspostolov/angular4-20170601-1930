@@ -11,6 +11,7 @@ import {UserServiceService} from "./user-service.service";
 import {Http, HttpModule} from "@angular/http";
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import {CurrencyExchangeRateService} from "./currency-exchange-rate.service";
+import {CurrencyConverterService} from "./currency-converter.service";
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import {CurrencyExchangeRateService} from "./currency-exchange-rate.service";
   imports: [
     BrowserModule, HttpModule
   ],
-  providers: [UserServiceService, CurrencyExchangeRateService],
+  providers: [UserServiceService, CurrencyExchangeRateService, CurrencyConverterService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
