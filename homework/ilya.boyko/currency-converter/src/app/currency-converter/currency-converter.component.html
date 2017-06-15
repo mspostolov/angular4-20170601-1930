@@ -1,0 +1,19 @@
+<div>
+  <md-input-container>
+    <input mdInput placeholder="Amount" type="number" [(ngModel)]="source">
+  </md-input-container>
+  <md-select placeholder="From" [(ngModel)]="from">
+    <md-option *ngFor="let currency of currencies" [value]="currency">
+      {{ currency }}
+    </md-option>
+  </md-select>
+  <md-select placeholder="To" [(ngModel)]="to">
+    <md-option *ngFor="let currency of currencies" [value]="currency">
+      {{ currency }}
+    </md-option>
+  </md-select>
+  <button md-raised-button (click)="convert()">Convert</button>
+</div>
+<p *ngIf="isActive()">
+  {{ source }} {{ from }} is equal to {{ result }} {{ to }}
+</p>
