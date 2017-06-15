@@ -1,10 +1,10 @@
-import { MailBoxPage } from './app.po';
+import { Homework3Page } from './app.po';
 
-describe('mail-box App', () => {
-  let page: MailBoxPage;
+describe('homework3 App', () => {
+  let page: Homework3Page;
 
   beforeEach(() => {
-    page = new MailBoxPage();
+    page = new Homework3Page();
   });
 
   it('should display welcome message', done => {
