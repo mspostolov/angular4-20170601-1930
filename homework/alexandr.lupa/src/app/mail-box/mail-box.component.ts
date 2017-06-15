@@ -49,7 +49,7 @@ export class MailBoxComponent implements OnInit {
           newMail();
         }
 
-        if (this.mails.length < 30) {
+        if (this.mails.length < 10) {
           delayNewEmail();
         }
       }, getRandomInt(3, 5) * 1000);
