@@ -5,6 +5,9 @@ interface IFullUnit {
   years: number;
   months: number;
   days: number;
+  hours: number;
+  minutes: number;
+  seconds: number;
 };
 
 @Pipe({
@@ -14,51 +17,34 @@ interface IFullUnit {
 export class ElapsedPipe implements PipeTransform {
 
   transform(value: string, args?: any): string {
-    const nowTime = Date.now(),
-          pastTime = Date.parse(value),
-          nowDate = new Date(nowTime),
-          pastDate = new Date(pastTime),
-          deltaTime = nowTime - pastTime,
+    const {
+        years, months, days,
+        hours, minutes, seconds
+    } = this._getFullElapsedUnit(new Date(), new Date(value));
 
-          seconds = Math.floor(deltaTime / 1000),
-          minutes = Math.floor(seconds / 60),
-          hours = Math.floor(minutes / 60);
-
-    let days = Math.floor(hours / 24),
-        months = 0,
-        years = 0,
-        elapsed = '';
-
-    if (days >= 28) {
-      ({ years, months, days } = this.getFullElapsedUnit(nowDate, pastDate));
-    }
+    let elapsed: string;
 
     if (years > 0) {
-      elapsed = `${years} ${ElapsedPipe.plural(years, 'year')}`;
+      elapsed = this._yearsAgo(years, months);
 
-      if (months > 0) {
-        elapsed = `${elapsed} and ${months} ${ElapsedPipe.plural(months, 'month')}`
-      }
-
-      elapsed = `${elapsed} ago`;
     } else if (months > 0) {
-      elapsed = `${months} ${ElapsedPipe.plural(months, 'month')}`;
+      elapsed = this._monthsAgo(months, days);
 
-      if (days > 0) {
-        elapsed = `${elapsed} and ${days} ${ElapsedPipe.plural(days, 'days')}`
-      }
-
-      elapsed = `${elapsed} ago`;
     } else if (days > 0) {
-      elapsed = `${days} ${ElapsedPipe.plural(days, 'day')} ago`;
+      elapsed = this._daysAgo(days);
+
     } else if (hours > 0) {
-      elapsed = `${hours} ${ElapsedPipe.plural(hours, 'hour')} ago`;
+      elapsed = this._hoursAgo(hours);
+
     } else if (minutes > 0) {
-      elapsed = `${minutes} ${ElapsedPipe.plural(minutes, 'minute')} ago`;
+      elapsed = this._minutesAgo(minutes);
+
     } else if (seconds > 0) {
-      elapsed = `${seconds} ${ElapsedPipe.plural(seconds, 'second')} ago`;
+      elapsed = this._secondsAgo(seconds);
+
     } else if (seconds === 0) {
       elapsed = 'a moment ago';
+
     } else {
       elapsed = 'in future';
     }
@@ -66,56 +52,99 @@ export class ElapsedPipe implements PipeTransform {
     return elapsed;
   }
 
-  private getFullElapsedUnit(now: Date, past: Date): IFullUnit {
-    let nowDate = new Date(now.getFullYear(), now.getMonth(), now.getDate()),
-        pastDate = new Date(past.getFullYear(), past.getMonth(), past.getDate()),
-        deltaFullYears = 0,
-        deltaFullMonth = 0,
-        deltaFullDays = 0;
+  private _yearsAgo(years: number, months: number): string {
+    let elapsed = `${years} ${ElapsedPipe._plural(years, 'year')}`;
 
-    if (pastDate < nowDate) {
-      while (pastDate < nowDate) {
-        deltaFullYears++;
-        pastDate = new Date(pastDate.getFullYear() + 1, pastDate.getMonth(), pastDate.getDate());
-      }
-
-      if (pastDate > nowDate) {
-        deltaFullYears--;
-        pastDate = new Date(pastDate.getFullYear() - 1, pastDate.getMonth(), pastDate.getDate());
-      }
+    if (months > 0) {
+      elapsed = `${elapsed} and ${months} ${ElapsedPipe._plural(months, 'month')}`
     }
 
-    if (pastDate < nowDate) {
-      while (pastDate < nowDate) {
-        deltaFullMonth++;
-        pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth() + 1, pastDate.getDate());
-      }
-
-      if (pastDate > nowDate) {
-        deltaFullMonth--;
-        pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth() - 1, pastDate.getDate());
-      }
-    }
-
-    if (pastDate < nowDate) {
-      while (pastDate < nowDate) {
-        deltaFullDays++;
-        pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth(), pastDate.getDate() + 1);
-      }
-
-      if (pastDate > nowDate) {
-        deltaFullDays--;
-      }
-    }
-
-    return {
-      years: deltaFullYears,
-      months: deltaFullMonth,
-      days: deltaFullDays
-    };
+    elapsed = `${elapsed} ago`;
+    return elapsed;
   }
 
-  private static plural(k: number, name: string): string {
+  private _monthsAgo(months: number, days: number): string {
+    let elapsed = `${months} ${ElapsedPipe._plural(months, 'month')}`;
+
+    if (days > 0) {
+      elapsed = `${elapsed} and ${days} ${ElapsedPipe._plural(days, 'days')}`
+    }
+
+    elapsed = `${elapsed} ago`;
+
+    return elapsed;
+  }
+
+  private _daysAgo(days: number): string {
+    return `${days} ${ElapsedPipe._plural(days, 'day')} ago`;
+  }
+
+  private _hoursAgo(hours: number): string {
+    return `${hours} ${ElapsedPipe._plural(hours, 'hour')} ago`;
+  }
+
+  private _minutesAgo(minutes: number): string {
+    return `${minutes} ${ElapsedPipe._plural(minutes, 'minute')} ago`;
+  }
+
+  private _secondsAgo(seconds: number): string {
+    return `${seconds} ${ElapsedPipe._plural(seconds, 'second')} ago`;
+  }
+
+  private _getFullElapsedUnit(now: Date, past: Date): IFullUnit {
+    let deltaTime = now.getTime() - past.getTime(),
+
+        seconds = Math.floor(deltaTime / 1000),
+        minutes = Math.floor(deltaTime / (60 * 1000)),
+        hours   = Math.floor(deltaTime / (60 * 60 * 1000)),
+        days    = Math.floor(deltaTime / (24 * 60 * 60 * 1000)),
+        months  = 0,
+        years   = 0;
+
+    if (days > 28) {
+      let nowDate   = new Date(now.getFullYear(), now.getMonth(), now.getDate()),
+          pastDate  = new Date(past.getFullYear(), past.getMonth(), past.getDate());
+
+      if (pastDate < nowDate) {
+        while (pastDate < nowDate) {
+          years++;
+          pastDate = new Date(pastDate.getFullYear() + 1, pastDate.getMonth(), pastDate.getDate());
+        }
+
+        if (pastDate > nowDate) {
+          years--;
+          pastDate = new Date(pastDate.getFullYear() - 1, pastDate.getMonth(), pastDate.getDate());
+        }
+      }
+
+      if (pastDate < nowDate) {
+        while (pastDate < nowDate) {
+          months++;
+          pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth() + 1, pastDate.getDate());
+        }
+
+        if (pastDate > nowDate) {
+          months--;
+          pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth() - 1, pastDate.getDate());
+        }
+      }
+
+      if (pastDate < nowDate) {
+        while (pastDate < nowDate) {
+          days++;
+          pastDate = new Date(pastDate.getFullYear(), pastDate.getMonth(), pastDate.getDate() + 1);
+        }
+
+        if (pastDate > nowDate) {
+          days--;
+        }
+      }
+    }
+
+    return { years, months, days, hours, minutes, seconds };
+  }
+
+  private static _plural(k: number, name: string): string {
     return k > 1 ? `${name}s` : name;
   }
 

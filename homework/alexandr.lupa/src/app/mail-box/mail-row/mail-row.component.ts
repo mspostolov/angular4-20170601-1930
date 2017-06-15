@@ -12,11 +12,13 @@ export class MailRowComponent implements OnInit {
 
   @Output() onremove = new EventEmitter<IMail>();
 
-  createdAt: number = Date.now();
+  createdAt: number;
 
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.createdAt = Date.now();
+  }
 
   remove(): void {
     console.log(`time life of component ${(Date.now() - this.createdAt) / 1000} seconds`);
