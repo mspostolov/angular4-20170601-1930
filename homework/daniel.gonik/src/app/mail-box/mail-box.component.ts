@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { ContactsService } from '../services/contacts.service';
 
 @Component({
-  selector: 'dg-mail',
-  templateUrl: './mail.component.html',
-  styleUrls: ['./mail.component.css']
+  selector: 'dg-mail-box',
+  templateUrl: './mail-box.component.html',
+  styleUrls: ['./mail-box.component.css']
 })
-export class MailComponent implements OnInit {
+export class MailBoxComponent implements OnInit {
 
   private _cache: Array<any> = [];
   public emails: Array<any> = [];
   public authorsHashMap: Object = {};
+  public users: Array<Object> = [];
 
-  constructor(private http: Http) {
+  constructor(private http: Http, private contactsService: ContactsService) {
     this.http.get('https://jsonplaceholder.typicode.com/users')
       .map(response => response.json())
       .subscribe(authors => {
@@ -32,6 +34,10 @@ export class MailComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.contactsService.getUsers()
+      .subscribe(users => {
+        this.users = users;
+      });
   }
 
   private _updateMailBox() {

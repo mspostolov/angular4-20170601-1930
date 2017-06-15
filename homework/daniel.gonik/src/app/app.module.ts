@@ -12,21 +12,26 @@ import {
   MdMenuModule,
   MdToolbarModule,
   MdTabsModule,
+  MdSliderModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
   MdIconModule
 } from '@angular/material';
-import { MailComponent } from './mail/mail.component';
-import { ListComponent } from './mail/list/list.component';
-import { ViewComponent } from './mail/view/view.component';
+import { MailBoxComponent } from './mail-box/mail-box.component';
+import { MailListComponent } from './mail-box/mail-list/mail-list.component';
+import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
+import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
+import { ContactsService } from './services/contacts.service';
+import { SweetAlertService } from 'ng2-sweetalert2';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MailComponent,
-    ListComponent,
-    ViewComponent,
+    MailBoxComponent,
+    MailListComponent,
+    MailViewComponent,
+    ContactsComponent,
     RelativeDatePipe
   ],
   imports: [
@@ -39,11 +44,19 @@ import { RelativeDatePipe } from './pipes/relative-date.pipe';
     MdCardModule,
     MdToolbarModule,
     MdTabsModule,
+    MdSliderModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdIconModule
   ],
-  providers: [],
+  providers: [
+    SweetAlertService,
+    ContactsService
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  static get parameters() {
+    return [[SweetAlertService]];
+  }
+}
