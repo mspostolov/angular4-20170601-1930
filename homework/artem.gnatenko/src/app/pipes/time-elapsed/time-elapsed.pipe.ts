@@ -11,7 +11,8 @@ interface TimeUnit {
 }
 
 @Pipe({
-  name: 'timeElapsed'
+  name: 'timeElapsed',
+  pure: false
 })
 export class TimeElapsedPipe implements PipeTransform {
 

@@ -1,17 +1,13 @@
-.panel-info {
-    border: none;
-    box-shadow: none;
-}
-.panel-info > .panel-heading {
-    padding: 10px 20px;    
-}
 ul {
     display: flex;
     padding: 0;
     margin: 0;
-    border-top: 1px solid #bce8f1;
     border-bottom: 1px solid #bce8f1;
     align-items: center;
+    transition: background 0.25s ease-in-out;
+}
+ul:hover {
+    background: #bce8f1;
 }
 ul li {
     flex-shrink: 1;
