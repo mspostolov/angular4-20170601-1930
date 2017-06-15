@@ -1,0 +1,23 @@
+<h2>User list</h2>
+<div>
+    <label>User name: </label> <input #userFirstName />
+    <label>User lastname: </label> <input #userLastName />
+    <button (click)="add(userFirstName.value, userLastName.value); userLastName.value=''; userFirstName.value=''">
+        Add
+    </button>
+</div>
+<div>
+    <ul class="users">
+        <li *ngFor="let user of users" [class.selected]="user === selectedUser" (click)="onSelect(user)">
+            <span class="badge">{{user.id}}</span>
+            <span class="user-info">{{user.firstName}} {{user.surname}}</span>
+            <button class="delete" (click)="delete(user); $event.stopPropagation();">x</button>
+        </li>
+    </ul>
+</div>
+<div *ngIf="selectedUser">
+  <h2>
+    {{selectedUser.firstName | uppercase}}
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>
