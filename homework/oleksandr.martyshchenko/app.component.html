@@ -1,8 +1,4 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <h1>{{title}}</h1>
-      <app-letter-list></app-letter-list>
-    </div>
-  </div>
-</div>
+<h1>{{title}}</h1>
+<button (click)='toggleVidget()'>{{isVidgetOpen ? 'hide vidget' : 'show vidget'}}</button>
+<app-currency *ngIf='isVidgetOpen'></app-currency>
+<app-user-list></app-user-list>
