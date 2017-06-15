@@ -18,6 +18,7 @@ import {
 } from "@angular/material";
 import {MailService} from "./mail-box/mail.service";
 import {TimeAgoModule} from "./time-ago/time-ago.module";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import {TimeAgoModule} from "./time-ago/time-ago.module";
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     BrowserAnimationsModule,
     MdButtonModule, MdListModule, MdGridListModule, MdMenuModule, MdInputModule,
     MailBoxModule,

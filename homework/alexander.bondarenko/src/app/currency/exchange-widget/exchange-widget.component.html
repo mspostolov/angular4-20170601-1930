@@ -1,3 +1,20 @@
-<p>
-  exchange-widget works!
-</p>
+<form name="exchangeForm">
+  <div>
+    <label for="fromCurrency">From</label>
+    <input id="fromCurrency" type="text"/>
+  </div>
+
+  <div>
+    <label for="toCurrency">To</label>
+    <input id="toCurrency" type="text"/>
+  </div>
+
+  <div>
+    <label for="amount">Amount</label>
+    <input id="amount" type="number" minlength="1"/>
+  </div>
+
+  <div>
+    <span>{{result}}</span>
+  </div>
+</form>

@@ -7,13 +7,15 @@ import { CurrencyConverterService } from '../currency-converter.service';
   styleUrls: ['./exchange-widget.component.css']
 })
 export class ExchangeWidgetComponent implements OnInit {
-
+  result;
   constructor(private _currencyConverter: CurrencyConverterService) { }
 
   ngOnInit() {
   }
 
-  convert(base: string, to: string[], amount: number) {
+  convert(from: string, to: string, amount: number) {
+    if (!from || !to || !amount) return;
 
+    this.result = this._currencyConverter.convert(from, to, amount)
   }
 }

@@ -8,6 +8,7 @@ import { CurrencyConverterService } from './currency-converter.service';
     CommonModule
   ],
   declarations: [ExchangeWidgetComponent],
+  exports: [ExchangeWidgetComponent],
   providers: [CurrencyConverterService]
 })
 export class CurrencyModule { }
