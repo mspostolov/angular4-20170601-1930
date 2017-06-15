@@ -20,7 +20,9 @@ import {
 import { MailBoxComponent } from './mail-box/mail-box.component';
 import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
+import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
+import { ContactsService } from './services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 @NgModule({
@@ -29,6 +31,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MailBoxComponent,
     MailListComponent,
     MailViewComponent,
+    ContactsComponent,
     RelativeDatePipe
   ],
   imports: [
@@ -47,7 +50,8 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MdIconModule
   ],
   providers: [
-    SweetAlertService
+    SweetAlertService,
+    ContactsService
   ],
   bootstrap: [AppComponent]
 })

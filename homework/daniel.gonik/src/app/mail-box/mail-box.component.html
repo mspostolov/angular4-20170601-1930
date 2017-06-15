@@ -1,14 +1,13 @@
 <md-tab-group class="mat-default">
   <md-tab label="Inbox">
     <dg-mail-list [emails]="emails"
-             [authors]="authorsHashMap">
+                  [authors]="authorsHashMap">
     </dg-mail-list>
   </md-tab>
 
   <md-tab label="Contacts">
-    <!-- <dg-list [emails]="emails"
-             [authors]="authorsHashMap">
-    </dg-list> -->
+    <dg-contacts [users]="users">
+    </dg-contacts>
   </md-tab>
 
   <md-tab label="Settings">
