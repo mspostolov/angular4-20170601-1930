@@ -34,7 +34,10 @@ export class MailBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.users = this.contactsService.getUsers();
+    this.contactsService.getUsers()
+      .subscribe(users => {
+        this.users = users;
+      });
   }
 
   private _updateMailBox() {

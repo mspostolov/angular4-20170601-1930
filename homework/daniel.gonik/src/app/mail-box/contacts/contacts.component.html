@@ -1,4 +1,24 @@
-<p>
-  {{ users | json }}
-  Hi!
-</p>
+<md-card *ngFor="let user of users; let index = index;">
+
+  <md-card-header>
+    <div md-card-avatar>
+      <i class="material-icons contact-avatar" *ngIf="!user.photo">account_circle</i>
+      <i class="contact-avatar-image" *ngIf="user.photo"
+         [style.backgroundImage]="'url(' + user.photo + ')'">
+      </i>
+    </div>
+    <md-card-title>{{ user.firstName + ' ' + user.surname }}</md-card-title>
+    <md-card-subtitle>{{ user.country | uppercase }}</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-actions>
+    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
+      <i class="material-icons">create</i> WRITE
+    </button>
+    <!-- (click)="bookmark(index)" -->
+    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
+      <i class="material-icons">delete</i> DELETE
+    </button>
+  </md-card-actions>
+
+</md-card>

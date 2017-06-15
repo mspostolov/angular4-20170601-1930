@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 @Injectable()
 export class ContactsService {
 
-  constructor() {}
+  constructor(private http: Http) {}
 
   getUsers() {
-    return [
-      { name: 'Bob' },
-      { name: 'Jane' }
-    ];
+    return this.http.get('https://learn.javascript.ru/courses/groups/api/participants?key=1fxf2pg')
+      .map(response => response.json());
   }
 
 }
