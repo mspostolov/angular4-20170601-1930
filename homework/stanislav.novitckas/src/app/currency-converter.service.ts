@@ -9,6 +9,6 @@ export class CurrencyConverterService {
   }
   public convert(from, to, value): string | number {
     let convertedToRub = +value * +from;
-    return convertedToRub / +to;
+    return (convertedToRub / +to).toFixed(2);
   }
 }
