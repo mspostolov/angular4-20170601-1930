@@ -28,9 +28,7 @@ export class CurrencyConverterComponent implements OnInit {
     this.convertedValue = +this.currency * +this.amount;
   }
 
-  setAmountValue(event) {
-    console.log(this.convertedValue, event.target.value);
+  setAmountValue() {
     this.amount = +this.convertedValue / +this.currency;
   }
-
 }
