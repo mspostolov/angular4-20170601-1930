@@ -4,21 +4,19 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { MailboxComponent } from './mailbox/mailbox.component';
-import { MailComponent } from './mail/mail.component';
-import { ElapsedTimePipe } from './pipes/elapsed-time.pipe';
+import { MailboxModule } from 'app/mailbox/mailbox.module';
+import { Routing } from 'app/app.routing.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MailboxComponent,
-    MailComponent,
-    ElapsedTimePipe
+    AppComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    Routing,
+    MailboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]

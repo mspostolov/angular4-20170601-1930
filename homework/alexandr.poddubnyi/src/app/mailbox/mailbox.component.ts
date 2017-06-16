@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { mailsData, additionalMails } from 'app/mailbox/shared/mail.data';
-import { Mail } from 'app/mailbox/shared/mail.class';
 
+import { Mail } from 'app/mailbox/shared/mail.class';
+import {
+  additionalMails,
+  mailsData
+} from 'app/mailbox/shared/mail.data';
 
 @Component({
   selector: 'mailbox',
