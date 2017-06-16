@@ -17,8 +17,7 @@
     <div class="d-flex align-items-center">
       <label class="form-control-label my-0 font-weight-bold pr-5 px-0">UAH:</label>
       <input type="text" class="form-control" [(ngModel)]="convertedValue" (input)="setAmountValue($event)">
-      <!--{{convertedValue}}-->
     </div>
+    <p>{{convertedValue}}</p>
   </div>
 </div>
-{{currencies | json}}
