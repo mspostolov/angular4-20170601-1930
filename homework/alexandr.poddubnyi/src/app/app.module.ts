@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { MailboxModule } from 'app/mailbox/mailbox.module';
 import { Routing } from 'app/app-routing.module';
+import { UsersCurrencyModule } from 'app/users-currency/users-currency.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { Routing } from 'app/app-routing.module';
     FormsModule,
     HttpModule,
     Routing,
-    MailboxModule
+    MailboxModule,
+    UsersCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]
