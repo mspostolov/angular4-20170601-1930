@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MailboxModule } from 'app/mailbox/mailbox.module';
-import { Routing } from 'app/app.routing.module';
+import { Routing } from 'app/app-routing.module';
 
 @NgModule({
   declarations: [
