@@ -18,11 +18,11 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class CurrencyConverterComponent implements OnInit {
   currencies: ICurrency[];
   currency = 0;
-  amount = 0;
-  convertedValue = 0;
+  amountEl: HTMLInputElement;
+  convertedEl: HTMLInputElement;
 
-  @ViewChild('amountElem') amountElem: ElementRef;
-  @ViewChild('convertedElem') convertedElem: ElementRef;
+  @ViewChild('amount') amountRef: ElementRef;
+  @ViewChild('converted') convertedRef: ElementRef;
 
   constructor(private currencyService: CurrencyService) { }
 
@@ -33,19 +33,21 @@ export class CurrencyConverterComponent implements OnInit {
         this.currency = +this.currencies[0].sale;
       });
 
+    this.amountEl = this.amountRef.nativeElement;
+    this.convertedEl = this.convertedRef.nativeElement;
     this.addBindings();
   }
 
   setConvertedValue() {
-    this.convertedValue = +this.currency * +this.amount;
+    this.convertedEl.value = (+this.currency * +this.amountEl.value).toString();
   }
 
   setAmountValue() {
-    this.amount = +this.convertedValue / +this.currency;
+    this.amountEl.value = (+this.convertedEl.value / +this.currency).toString();
   }
 
   private addBindings() {
-    Observable.fromEvent<KeyboardEvent>(this.amountElem.nativeElement, 'input')
+    Observable.fromEvent<KeyboardEvent>(this.amountEl, 'input')
       .map(event => (event.target as HTMLInputElement).value)
       .debounceTime(500)
       .distinctUntilChanged()
@@ -53,7 +55,7 @@ export class CurrencyConverterComponent implements OnInit {
         this.setConvertedValue();
       });
 
-    Observable.fromEvent<KeyboardEvent>(this.convertedElem.nativeElement, 'input')
+    Observable.fromEvent<KeyboardEvent>(this.convertedEl, 'input')
       .map(event => (event.target as HTMLInputElement).value)
       .debounceTime(500)
       .distinctUntilChanged()
