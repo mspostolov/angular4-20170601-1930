@@ -1,3 +1,12 @@
+.row {
+  display: flex;
+  align-items: flex-start;
+}
+
+.contact-details {
+  padding: 8px 16px;
+}
+
 .contact-avatar-icon {
   font-size: 40px;
 }
