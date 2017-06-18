@@ -1,0 +1,12 @@
+.panel-body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.panel-body app-user-card {
+    border: 1px solid lightblue;
+    padding: 15px;
+    box-sizing: border-box;
+    flex-basis: calc(25% - 20px);
+    margin: 10px;
+}

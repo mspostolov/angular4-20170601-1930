@@ -1,0 +1,30 @@
+<md-card *ngFor="let email of emails; let index = index;">
+
+  <md-card-header>
+    <div md-card-avatar class="material-icons mail-author-avatar">account_circle</div>
+    <md-card-title>{{ authors[email.userId] ? authors[email.userId].name : 'Unknown author' }}</md-card-title>
+    <md-card-subtitle>{{ authors[email.userId] ? authors[email.userId].email : '' }}</md-card-subtitle>
+  </md-card-header>
+
+  <md-card-subtitle class="">Received: {{ email.createdAt | relativeDate }}</md-card-subtitle>
+
+  <md-card-content>
+    <md-card-title>{{ email.title }}</md-card-title>
+    <p>{{ email.body }}</p>
+  </md-card-content>
+
+  <md-card-actions>
+    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
+      <md-icon>remove_red_eye</md-icon> READ
+    </button>
+    <button md-button (click)="bookmark(index)"
+            mdTooltip="{{ email.bookmarked ? 'Remove bookmark' : 'Add email to favorites' }}"
+            [mdTooltipPosition]="'below'">
+      <i class="material-icons" [innerHtml]="email.bookmarked ? 'bookmark' : 'bookmark_border'"></i> BOOKMARK
+    </button>
+    <button md-button (click)="removeEmail(index)">
+      <md-icon>delete</md-icon> DELETE
+    </button>
+  </md-card-actions>
+
+</md-card>

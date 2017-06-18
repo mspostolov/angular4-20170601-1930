@@ -1,0 +1,16 @@
+
+<input #amount type="text" />
+<select #from>
+    <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+ </select>
+
+<select #to>
+   <option *ngFor="let currency of currencies" [value]="currency">{{currency}}</option>
+</select>
+
+<button (click)="convertCurrency(amount.value,from.value,to.value)">Convert</button> 
+
+
+<p *ngIf="conversionResult">
+Result: {{conversionResult}}
+</p>

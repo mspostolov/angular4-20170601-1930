@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-interface Mail {
+export interface IMail {
   author: string,
   authorMail: string,
   subject: string,
@@ -14,7 +14,7 @@ interface Mail {
   styleUrls: ['./mail-box.component.css']
 })
 export class MailBoxComponent implements OnInit {
-  mailBox: Mail[];
+  mailBox: IMail[];
 
   constructor() {
     this.mailBox = [
@@ -47,6 +47,29 @@ export class MailBoxComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.mailGenerator();
   }
 
+  deleteMail(mail:IMail):void {
+    this.mailBox.splice(this.mailBox.indexOf(mail), 1);
+  }
+
+  addMail(mail: IMail):void {
+    this.mailBox.push(mail);
+  }
+
+  private mailGenerator():void {
+    let startIndex = 4;
+    let that = this;
+    setInterval(function() {
+      startIndex++;
+      that.addMail({
+        author: "Author " + startIndex,
+        authorMail: "test" + startIndex + "@test.test",
+        subject: "Test subject " + startIndex,
+        description: "Test email description " + startIndex,
+        date: new Date().toString()
+      });
+    }, 3000);
+  }
 }
