@@ -1,8 +1,8 @@
 Приложение wikiSearch
 
 
-1. Реализовать компонент search c с базовой функциональностью
-2. Создать компонент wikiSearch наследником от search и испоьлзовать в нем wikiSearchService
+1. Реализовать компонент search c с базовой функциональностью (поле ввода, которое слушает изменния)
+2. Создать компонент wikiSearch в который поменстить search и использовать в нем wikiSearchService
 3. в wikiSearchService - получение данных по запросу к API (https://en.wikipedia.org/w/api.php?action=opensearch&format=json&search=apple)
 4. Читаем событие изменений в input с помощью RxJS
 5. Лимитировать количество отправляемых на сервер запросов
