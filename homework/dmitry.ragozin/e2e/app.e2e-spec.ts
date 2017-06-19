@@ -1,10 +1,10 @@
-import { User.ListPage } from './app.po';
+import { Dmitry.RagozinPage } from './app.po';
 
-describe('user.list App', () => {
-  let page: User.ListPage;
+describe('dmitry.ragozin App', () => {
+  let page: Dmitry.RagozinPage;
 
   beforeEach(() => {
-    page = new User.ListPage();
+    page = new Dmitry.RagozinPage();
   });
 
   it('should display welcome message', done => {
