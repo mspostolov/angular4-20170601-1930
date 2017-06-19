@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="col">
+    <h2>From:</h2>
+    <div class="d-flex align-items-center mb-3">
+      <label class="form-control-label my-0 font-weight-bold col-3 px-0">Currency:</label>
+      <select name="" class="custom-select col-3" [(ngModel)]="currency" (change)="setConvertedValue()">
+        <option [value]="currency.sale" *ngFor="let currency of currencies">{{currency.ccy}} {{index}}</option>
+      </select>
+    </div>
+    <div class="d-flex align-items-center mb-3">
+      <label class="form-control-label my-0 font-weight-bold col-3 px-0">Amount:</label>
+      <input type="text" class="form-control" #amount>
+    </div>
+  </div>
+  <div class="col">
+    <h2>To:</h2>
+    <div class="d-flex align-items-center">
+      <label class="form-control-label my-0 font-weight-bold pr-5 px-0">UAH:</label>
+      <input type="text" class="form-control" #converted>
+    </div>
+  </div>
+</div>

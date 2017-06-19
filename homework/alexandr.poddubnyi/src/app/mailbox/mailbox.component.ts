@@ -1,16 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { mailsData, additionalMails } from 'app/mailbox/shared/mail.data';
-import { Mail } from 'app/mailbox/shared/mail.class';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
+import { Mail } from 'app/mailbox/shared/mail.class';
+import {
+  additionalMails,
+  mailsData
+} from 'app/mailbox/shared/mail.data';
 
 @Component({
   selector: 'mailbox',
   templateUrl: './mailbox.component.html',
   styleUrls: ['./mailbox.component.css']
 })
-export class MailboxComponent implements OnInit {
+export class MailboxComponent implements OnInit, OnDestroy {
   mails: Mail[];
   newMailIndex: number;
+  mailsInterval: any;
 
   constructor() {
     this.newMailIndex = 0;
@@ -19,6 +23,10 @@ export class MailboxComponent implements OnInit {
   ngOnInit() {
     this.mails = mailsData;
     this.startMailsLoading(3000);
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.mailsInterval);
   }
 
   deleteMail(mail: Mail) {
@@ -51,7 +59,7 @@ export class MailboxComponent implements OnInit {
   }
 
   private startMailsLoading(interval) {
-    setInterval(() => {
+    this.mailsInterval = setInterval(() => {
       this.addMail();
     }, interval);
   }

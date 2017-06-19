@@ -1,3 +1,19 @@
-<div class="container">
-  <mailbox></mailbox>
-</div>
+<header>
+  <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+    <div class="collapse navbar-collapse">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <a routerLink="/mailbox" routerLinkActive="active" class="nav-link">Mailbox</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/users-currency" routerLinkActive="active" class="nav-link">Users Currency</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</header>
+<main>
+  <div class="container py-5">
+    <router-outlet></router-outlet>
+  </div>
+</main>
