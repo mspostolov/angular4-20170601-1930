@@ -1,0 +1,3 @@
+<app-search (onSearchChanged)="onSearchChanged($event)"></app-search>
+<br />
+<div *ngFor="let line of searchResultLines | async">{{line}}</div>
