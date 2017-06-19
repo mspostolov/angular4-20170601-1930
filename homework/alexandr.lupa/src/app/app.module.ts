@@ -1,7 +1,8 @@
+import { WikiSearchService } from './wiki-search.service';
 import { NgModule }      from '@angular/core';
 import { UserService }   from './user.service';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule }    from '@angular/http';
+import { HttpModule, JsonpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -11,6 +12,8 @@ import { MailRowComponent } from './mail-box/mail-row/mail-row.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCardComponent } from './user-list/user-card/user-card.component';
 import { CurrencyComponent } from './currency/currency.component';
+import { SearchComponent } from './search/search.component';
+import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 
 @NgModule({
   declarations: [
@@ -20,15 +23,19 @@ import { CurrencyComponent } from './currency/currency.component';
     MailRowComponent,
     UserListComponent,
     UserCardComponent,
-    CurrencyComponent
+    CurrencyComponent,
+    SearchComponent,
+    WikiSearchComponent
   ],
   imports: [
     HttpModule,
+    JsonpModule,
     BrowserModule,
     FormsModule
   ],
   providers: [
-    UserService
+    UserService,
+    WikiSearchService
   ],
   bootstrap: [AppComponent]
 })
