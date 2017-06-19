@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CurrencyConverterComponent } from './currency-converter.component';
+import { WikiSearchComponent } from './wiki-search.component';
 
-describe('CurrencyConverterComponent', () => {
-  let component: CurrencyConverterComponent;
-  let fixture: ComponentFixture<CurrencyConverterComponent>;
+describe('WikiSearchComponent', () => {
+  let component: WikiSearchComponent;
+  let fixture: ComponentFixture<WikiSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CurrencyConverterComponent ]
+      declarations: [ WikiSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CurrencyConverterComponent);
+    fixture = TestBed.createComponent(WikiSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
