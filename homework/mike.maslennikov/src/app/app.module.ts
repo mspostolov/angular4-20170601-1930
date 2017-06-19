@@ -1,23 +1,25 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpModule } from '@angular/http';
+import { JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { UsersListComponent } from './users-list/users-list.component';
-import { UserComponent } from './users-list/user/user.component';
-import { HttpModule } from '@angular/http';
-import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
+
+import { SearchComponent } from './search/search.component';
+import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersListComponent,
-    UserComponent,
-    CurrencyConverterComponent
+  
+    SearchComponent,
+    WikiSearchComponent
   ],
   imports: [
     BrowserModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ],
   providers: [],
   bootstrap: [AppComponent]

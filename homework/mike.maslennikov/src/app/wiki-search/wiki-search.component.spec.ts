@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { UsersListComponent } from './users-list.component';
+import { WikiSearchComponent } from './wiki-search.component';
 
-describe('UsersListComponent', () => {
-  let component: UsersListComponent;
-  let fixture: ComponentFixture<UsersListComponent>;
+describe('WikiSearchComponent', () => {
+  let component: WikiSearchComponent;
+  let fixture: ComponentFixture<WikiSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UsersListComponent ]
+      declarations: [ WikiSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(UsersListComponent);
+    fixture = TestBed.createComponent(WikiSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
