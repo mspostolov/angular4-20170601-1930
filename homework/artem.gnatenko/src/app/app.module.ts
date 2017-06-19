@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { JsonpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MailBoxComponent } from './mail-box/mail-box.component';
@@ -13,6 +14,9 @@ import { CountryfromISOPipe } from './pipes/country-from-iso/countryfrom-iso.pip
 import { UsersService } from './user-list/users.service';
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import { CurrencyConverterService } from './currency-converter/currency-converter.service';
+import { SearchComponent } from './search/search.component';
+import { WikiSearchComponent } from './search/wiki-search/wiki-search.component';
+import { SearchService } from './search/search.service';
 
 @NgModule({
   declarations: [
@@ -23,16 +27,20 @@ import { CurrencyConverterService } from './currency-converter/currency-converte
     UserListComponent,
     UserCardComponent,
     CountryfromISOPipe,
-    CurrencyConverterComponent
+    CurrencyConverterComponent,
+    SearchComponent,
+    WikiSearchComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    JsonpModule
   ],
   providers: [
     UsersService,
-    CurrencyConverterService
+    CurrencyConverterService,
+    SearchService
   ],
   bootstrap: [AppComponent]
 })
