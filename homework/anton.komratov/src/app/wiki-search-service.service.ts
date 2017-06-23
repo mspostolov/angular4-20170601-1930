@@ -29,9 +29,7 @@ export class WikiSearchServiceService {
     this.params.set('format', 'json');
     this.params.set('callback', 'JSONP_CALLBACK');
 
-    this.response = this._jsonp.get('http://en.wikipedia.org/w/api.php', { search: this.params });
-    console.log(this.response);
-    return this.response.map(response => {
+    return this._jsonp.get('http://en.wikipedia.org/w/api.php', { search: this.params }).map(response => {
 
       //console.log('response', typeof (response.json()));
       return <string[]> response.json()[1];

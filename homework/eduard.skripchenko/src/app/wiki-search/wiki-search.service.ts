@@ -11,6 +11,7 @@ export class WikiSearchService {
         const options = new RequestOptions({ headers: headers });
 
         const wikiUrl = `https://en.wikipedia.org/w/api.php?action=opensearch&format=json&callback=JSONP_CALLBACK&search=${search}`;
+        //this.http.get
         return this.jsonp.get(wikiUrl).map(response => <string[]>response.json()[1]);
     }
 

@@ -12,11 +12,19 @@ import 'rxjs/add/operator/filter';
 export class WikiSearchService {
 
   private _baseUrl = 'https://en.wikipedia.org/w/api.php';
-  search$ = new Subject<any>();
+  search$$ = new Subject<any>();
 
   constructor(
     private _jsonp: Jsonp
   ) { }
+
+  getSearchResults() {
+    return this.search$$.asObservable();
+  }
+
+  setNewQuery(query) {
+    this.search$$.next(query);
+  }
 
   search(terms: Observable<string>) {
     return terms

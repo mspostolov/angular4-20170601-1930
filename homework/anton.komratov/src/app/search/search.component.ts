@@ -24,15 +24,17 @@ export class SearchComponent implements OnInit {
     this.queryProvider$$ = new Subject<string>();
     this._WikiSearchService = WikiSearchService;
 
-    this.queryProvider$$
+    //result | async
+    this.result = this.queryProvider$$
       .debounceTime(300)
-      .subscribe(res => {
-        this.result = this._WikiSearchService.doSearch(res);
+      .switchMap(queryString => this._WikiSearchService.doSearch(queryString))
+      //.subscribe(res => {
+        //this.result = ;
         //   .subscribe( resp => {
         //   this.items = resp;
         //   //console.log(resp);
         // });
-    });
+    //});
   }
 
   ngOnInit() {

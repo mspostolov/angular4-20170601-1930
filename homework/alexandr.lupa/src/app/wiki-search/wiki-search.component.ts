@@ -15,7 +15,7 @@ export class WikiSearchComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this._searchService.search$.asObservable().subscribe(res => {
+    this._searchService.search$$.subscribe(res => {
       if (res.error) {
         console.log(res.error);
         this.results = [];
