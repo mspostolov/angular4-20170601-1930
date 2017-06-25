@@ -6,26 +6,18 @@ import { Observable } from "rxjs/Observable";
 export class WikiSearchService {
   wikiUrl: string = "http://ru.wikipedia.org/w/api.php";
 
-  constructor(public jsonp: Jsonp) { }
+  constructor(private jsonp: Jsonp) {}
 
   getEntities(term: string): Observable<any> {
-    let params = new URLSearchParams();
-    params.append('search', term);
-    params.append('action', 'opensearch');
-    params.append('format', 'json');
-    params.append('callback', 'JSONP_CALLBACK');
+    const params = new URLSearchParams();
+    params.set('search', term);
+    params.set('action', 'opensearch');
+    params.set('format', 'json');
+    params.set('callback', 'JSONP_CALLBACK');
 
-    const paramsObj = {
-      search: term,
-      action: 'opensearch',
-      format: 'json',
-      callback: 'JSONP_CALLBACK'
-    };
-
-    console.log(params);
     return this.jsonp
       .get(this.wikiUrl, {
-        search: paramsObj
+        search: params.toString() // <- work around, without toString() parameters don't exist in URL request :(
       })
       .map(response => {
         let responseData = <string[]>response.json();
