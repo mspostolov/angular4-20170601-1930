@@ -15,15 +15,18 @@ import {CurrencyConverterService} from "./currency-converter.service";
 import { SearchComponent } from './wiki-search/search/search.component';
 import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 import { LoginComponent } from './login/login.component';
-import {MdInputModule} from "@angular/material";
+import {MdButtonModule, MdInputModule} from "@angular/material";
 import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthGuardServiceService} from "./auth-guard-service.service";
+import {AuthServiceService} from "./auth-service.service";
+import {FormsModule} from "@angular/forms";
 
 const routes: Route[] = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'mail-box', component: MailboxComponent},
-  {path: 'user-list', component: UserListComponent},
+  {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
 ]
 
 @NgModule({
@@ -45,12 +48,16 @@ const routes: Route[] = [
     HttpModule,
     JsonpModule,
     MdInputModule,
+    MdButtonModule,
+    FormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
     UserServiceService,
     CurrencyExchangeRateService,
-    CurrencyConverterService
+    CurrencyConverterService,
+    AuthGuardServiceService,
+    AuthServiceService,
   ],
   bootstrap: [AppComponent]
 })

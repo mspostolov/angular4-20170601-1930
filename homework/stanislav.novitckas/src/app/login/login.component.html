@@ -1,6 +1,9 @@
-<md-input-container>
-  <input mdInput placeholder="Логин">
-</md-input-container>
-<md-input-container>
-  <input type="password" mdInput placeholder="Пароль">
-</md-input-container>
+<form (ngSubmit)="tryLogIn(authForm)" #authForm="ngForm">
+  <md-input-container>
+    <input ngModel name="login" mdInput placeholder="Логин">
+  </md-input-container>
+  <md-input-container>
+    <input ngModel name="password" type="password" mdInput placeholder="Пароль">
+  </md-input-container>
+  <button type="submit" md-button>Войти</button>
+</form>
