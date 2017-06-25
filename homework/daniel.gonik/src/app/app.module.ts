@@ -2,7 +2,7 @@ import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterModule, Routes, Route } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { WikiModule } from './wiki/wiki.module';
 
@@ -39,45 +39,7 @@ import { EmailsResolver } from './resolves/emails.resolver';
 import { AuthorsResolver } from './resolves/authors.resolver';
 import { ContactsResolver } from './resolves/contacts.resolver';
 
-const routes: Route[] = [
-  { path: '', redirectTo: '/inbox', pathMatch : 'full' },
-  {
-    path: 'inbox',
-    component: MailListComponent,
-    resolve: {
-      emails: EmailsResolver,
-      authors: AuthorsResolver
-    },
-    data: {
-      title: 'Inbox'
-    }
-  },
-  {
-    path: 'contacts',
-    component: ContactsComponent,
-    resolve: {
-      contacts: ContactsResolver
-    },
-    data: {
-      title: 'Contacts'
-    },
-    // canActivate: [AuthGuardService]
-  },
-  {
-    path: 'wiki',
-    component: WidgetComponent,
-    data: {
-      title: 'Wiki'
-    }
-  },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-    data: {
-      title: 'Settings'
-    }
-  }
-];
+import routes from './app.routes';
 
 @NgModule({
   declarations: [
