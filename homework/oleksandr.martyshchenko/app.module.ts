@@ -1,23 +1,44 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { NgModule }      from '@angular/core';
+import { FormsModule }   from '@angular/forms';
+import { HttpModule }    from '@angular/http';
 
-import { AppComponent } from './app.component';
-import { WikiSearchComponent } from './wiki-search/wiki-search.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { AppComponent }       from './app.component';
+import { UserListComponent }  from './user-list/user-list.component';
+import { UserCardComponent }  from './user-list/user-card/user-card.component';
+import { UserPageComponent }  from './user-list/user-page/user-page.component';
+import { MailBoxComponent }   from './mail-box/mail-box.component';
+import { MailItemComponent }  from './mail-box/mail-item/mail-item.component';
+import { MailPageComponent }  from './mail-box/mail-page/mail-page.component';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { LoginComponent } from './login/login.component';
+
+import { UserService } from './user-list/user.service';
+import { MailService } from './mail-box/mail.service';
+import { AuthGuardService } from './auth-guard.service';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    WikiSearchComponent
+    UserListComponent,
+    MailBoxComponent,
+    UserCardComponent,
+    UserPageComponent,
+    MailItemComponent,
+    MailPageComponent,
+    ErrorPageComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    JsonpModule
+    AppRoutingModule
   ],
-  providers: [],
+  providers: [UserService, MailService, AuthGuardService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
