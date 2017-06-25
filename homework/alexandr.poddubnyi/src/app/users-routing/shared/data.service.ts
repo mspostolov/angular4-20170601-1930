@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class DataService {
+
+  // private dataSubject$$ = <Subject<any[]>>new Subject();
 
   users = [
     { name: 'user-a', age: 30 },
@@ -18,10 +22,16 @@ export class DataService {
   constructor() { }
 
   getUsers(index: string = '') {
-    return index ? this.users[index] : this.users;
+    const data = index ? this.users[index] : this.users;
+    // this.dataSubject$$.next(data);
+    // return this.dataSubject$$;
+    return data;
   }
 
   getEmails(index: string = '') {
-    return index ? this.emails[index] : this.emails;
+    const data = index ? this.emails[index] : this.emails;
+    // this.dataSubject$$.next(data);
+    // return this.dataSubject$$;
+    return data;
   }
 }

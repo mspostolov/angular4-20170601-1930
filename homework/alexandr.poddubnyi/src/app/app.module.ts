@@ -9,10 +9,14 @@ import { AppRoutingModule } from 'app/app-routing.module';
 import { UsersCurrencyModule } from 'app/users-currency/users-currency.module';
 import { WikiRxSearchModule } from 'app/wiki-rx-search/wiki-rx-search.module';
 import { UsersRoutingModule } from 'app/users-routing/users-routing.module';
+import { UserComponent } from './users-routing/users/user/user.component';
+import { EmailComponent } from './users-routing/emails/email/email.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent,
+    EmailComponent
   ],
   imports: [
     BrowserModule,

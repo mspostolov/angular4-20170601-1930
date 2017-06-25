@@ -12,5 +12,6 @@ export class EmailsComponent implements OnInit {
 
   ngOnInit() {
     this.emails = this.dataService.getEmails();
+    // this.dataService.getEmails().subscribe((res) => this.emails = res);
   }
 }
