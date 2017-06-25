@@ -15,18 +15,20 @@ import {CurrencyConverterService} from "./currency-converter.service";
 import { SearchComponent } from './wiki-search/search/search.component';
 import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 import { LoginComponent } from './login/login.component';
-import {MdButtonModule, MdInputModule, MdTabsModule} from "@angular/material";
+import {MdButtonModule, MdDialogModule, MdInputModule, MdTabsModule} from "@angular/material";
 import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthGuardServiceService} from "./auth-guard-service.service";
 import {AuthServiceService} from "./auth-service.service";
 import {FormsModule} from "@angular/forms";
+import { DialogComponent } from './dialog/dialog.component';
 
 const routes: Route[] = [
   {path: '', component: LoginComponent},
   {path: 'login', component: LoginComponent},
   {path: 'mail-box', component: MailboxComponent, canActivate: [AuthGuardServiceService]},
   {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
+  {path: 'user-list/popup', component: UserListComponent, canActivate: [AuthGuardServiceService]},
 ]
 
 @NgModule({
@@ -40,8 +42,10 @@ const routes: Route[] = [
     CurrencyConverterComponent,
     SearchComponent,
     WikiSearchComponent,
-    LoginComponent
+    LoginComponent,
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -50,6 +54,7 @@ const routes: Route[] = [
     MdInputModule,
     MdButtonModule,
     FormsModule,
+    MdDialogModule,
     MdTabsModule,
     RouterModule.forRoot(routes)
   ],

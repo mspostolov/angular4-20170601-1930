@@ -1,4 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MdDialog} from "@angular/material";
+import {DialogComponent} from "../../dialog/dialog.component";
+import {Router} from "@angular/router";
 
 
 @Component({
@@ -8,9 +11,17 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class UserCardComponent implements OnInit, Input {
   @Input() user;
-  constructor() { }
+  constructor(public dialog: MdDialog, public router: Router) { }
 
   ngOnInit() {
+  }
+
+  public openPopUp() {
+    this.router.navigate(['/user-list/popup'])
+    this.dialog.open(DialogComponent, {
+      height: '400px',
+      width: '600px',
+    })
   }
 
 }
