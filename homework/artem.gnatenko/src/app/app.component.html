@@ -1,6 +1,27 @@
-<h1>
-  Home work 3
-</h1>
-
-<app-wiki-search></app-wiki-search>
-
+<section>
+  <h1>
+    Home work 3
+  </h1>
+  <nav>
+    <a 
+      routerLink="" 
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{exact: true}"
+    >Home</a>
+    <a 
+      routerLink="mails-and-users" 
+      routerLinkActive="active"
+    >Mail and Users</a>
+    <a 
+      *ngIf="!loginService.isUserLoggedIn()"
+      routerLink="login" 
+      routerLinkActive="active"
+    >Login</a>
+    <a 
+      routerLink=""
+      *ngIf="loginService.isUserLoggedIn()"
+      (click)="loginService.logout()"
+    >Logout</a>
+  </nav>
+  <router-outlet></router-outlet>
+</section>

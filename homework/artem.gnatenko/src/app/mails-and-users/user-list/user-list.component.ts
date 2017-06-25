@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from './users.service'
 
 export interface IUser {
+  id: number,
   firstName: string,
   surname: string,
   country: string,
@@ -21,7 +22,7 @@ export class UserListComponent implements OnInit {
 
   ngOnInit() {
     this.usersService.getUsersList().subscribe(
-      (users: IUser[]) => {this.users = users;}
+      (users: IUser[]) => {this.users = users}
     );
   }
 
