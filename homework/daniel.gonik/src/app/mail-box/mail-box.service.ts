@@ -13,9 +13,6 @@ export class MailBoxService {
       posts: [],
       users: []
     };
-    // if (!this._cache.posts.length) {
-    //   this._fetchData();
-    // }
   }
 
   getEmails() {
