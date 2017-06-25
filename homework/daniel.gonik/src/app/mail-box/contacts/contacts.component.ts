@@ -20,4 +20,8 @@ export class ContactsComponent implements OnInit {
     })
   }
 
+  viewDetails(index) {
+
+  }
+
 }
