@@ -26,3 +26,8 @@
   height: 40px;
   border-radius: 50%;
 }
+
+[md-card-avatar],
+.contact-name {
+  cursor: pointer;
+}

@@ -2,12 +2,18 @@
 
   <md-card-header class="col-11 contact-details">
     <div md-card-avatar>
-      <i class="material-icons contact-avatar-icon" *ngIf="!contact.photo">account_circle</i>
+      <i class="material-icons contact-avatar-icon" *ngIf="!contact.photo"
+         [routerLink]="['/contact', index]">
+        account_circle
+      </i>
       <i class="contact-avatar-image" *ngIf="contact.photo"
-         [style.backgroundImage]="'url(' + contact.photo + ')'">
+         [style.backgroundImage]="'url(' + contact.photo + ')'"
+         [routerLink]="['/contact', index]">
       </i>
     </div>
-    <md-card-title>{{ contact.firstName + ' ' + contact.surname }}</md-card-title>
+    <md-card-title [routerLink]="['/contact', index]" class="contact-name">
+      {{ contact.firstName + ' ' + contact.surname }}
+    </md-card-title>
     <md-card-subtitle>{{ contact.country | uppercase }}</md-card-subtitle>
   </md-card-header>
 
