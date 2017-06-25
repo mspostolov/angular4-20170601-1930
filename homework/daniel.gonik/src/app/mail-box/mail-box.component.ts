@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
 
+import { MailBoxService } from './mail-box.service';
 import { ContactsService } from '../services/contacts.service';
 
 @Component({
@@ -11,15 +12,12 @@ import { ContactsService } from '../services/contacts.service';
 })
 export class MailBoxComponent implements OnInit {
 
-  private _cache: Array<any> = [];
-  public emails: Array<any> = [];
-  public authorsHashMap: Object = {};
   public users: Array<Object> = [];
   public routeLinks: any[];
-  public activeLinkIndex = 0;
 
   constructor(
     private http: Http,
+    private mailBoxService: MailBoxService,
     private contactsService: ContactsService,
     private route: ActivatedRoute
   ) {
@@ -29,23 +27,6 @@ export class MailBoxComponent implements OnInit {
       { label: 'Wiki', link: 'wiki' },
       { label: 'Settings', link: 'settings' }
     ];
-
-    this.http.get('https://jsonplaceholder.typicode.com/users')
-      .map(response => response.json())
-      .subscribe(authors => {
-        this.authorsHashMap = authors.reduce((map, author) => {
-          map[author.id] = author;
-          return map;
-        }, {});
-      });
-
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .map(response => response.json())
-      .subscribe((emails = []) => {
-        emails.forEach(email => email.createdAt = Date.now())
-        this._cache = emails;
-        this._updateMailBox();
-      });
   }
 
   ngOnInit() {
@@ -54,19 +35,4 @@ export class MailBoxComponent implements OnInit {
         this.users = users;
       });
   }
-
-  private _updateMailBox() {
-    this.emails.push(...this._cache.splice(0, 3));
-    const mark = setInterval(() => {
-      this._cache.length
-        ? this.emails.push(this._updateEmailDate(this._cache.pop()))
-        : clearInterval(mark);
-    }, 3000)
-  }
-
-  private _updateEmailDate(email) {
-    email.createdAt = Date.now();
-    return email;
-  }
-
 }

@@ -25,45 +25,55 @@ import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
+import { SettingsComponent } from './mail-box/settings/settings.component';
 
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
 
+import { MailBoxService } from './mail-box/mail-box.service';
 import { ContactsService } from './services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { AutofocusDirective } from './directives/autofocus.directive';
-import { SettingsComponent } from './mail-box/settings/settings.component';
+
+import { EmailsResolver } from './resolves/emails.resolver';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
   {
     path: 'inbox',
+    component: MailListComponent,
+    resolve: {
+      emails: EmailsResolver,
+      // authors: AuthorsResolver
+    },
     data: {
       title: 'Inbox'
-    },
-    component: MailListComponent
+    }
   },
   {
     path: 'contacts',
+    component: ContactsComponent,
+    // resolve: {
+    //   users: UsersResolver
+    // },
     data: {
       title: 'Contacts'
     },
-    // canActivate: [AuthGuardService],
-    component: ContactsComponent
+    // canActivate: [AuthGuardService]
   },
   {
     path: 'wiki',
+    component: WidgetComponent,
     data: {
       title: 'Wiki'
-    },
-    component: WidgetComponent
+    }
   },
   {
     path: 'settings',
+    component: SettingsComponent,
     data: {
       title: 'Settings'
-    },
-    component: SettingsComponent
+    }
   }
 ];
 
@@ -99,7 +109,9 @@ const routes: Route[] = [
   ],
   providers: [
     SweetAlertService,
-    ContactsService
+    MailBoxService,
+    ContactsService,
+    EmailsResolver
   ],
   bootstrap: [AppComponent]
 })
