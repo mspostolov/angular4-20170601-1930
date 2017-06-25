@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Http } from '@angular/http';
 import { ActivatedRoute } from '@angular/router';
-
-import { MailBoxService } from './mail-box.service';
-import { ContactsService } from '../services/contacts.service';
 
 @Component({
   selector: 'dg-mail-box',
@@ -12,13 +8,9 @@ import { ContactsService } from '../services/contacts.service';
 })
 export class MailBoxComponent implements OnInit {
 
-  public users: Array<Object> = [];
   public routeLinks: any[];
 
   constructor(
-    private http: Http,
-    private mailBoxService: MailBoxService,
-    private contactsService: ContactsService,
     private route: ActivatedRoute
   ) {
     this.routeLinks = [
@@ -29,10 +21,5 @@ export class MailBoxComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {
-    this.contactsService.getUsers()
-      .subscribe(users => {
-        this.users = users;
-      });
-  }
+  ngOnInit() {}
 }

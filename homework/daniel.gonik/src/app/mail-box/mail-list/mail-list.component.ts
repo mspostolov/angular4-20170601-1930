@@ -28,7 +28,7 @@ export class MailListComponent implements OnInit {
 
     this.route.data.pluck('authors').subscribe(authors => {
       this.authors = authors;
-    })
+    });
   }
 
   removeEmail(index) {

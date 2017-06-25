@@ -37,6 +37,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
 
 import { EmailsResolver } from './resolves/emails.resolver';
 import { AuthorsResolver } from './resolves/authors.resolver';
+import { ContactsResolver } from './resolves/contacts.resolver';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
@@ -54,9 +55,9 @@ const routes: Route[] = [
   {
     path: 'contacts',
     component: ContactsComponent,
-    // resolve: {
-    //   users: UsersResolver
-    // },
+    resolve: {
+      contacts: ContactsResolver
+    },
     data: {
       title: 'Contacts'
     },
@@ -113,7 +114,8 @@ const routes: Route[] = [
     MailBoxService,
     ContactsService,
     EmailsResolver,
-    AuthorsResolver
+    AuthorsResolver,
+    ContactsResolver
   ],
   bootstrap: [AppComponent]
 })

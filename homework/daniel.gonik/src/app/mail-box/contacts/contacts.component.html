@@ -1,17 +1,17 @@
-<md-card *ngFor="let user of users; let index = index;" class="row">
+<md-card *ngFor="let contact of contacts; let index = index;" class="row">
 
   <md-card-header class="col-8 contact-details">
     <div md-card-avatar>
-      <i class="material-icons contact-avatar-icon" *ngIf="!user.photo">account_circle</i>
-      <i class="contact-avatar-image" *ngIf="user.photo"
-         [style.backgroundImage]="'url(' + user.photo + ')'">
+      <i class="material-icons contact-avatar-icon" *ngIf="!contact.photo">account_circle</i>
+      <i class="contact-avatar-image" *ngIf="contact.photo"
+         [style.backgroundImage]="'url(' + contact.photo + ')'">
       </i>
     </div>
-    <md-card-title>{{ user.firstName + ' ' + user.surname }}</md-card-title>
-    <md-card-subtitle>{{ user.country | uppercase }}</md-card-subtitle>
+    <md-card-title>{{ contact.firstName + ' ' + contact.surname }}</md-card-title>
+    <md-card-subtitle>{{ contact.country | uppercase }}</md-card-subtitle>
   </md-card-header>
 
-  <md-card-actions class="col-4">
+  <md-card-actions class="col-4 contact-controls">
     <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
       <i class="material-icons">create</i> WRITE
     </button>

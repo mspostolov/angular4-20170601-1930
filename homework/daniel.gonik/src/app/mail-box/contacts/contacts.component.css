@@ -1,10 +1,18 @@
 .row {
   display: flex;
-  align-items: flex-start;
+  margin: 0;
+  width: 684px;
+  // align-items: flex-start;
 }
 
 .contact-details {
-  padding: 8px 16px;
+  // padding: 8px 16px;
+}
+
+.contact-controls {
+  text-align: right;
+  margin: -10px 0;
+  padding: 0;
 }
 
 .contact-avatar-icon {

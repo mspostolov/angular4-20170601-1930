@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dg-contacts',
@@ -7,11 +8,16 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class ContactsComponent implements OnInit {
 
-  @Input() users = [];
+  public contacts;
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    this.route.data.pluck('contacts').subscribe(contacts => {
+      this.contacts = contacts;
+    })
   }
 
 }
