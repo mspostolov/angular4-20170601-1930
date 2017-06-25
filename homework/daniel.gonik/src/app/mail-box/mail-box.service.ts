@@ -69,7 +69,6 @@ export class MailBoxService {
     return this.http.get(`https://jsonplaceholder.typicode.com/${entity}/${id}`)
       .map(response => {
         const res = response.json();
-        this._cache[entity].push(res);
         return Object.assign({}, res);
       });
   }

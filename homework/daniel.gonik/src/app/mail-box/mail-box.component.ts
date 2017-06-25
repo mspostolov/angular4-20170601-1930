@@ -14,7 +14,7 @@ export class MailBoxComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.routeLinks = [
-      { label: 'Inbox', link: 'inbox' },
+      { label: 'Inbox', link: '' },
       { label: 'Contacts', link: 'contacts' },
       { label: 'Wiki', link: 'wiki' },
       { label: 'Settings', link: 'settings' }
