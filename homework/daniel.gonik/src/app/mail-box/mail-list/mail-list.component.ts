@@ -24,6 +24,7 @@ export class MailListComponent implements OnInit {
   ngOnInit() {
     this.route.data.pluck('emails').subscribe(emails => {
       this.emails = emails;
+      this.emails.forEach(email => email.createdAt = Date.now());
       this.emails.length = 10;
     });
 

@@ -25,7 +25,8 @@ export class MailViewComponent implements OnInit {
     });
 
     this.route.queryParams.pluck('author').subscribe(authorId => {
-      this.mailBoxService.getAuthorById(authorId)
+      const id = +authorId;
+      this.mailBoxService.getAuthorById(id)
         .subscribe(author => this.author = author);
     });
   }

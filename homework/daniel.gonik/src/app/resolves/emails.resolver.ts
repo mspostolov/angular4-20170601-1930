@@ -9,7 +9,7 @@ export class EmailsResolver implements Resolve<any> {
     private mailBoxService: MailBoxService
   ) {}
 
-  resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
+  resolve(route: ActivatedRouteSnapshot): Observable<any> {
     return this.mailBoxService.getEmails();
   }
 }

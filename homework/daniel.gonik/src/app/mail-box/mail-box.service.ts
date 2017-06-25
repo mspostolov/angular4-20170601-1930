@@ -5,45 +5,72 @@ import { Observable } from 'rxjs/Rx';
 @Injectable()
 export class MailBoxService {
 
-  private _cache: Array<any> = [];
+  private _cache;
   private _emails: Array<any> = [];
 
   constructor(private http: Http) {
-    if (!this._cache.length) {
-      this._fetchData();
-    }
+    this._cache = {
+      posts: [],
+      users: []
+    };
+    // if (!this._cache.posts.length) {
+    //   this._fetchData();
+    // }
   }
 
   getEmails() {
-    // return Observable.create(observer => {
-    //   observer.next(this._emails);
-    // });
-    return this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .map(response => response.json());
-  }
-
-  getEmailById(id) {
-    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
-      .map(response => response.json());
+    return this._cache.posts.length
+      ? this._getFromCache('posts')
+      : this._fetchData('posts');
   }
 
   getAuthors() {
-    return this.http.get('https://jsonplaceholder.typicode.com/users')
-      .map(response => response.json());
+    return this._cache.users.length
+      ? this._getFromCache('users')
+      : this._fetchData('users');
+  }
+
+  getEmailById(id) {
+    return this._cache.posts.length
+      ? this._getFromCacheById('posts', id)
+      : this._fetchDataById('posts', id);
   }
 
   getAuthorById(id) {
-    return this.http.get(`https://jsonplaceholder.typicode.com/users/${id}`)
-      .map(response => response.json());
+    return this._cache.users.length
+      ? this._getFromCacheById('users', id)
+      : this._fetchDataById('users', id);
   }
 
-  private _fetchData() {
-    this.http.get('https://jsonplaceholder.typicode.com/posts')
-      .map(response => response.json())
-      .subscribe((emails = []) => {
-        emails.forEach(email => email.createdAt = Date.now())
-        this._cache = emails;
-        this._updateMailBox();
+  private _getFromCache(entity) {
+    return Observable.create(observer => {
+      observer.next(this._cache[entity]);
+      observer.complete();
+    })
+  }
+
+  private _fetchData(entity) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/${entity}`)
+      .map(response => {
+        this._cache[entity] = response.json();
+        return Object.assign([], this._cache[entity]);
+      });
+  }
+
+  private _getFromCacheById(entity, id) {
+    return Observable.create(observer => {
+      const cached = this._cache[entity].find(item => item.id === id);
+      observer.next(cached);
+      observer.complete();
+    })
+  }
+
+  private _fetchDataById(entity, id) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/${entity}/${id}`)
+      .map(response => {
+        const res = response.json();
+        this._cache[entity].push(res);
+        return Object.assign({}, res);
       });
   }
 
