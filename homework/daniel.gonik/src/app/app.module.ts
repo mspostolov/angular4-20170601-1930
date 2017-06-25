@@ -22,7 +22,10 @@ import { MailBoxComponent } from './mail-box/mail-box.component';
 import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
+import { WidgetComponent } from './wiki/widget/widget.component';
+
 import { RelativeDatePipe } from './pipes/relative-date.pipe';
+
 import { ContactsService } from './services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
@@ -33,6 +36,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MailListComponent,
     MailViewComponent,
     ContactsComponent,
+    WidgetComponent,
     RelativeDatePipe
   ],
   imports: [
@@ -57,8 +61,4 @@ import { SweetAlertService } from 'ng2-sweetalert2';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-  static get parameters() {
-    return [[SweetAlertService]];
-  }
-}
+export class AppModule {}

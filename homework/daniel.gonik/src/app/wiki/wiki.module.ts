@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { WidgetComponent } from './widget/widget.component';
+import { JsonpModule } from '@angular/http';
+
 import { WikiSearchService } from './wiki-search.service';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    JsonpModule
   ],
-  declarations: [WidgetComponent],
+  declarations: [],
   providers: [
     WikiSearchService
   ],

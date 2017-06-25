@@ -1,20 +1,19 @@
 import { Component }        from '@angular/core';
 import { Observable }       from 'rxjs/Observable';
 
-import { WikipediaService } from './wikipedia.service';
+import { WikiSearchService } from '../wiki-search.service';
 
 @Component({
-  selector: 'dg-widget',
+  selector: 'dg-wiki-widget',
   templateUrl: './widget.component.html',
-  styleUrls: ['./widget.component.css'],
-  providers: [ WikipediaService ]
+  styleUrls: ['./widget.component.css']
 })
 export class WidgetComponent {
   items: Observable<string[]>;
 
-  constructor (private wikipediaService: WikipediaService) { }
+  constructor(private wikiSearchService: WikiSearchService) {}
 
-  search (term: string) {
-    this.items = this.wikipediaService.search(term);
+  search(search: string) {
+    this.items = this.wikiSearchService.search(search);
   }
 }

@@ -7,12 +7,12 @@ import 'rxjs/add/operator/map';
 export class WikiSearchService {
   constructor(private jsonp: Jsonp) {}
 
-  search (term: string) {
+  search (search: string) {
 
     let wikiUrl = 'http://en.wikipedia.org/w/api.php';
 
     let params = new URLSearchParams();
-    params.set('search', term); // the user's search value
+    params.set('search', search); // the user's search value
     params.set('action', 'opensearch');
     params.set('format', 'json');
     params.set('callback', 'JSONP_CALLBACK');
