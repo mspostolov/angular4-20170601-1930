@@ -8,10 +8,12 @@ import { MyDatePipePipe } from './my-date-pipe.pipe';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCardComponent } from './user-list/user-card/user-card.component';
 import {UserServiceService} from "./user-service.service";
-import {Http, HttpModule} from "@angular/http";
+import {Http, HttpModule, JsonpModule} from "@angular/http";
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import {CurrencyExchangeRateService} from "./currency-exchange-rate.service";
 import {CurrencyConverterService} from "./currency-converter.service";
+import { SearchComponent } from './wiki-search/search/search.component';
+import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +23,12 @@ import {CurrencyConverterService} from "./currency-converter.service";
     MyDatePipePipe,
     UserListComponent,
     UserCardComponent,
-    CurrencyConverterComponent
+    CurrencyConverterComponent,
+    SearchComponent,
+    WikiSearchComponent
   ],
   imports: [
-    BrowserModule, HttpModule
+    BrowserModule, HttpModule, JsonpModule
   ],
   providers: [UserServiceService, CurrencyExchangeRateService, CurrencyConverterService],
   bootstrap: [AppComponent]

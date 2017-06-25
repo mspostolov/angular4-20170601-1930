@@ -1,0 +1,12 @@
+
+<a routerLink="" routerLinkActive="red"
+[routerLinkActiveOptions]="{exact: true}" >home</a>
+<a [routerLink]="['user', '1']"
+[queryParams]="{x:5}"
+routerLinkActive="red">user</a>
+
+
+<router-outlet></router-outlet>
+
+
+<button (click)="goHome()">Home</button>
