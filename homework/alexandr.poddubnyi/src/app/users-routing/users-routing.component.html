@@ -22,8 +22,13 @@
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <router-outlet>
-      <!--<p *ngIf="!isLoggined">You are not authorized Emails is not available for you!</p>-->
-      <!--<p *ngIf="isLoggined">Emails is available for you!</p>-->
     </router-outlet>
+    <!--<p *ngIf="!dataService.isLoggedIn">You are not authorized Emails is not available for you!</p>-->
+    <!--<p *ngIf="dataService.isLoggedIn">Emails is available for you!</p>-->
+    <!-- WTF ? // TODO 'ngIf' since it isn't a known property of 'p'
+      Can't bind to 'ngIf' since it isn't a known property of 'p'
+
+      Property binding ngIf not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations"
+     -->
   </div>
 </div>

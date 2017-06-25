@@ -25,6 +25,7 @@ import { LoginComponent } from './users-routing/login/login.component';
     FormsModule,
     HttpModule,
     AppRoutingModule,
+
     MailboxModule,
     UsersCurrencyModule,
     WikiRxSearchModule,
