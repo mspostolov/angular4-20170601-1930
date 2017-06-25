@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
+import { Router } from '@angular/router';
+
 import { ContactsService } from '../services/contacts.service';
 
 @Component({
@@ -13,8 +15,21 @@ export class MailBoxComponent implements OnInit {
   public emails: Array<any> = [];
   public authorsHashMap: Object = {};
   public users: Array<Object> = [];
+  public routeLinks: any[];
+  public activeLinkIndex = 0;
 
-  constructor(private http: Http, private contactsService: ContactsService) {
+  constructor(
+    private http: Http,
+    private contactsService: ContactsService,
+    private router: Router
+  ) {
+    this.routeLinks = [
+      { label: 'Inbox', link: 'inbox' },
+      { label: 'Contacts', link: 'contacts' },
+      { label: 'Wiki', link: 'wiki' },
+      { label: 'Settings', link: 'settings' }
+    ];
+
     this.http.get('https://jsonplaceholder.typicode.com/users')
       .map(response => response.json())
       .subscribe(authors => {

@@ -2,6 +2,7 @@ import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterModule, Routes, Route } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { WikiModule } from './wiki/wiki.module';
 
@@ -32,6 +33,25 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { AutofocusDirective } from './directives/autofocus.directive';
 
+const routes: Route[] = [
+  { path: '', redirectTo: '/inbox', pathMatch : 'full' },
+  {
+    path: 'inbox',
+    data: {
+      title: 'Inbox'
+    },
+    component: MailListComponent
+  },
+  {
+    path: 'contacts',
+    data: {
+      title: 'Contacts'
+    },
+    // canActivate: [AuthGuardService],
+    component: ContactsComponent
+  }
+];
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,6 +66,7 @@ import { AutofocusDirective } from './directives/autofocus.directive';
   imports: [
     BrowserModule,
     FormsModule,
+    RouterModule.forRoot(routes),
     HttpModule,
     BrowserAnimationsModule,
     MdInputModule,
