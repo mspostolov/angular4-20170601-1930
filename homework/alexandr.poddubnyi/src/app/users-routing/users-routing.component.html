@@ -2,16 +2,28 @@
   <div class="collapse navbar-collapse">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a routerLink="users" routerLinkActive="active" class="nav-link">Users</a>
+        <a routerLink="login" routerLinkActive="active" class="nav-link">Login</a>
       </li>
       <li class="nav-item">
-        <a routerLink="emails" routerLinkActive="active" class="nav-link">Emails</a>
+        <a routerLink="users"
+           routerLinkActive="active"
+           [class.disabled]="!dataService.isLoggedIn"
+           class="nav-link">Users</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="emails"
+           routerLinkActive="active"
+           [class.disabled]="!dataService.isLoggedIn"
+           class="nav-link">Emails</a>
       </li>
     </ul>
   </div>
 </nav>
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-    <router-outlet></router-outlet>
+    <router-outlet>
+      <!--<p *ngIf="!isLoggined">You are not authorized Emails is not available for you!</p>-->
+      <!--<p *ngIf="isLoggined">Emails is available for you!</p>-->
+    </router-outlet>
   </div>
 </div>

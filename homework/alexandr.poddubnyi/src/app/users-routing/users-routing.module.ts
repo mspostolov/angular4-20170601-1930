@@ -5,6 +5,7 @@ import { UsersRoutingRoutingModule } from './users-routing-routing.module';
 import { UsersComponent } from './users/users.component';
 import { EmailsComponent } from './emails/emails.component';
 import { DataService } from './shared/data.service';
+import { AuthGuardService } from 'app/users-routing/shared/auth-guard.service';
 
 @NgModule({
   imports: [
@@ -13,6 +14,6 @@ import { DataService } from './shared/data.service';
   ],
   declarations: [UsersComponent, EmailsComponent],
   exports: [UsersRoutingRoutingModule],
-  providers: [DataService]
+  providers: [DataService, AuthGuardService]
 })
 export class UsersRoutingModule { }

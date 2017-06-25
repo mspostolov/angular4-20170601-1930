@@ -5,6 +5,8 @@ import { EmailsComponent } from 'app/users-routing/emails/emails.component';
 import { UsersRoutingComponent } from 'app/users-routing/users-routing.component';
 import { UserComponent } from 'app/users-routing/users/user/user.component';
 import { EmailComponent } from 'app/users-routing/emails/email/email.component';
+import { LoginComponent } from 'app/users-routing/login/login.component';
+import { AuthGuardService } from 'app/users-routing/shared/auth-guard.service';
 
 const routes: Routes = [
   {
@@ -17,10 +19,12 @@ const routes: Routes = [
     path: 'users-routing',
     component: UsersRoutingComponent,
     children: [
-      { path: 'users', component: UsersComponent },
-      { path: 'users/:index', component: UserComponent },
-      { path: 'emails', component: EmailsComponent },
-      { path: 'emails/:index', component: EmailComponent }
+      { path: 'login', component: LoginComponent },
+      { path: 'users', component: UsersComponent, canActivate: [AuthGuardService] },
+      { path: 'users/:index', component: UserComponent, canActivate: [AuthGuardService] },
+      { path: 'emails', component: EmailsComponent, canActivate: [AuthGuardService] },
+      { path: 'emails/:index', component: EmailComponent, canActivate: [AuthGuardService] },
+      // { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]
   }
 ];

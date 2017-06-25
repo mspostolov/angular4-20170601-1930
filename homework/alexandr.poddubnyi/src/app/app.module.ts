@@ -11,12 +11,14 @@ import { WikiRxSearchModule } from 'app/wiki-rx-search/wiki-rx-search.module';
 import { UsersRoutingModule } from 'app/users-routing/users-routing.module';
 import { UserComponent } from './users-routing/users/user/user.component';
 import { EmailComponent } from './users-routing/emails/email/email.component';
+import { LoginComponent } from './users-routing/login/login.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UserComponent,
-    EmailComponent
+    EmailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

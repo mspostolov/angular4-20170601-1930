@@ -19,6 +19,10 @@ export class DataService {
     { name: 'mail-c', address: '40-22-55-66' }
   ];
 
+  isLoggedIn = false;
+
+  redirectUrl: string;
+
   constructor() { }
 
   getUsers(index: string = '') {
@@ -33,5 +37,18 @@ export class DataService {
     // this.dataSubject$$.next(data);
     // return this.dataSubject$$;
     return data;
+  }
+
+  toggleLoginState(): boolean {
+    this.isLoggedIn = !this.isLoggedIn;
+
+    // if (this.logged) {
+    //   alert('You are logged');
+    // } else {
+    //   alert('You are not authorized');
+    // }
+    console.log(this.isLoggedIn ? 'is Logged In' : 'is not Logged In');
+
+    return this.isLoggedIn;
   }
 }

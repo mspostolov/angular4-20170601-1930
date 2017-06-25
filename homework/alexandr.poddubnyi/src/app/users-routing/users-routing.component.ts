@@ -1,14 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { DataService } from 'app/users-routing/shared/data.service';
 
 @Component({
   selector: 'users-routing',
   templateUrl: './users-routing.component.html'
 })
-export class UsersRoutingComponent implements OnInit {
+export class UsersRoutingComponent {
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  constructor(public dataService: DataService) { }
 }

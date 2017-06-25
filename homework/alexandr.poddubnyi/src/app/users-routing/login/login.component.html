@@ -1,0 +1,6 @@
+<button (click)="login()" type="button"
+        [class.btn-danger]="isLoggedIn"
+        [class.btn-success]="!isLoggedIn"
+        class="btn btn-lg">
+  {{isLoggedIn ? 'Log out' : 'Log in'}}
+</button>
