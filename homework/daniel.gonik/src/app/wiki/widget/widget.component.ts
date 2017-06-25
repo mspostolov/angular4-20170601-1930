@@ -1,5 +1,10 @@
-import { Component }        from '@angular/core';
-import { Observable }       from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { Observable }        from 'rxjs/Observable';
+import { Subject }           from 'rxjs/Subject';
+
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
 
 import { WikiSearchService } from '../wiki-search.service';
 
@@ -13,7 +18,15 @@ export class WidgetComponent {
 
   constructor(private wikiSearchService: WikiSearchService) {}
 
+  private searchTermStream = new Subject<string>();
   search(search: string) {
-    this.items = this.wikiSearchService.search(search);
+    this.searchTermStream.next(search);
+  }
+
+  ngOnInit() {
+    this.items = this.searchTermStream
+      .debounceTime(300)
+      .distinctUntilChanged()
+      .switchMap((search: string) => this.wikiSearchService.search(search));
   }
 }

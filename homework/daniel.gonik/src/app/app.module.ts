@@ -8,6 +8,7 @@ import { WikiModule } from './wiki/wiki.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MdInputModule,
   MdButtonModule,
   MdCardModule,
   MdMenuModule,
@@ -29,6 +30,8 @@ import { RelativeDatePipe } from './pipes/relative-date.pipe';
 import { ContactsService } from './services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
+import { AutofocusDirective } from './directives/autofocus.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -37,13 +40,15 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MailViewComponent,
     ContactsComponent,
     WidgetComponent,
-    RelativeDatePipe
+    RelativeDatePipe,
+    AutofocusDirective
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     BrowserAnimationsModule,
+    MdInputModule,
     MdButtonModule,
     MdMenuModule,
     MdCardModule,

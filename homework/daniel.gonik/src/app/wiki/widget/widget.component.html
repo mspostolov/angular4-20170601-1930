@@ -1,6 +1,8 @@
 <h1>Wiki Search</h1>
 <p>Search after each keystroke</p>
-<input #term (keyup)="search(term.value)"/>
+<input #search (keyup)="search(search.value)" dgAutofocus />
 <ul>
-  <li *ngFor="let item of items | async">{{item}}</li>
+  <li *ngFor="let item of items | async">
+    {{ item }}
+  </li>
 </ul>
