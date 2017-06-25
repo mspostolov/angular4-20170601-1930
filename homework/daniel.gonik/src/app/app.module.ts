@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { WikiModule } from './wiki/wiki.module';
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -47,7 +48,8 @@ import { SweetAlertService } from 'ng2-sweetalert2';
     MdSliderModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
-    MdIconModule
+    MdIconModule,
+    WikiModule
   ],
   providers: [
     SweetAlertService,
