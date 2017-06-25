@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/pluck'
 
-import { ContactsService } from '../../services/contacts.service';
+import { ContactsService } from '../../_services/contacts.service';
 
 @Component({
   selector: 'dg-contact-view',

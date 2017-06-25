@@ -28,18 +28,18 @@ import { ContactViewComponent } from './mail-box/contact-view/contact-view.compo
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
-import { RelativeDatePipe } from './pipes/relative-date.pipe';
+import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
 import { MailBoxService } from './mail-box/mail-box.service';
-import { ContactsService } from './services/contacts.service';
+import { ContactsService } from './_services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
-import { AutofocusDirective } from './directives/autofocus.directive';
+import { AutofocusDirective } from './_directives/autofocus.directive';
 
-import { EmailsResolver } from './resolves/emails.resolver';
-import { EmailResolver } from './resolves/email.resolver';
-import { AuthorsResolver } from './resolves/authors.resolver';
-import { ContactsResolver } from './resolves/contacts.resolver';
+import { EmailsResolver } from './_resolves/emails.resolver';
+import { EmailResolver } from './_resolves/email.resolver';
+import { AuthorsResolver } from './_resolves/authors.resolver';
+import { ContactsResolver } from './_resolves/contacts.resolver';
 
 import routes from './app.routes';
 

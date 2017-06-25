@@ -7,10 +7,10 @@ import { ContactViewComponent } from './mail-box/contact-view/contact-view.compo
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
-import { EmailsResolver } from './resolves/emails.resolver';
-import { EmailResolver } from './resolves/email.resolver';
-import { AuthorsResolver } from './resolves/authors.resolver';
-import { ContactsResolver } from './resolves/contacts.resolver';
+import { EmailsResolver } from './_resolves/emails.resolver';
+import { EmailResolver } from './_resolves/email.resolver';
+import { AuthorsResolver } from './_resolves/authors.resolver';
+import { ContactsResolver } from './_resolves/contacts.resolver';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
