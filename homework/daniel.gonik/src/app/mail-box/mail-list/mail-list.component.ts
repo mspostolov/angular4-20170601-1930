@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/pluck'
 
 import { SweetAlertService } from 'ng2-sweetalert2';
@@ -15,6 +15,7 @@ export class MailListComponent implements OnInit {
   public authors;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private swal: SweetAlertService
   ) {
@@ -28,6 +29,14 @@ export class MailListComponent implements OnInit {
 
     this.route.data.pluck('authors').subscribe(authors => {
       this.authors = authors;
+    });
+  }
+
+  readEmail(email) {
+    this.router.navigate(['emails', email.id], {
+      queryParams: {
+        author: email.userId
+      }
     });
   }
 

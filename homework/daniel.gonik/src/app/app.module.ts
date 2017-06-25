@@ -36,6 +36,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 import { AutofocusDirective } from './directives/autofocus.directive';
 
 import { EmailsResolver } from './resolves/emails.resolver';
+import { EmailResolver } from './resolves/email.resolver';
 import { AuthorsResolver } from './resolves/authors.resolver';
 import { ContactsResolver } from './resolves/contacts.resolver';
 
@@ -76,6 +77,7 @@ import routes from './app.routes';
     MailBoxService,
     ContactsService,
     EmailsResolver,
+    EmailResolver,
     AuthorsResolver,
     ContactsResolver
   ],

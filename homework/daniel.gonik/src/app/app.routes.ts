@@ -7,6 +7,7 @@ import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
 import { EmailsResolver } from './resolves/emails.resolver';
+import { EmailResolver } from './resolves/email.resolver';
 import { AuthorsResolver } from './resolves/authors.resolver';
 import { ContactsResolver } from './resolves/contacts.resolver';
 
@@ -18,6 +19,16 @@ const routes: Route[] = [
     resolve: {
       emails: EmailsResolver,
       authors: AuthorsResolver
+    },
+    data: {
+      title: 'Inbox'
+    }
+  },
+  {
+    path: 'emails/:emailId',
+    component: MailViewComponent,
+    resolve: {
+      email: EmailResolver
     },
     data: {
       title: 'Inbox'

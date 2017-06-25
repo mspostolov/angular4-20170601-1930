@@ -22,8 +22,18 @@ export class MailBoxService {
       .map(response => response.json());
   }
 
+  getEmailById(id) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .map(response => response.json());
+  }
+
   getAuthors() {
     return this.http.get('https://jsonplaceholder.typicode.com/users')
+      .map(response => response.json());
+  }
+
+  getAuthorById(id) {
+    return this.http.get(`https://jsonplaceholder.typicode.com/users/${id}`)
       .map(response => response.json());
   }
 
