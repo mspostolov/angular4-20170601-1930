@@ -27,19 +27,16 @@
   </md-tab>
 </md-tab-group> -->
 
-<nav md-tab-nav-bar aria-label="weather navigation links" class="mat-default">
-  <a md-tab-link
-     *ngFor="let routeLink of routeLinks; let i = index"
-     [routerLink]="routeLink.link"
-     [active]="activeLinkIndex === i"
-     (click)="activeLinkIndex = i">
-     {{routeLink.label}}
-   </a>
-</nav>
+<div class="mat-default">
+  <nav md-tab-nav-bar>
+    <a md-tab-link
+       *ngFor="let routeLink of routeLinks; let i = index"
+       [routerLink]="routeLink.link"
+       routerLinkActive #rla="routerLinkActive"
+       [active]="rla.isActive">
+       {{routeLink.label}}
+     </a>
+  </nav>
 
-<router-outlet></router-outlet>
-<!-- <a routerLink="" routerLinkActive="red"
-[routerLinkActiveOptions]="{exact: true}" >home</a>
-<a [routerLink]="['user', '1']"
-[queryParams]="{x:5}"
-routerLinkActive="red">user</a> -->
+  <router-outlet></router-outlet>
+</div>

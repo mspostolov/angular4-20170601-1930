@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 import { ContactsService } from '../services/contacts.service';
 
@@ -21,7 +21,7 @@ export class MailBoxComponent implements OnInit {
   constructor(
     private http: Http,
     private contactsService: ContactsService,
-    private router: Router
+    private route: ActivatedRoute
   ) {
     this.routeLinks = [
       { label: 'Inbox', link: 'inbox' },

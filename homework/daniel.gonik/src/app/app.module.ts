@@ -32,6 +32,7 @@ import { ContactsService } from './services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { AutofocusDirective } from './directives/autofocus.directive';
+import { SettingsComponent } from './mail-box/settings/settings.component';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
@@ -49,6 +50,20 @@ const routes: Route[] = [
     },
     // canActivate: [AuthGuardService],
     component: ContactsComponent
+  },
+  {
+    path: 'wiki',
+    data: {
+      title: 'Wiki'
+    },
+    component: WidgetComponent
+  },
+  {
+    path: 'settings',
+    data: {
+      title: 'Settings'
+    },
+    component: SettingsComponent
   }
 ];
 
@@ -61,7 +76,8 @@ const routes: Route[] = [
     ContactsComponent,
     WidgetComponent,
     RelativeDatePipe,
-    AutofocusDirective
+    AutofocusDirective,
+    SettingsComponent
   ],
   imports: [
     BrowserModule,
