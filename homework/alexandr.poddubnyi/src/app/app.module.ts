@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MailboxModule } from 'app/mailbox/mailbox.module';
 import { Routing } from 'app/app-routing.module';
 import { UsersCurrencyModule } from 'app/users-currency/users-currency.module';
+import { WikiRxSearchModule } from 'app/wiki-rx-search/wiki-rx-search.module';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { UsersCurrencyModule } from 'app/users-currency/users-currency.module';
     HttpModule,
     Routing,
     MailboxModule,
-    UsersCurrencyModule
+    UsersCurrencyModule,
+    WikiRxSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

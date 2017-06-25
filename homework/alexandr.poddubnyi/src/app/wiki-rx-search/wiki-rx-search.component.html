@@ -1,0 +1,12 @@
+<input #search type="text" class="form-control" placeholder="search in wiki">
+
+<ul class="list-group">
+  <li *ngFor="let entity of entities"
+      class="list-group-item">
+    <div class="card w-100">
+      <div class="card-header">{{entity.name}}</div>
+      <div class="card-block">{{entity.description}}</div>
+      <div class="card-footer"><a [href]="entity.link">{{entity.link}}</a></div>
+    </div>
+  </li>
+</ul>
