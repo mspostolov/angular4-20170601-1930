@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { UsersRoutingRoutingModule } from './users-routing-routing.module';
 import { UsersComponent } from './users/users.component';
 import { EmailsComponent } from './emails/emails.component';
+import { DataService } from './shared/data.service';
 
 @NgModule({
   imports: [
@@ -11,6 +12,7 @@ import { EmailsComponent } from './emails/emails.component';
     UsersRoutingRoutingModule
   ],
   declarations: [UsersComponent, EmailsComponent],
-  exports: [UsersRoutingRoutingModule]
+  exports: [UsersRoutingRoutingModule],
+  providers: [DataService]
 })
 export class UsersRoutingModule { }

@@ -1,3 +1,10 @@
-<p>
-  emails works!
-</p>
+<ul class="list-group">
+  <li *ngFor="let email of emails; let index = index"
+      class="list-group-item">
+    <div class="card">
+      <div class="card-block">
+        <h3><a routerLink="/emails/{{index}}">{{email.name}}</a></h3>
+      </div>
+    </div>
+  </li>
+</ul>

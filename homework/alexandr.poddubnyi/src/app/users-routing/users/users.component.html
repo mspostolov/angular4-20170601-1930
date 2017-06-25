@@ -1,3 +1,10 @@
-<p>
-  users works!
-</p>
+<ul class="list-group">
+  <li *ngFor="let user of users; let index = index"
+      class="list-group-item">
+    <div class="card">
+      <div class="card-block">
+        <h3><a routerLink="/users/{{index}}">{{user.name}}</a></h3>
+      </div>
+    </div>
+  </li>
+</ul>
