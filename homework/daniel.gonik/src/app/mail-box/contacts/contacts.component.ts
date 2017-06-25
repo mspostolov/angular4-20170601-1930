@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'dg-contacts',
@@ -11,6 +11,7 @@ export class ContactsComponent implements OnInit {
   public contacts;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute
   ) {}
 
@@ -21,7 +22,7 @@ export class ContactsComponent implements OnInit {
   }
 
   viewDetails(index) {
-
+    this.router.navigate(['contact', index]);
   }
 
 }

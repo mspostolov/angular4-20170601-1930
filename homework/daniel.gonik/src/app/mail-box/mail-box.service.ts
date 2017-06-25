@@ -46,7 +46,7 @@ export class MailBoxService {
     return Observable.create(observer => {
       observer.next(this._cache[entity]);
       observer.complete();
-    })
+    });
   }
 
   private _fetchData(entity) {
