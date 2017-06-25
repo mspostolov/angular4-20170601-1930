@@ -4,12 +4,12 @@ import { Observable } from 'rxjs/Rx';
 import { MailBoxService } from '../mail-box/mail-box.service';
 
 @Injectable()
-export class EmailsResolver implements Resolve<any> {
+export class AuthorsResolver implements Resolve<any> {
   constructor(
     private mailBoxService: MailBoxService
   ) {}
 
   resolve(route: ActivatedRouteSnapshot): Observable<any> | Promise<any> | any {
-    return this.mailBoxService.getEmails();
+    return this.mailBoxService.getAuthors();
   }
 }

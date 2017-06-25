@@ -12,7 +12,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 export class MailListComponent implements OnInit {
 
   public emails;
-  public authors: Object = {}
+  public authors;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,7 +23,12 @@ export class MailListComponent implements OnInit {
   ngOnInit() {
     this.route.data.pluck('emails').subscribe(emails => {
       this.emails = emails;
+      this.emails.length = 10;
     });
+
+    this.route.data.pluck('authors').subscribe(authors => {
+      this.authors = authors;
+    })
   }
 
   removeEmail(index) {

@@ -36,6 +36,7 @@ import { SweetAlertService } from 'ng2-sweetalert2';
 import { AutofocusDirective } from './directives/autofocus.directive';
 
 import { EmailsResolver } from './resolves/emails.resolver';
+import { AuthorsResolver } from './resolves/authors.resolver';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
@@ -44,7 +45,7 @@ const routes: Route[] = [
     component: MailListComponent,
     resolve: {
       emails: EmailsResolver,
-      // authors: AuthorsResolver
+      authors: AuthorsResolver
     },
     data: {
       title: 'Inbox'
@@ -111,7 +112,8 @@ const routes: Route[] = [
     SweetAlertService,
     MailBoxService,
     ContactsService,
-    EmailsResolver
+    EmailsResolver,
+    AuthorsResolver
   ],
   bootstrap: [AppComponent]
 })

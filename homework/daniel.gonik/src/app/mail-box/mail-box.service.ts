@@ -23,7 +23,7 @@ export class MailBoxService {
   }
 
   getAuthors() {
-    this.http.get('https://jsonplaceholder.typicode.com/users')
+    return this.http.get('https://jsonplaceholder.typicode.com/users')
       .map(response => response.json());
   }
 
