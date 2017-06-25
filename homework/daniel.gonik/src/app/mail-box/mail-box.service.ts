@@ -41,7 +41,8 @@ export class MailBoxService {
 
   private _getFromCache(entity) {
     return Observable.create(observer => {
-      observer.next(this._cache[entity]);
+      const cached = Object.assign([], this._cache[entity]);
+      observer.next(cached);
       observer.complete();
     });
   }
