@@ -18,6 +18,8 @@ import { UserServiceService } from './user-service.service';
 import { CurrencyConverterService} from './currency-converter.service';
 import { CurrencyConverterComponent } from './currency-converter/currency-converter.component';
 import { CanActivateAuthGuard } from './can-activate.service';
+import { MailboxDatePipe } from './mailbox-date.pipe';
+import { ItemComponent } from './mail-box/item/item.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -32,7 +34,9 @@ const appRoutes: Routes = [
     UserCardComponent,
     CurrencyConverterComponent,
     MailBoxComponent,
-    LoginComponent
+    LoginComponent,
+    MailboxDatePipe,
+    ItemComponent
   ],
   imports: [
     AppRoutingModule,

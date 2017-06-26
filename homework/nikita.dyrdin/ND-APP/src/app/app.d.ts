@@ -18,6 +18,15 @@ declare namespace Dayoff{
     }
 }
 
+declare namespace MailBox{
+    interface Letter{
+        subject: string,
+        body?: string,
+        consumeDate: Date,
+        id: number
+    }
+}
+
 declare namespace Converter{
     interface CurrencyDefinition{
         name: string,

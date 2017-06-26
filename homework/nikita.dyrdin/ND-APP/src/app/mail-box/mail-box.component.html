@@ -1,3 +1,8 @@
-<p>
-  mail-box works!
-</p>
+<div>
+  <ul class="mailbox">
+    <li *ngFor="let letter of letters; index as i" class="mailbox_list_item"
+      >
+      <app-item (onUserDeleted)="onUserDeleted($event)" [letter]="letter"></app-item>
+    </li>
+  </ul>
+</div>
