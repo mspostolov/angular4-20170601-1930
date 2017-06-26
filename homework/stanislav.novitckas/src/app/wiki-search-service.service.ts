@@ -15,6 +15,4 @@ export class WikiSearchServiceService {
     return this.jsonp.get('https://en.wikipedia.org/w/api.php', {search: params})
       .map((data) => data.json())
   }
-
-
 }

@@ -14,6 +14,22 @@ import {CurrencyExchangeRateService} from "./currency-exchange-rate.service";
 import {CurrencyConverterService} from "./currency-converter.service";
 import { SearchComponent } from './wiki-search/search/search.component';
 import { WikiSearchComponent } from './wiki-search/wiki-search.component';
+import { LoginComponent } from './login/login.component';
+import {MdButtonModule, MdDialogModule, MdInputModule, MdTabsModule} from "@angular/material";
+import {Route, RouterModule} from "@angular/router";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {AuthGuardServiceService} from "./auth-guard-service.service";
+import {AuthServiceService} from "./auth-service.service";
+import {FormsModule} from "@angular/forms";
+import { DialogComponent } from './dialog/dialog.component';
+
+const routes: Route[] = [
+  {path: '', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'mail-box', component: MailboxComponent, canActivate: [AuthGuardServiceService]},
+  {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
+  {path: 'user-list/popup', component: UserListComponent, canActivate: [AuthGuardServiceService]},
+]
 
 @NgModule({
   declarations: [
@@ -25,12 +41,30 @@ import { WikiSearchComponent } from './wiki-search/wiki-search.component';
     UserCardComponent,
     CurrencyConverterComponent,
     SearchComponent,
-    WikiSearchComponent
+    WikiSearchComponent,
+    LoginComponent,
+    DialogComponent
   ],
+  entryComponents: [DialogComponent],
   imports: [
-    BrowserModule, HttpModule, JsonpModule
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpModule,
+    JsonpModule,
+    MdInputModule,
+    MdButtonModule,
+    FormsModule,
+    MdDialogModule,
+    MdTabsModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [UserServiceService, CurrencyExchangeRateService, CurrencyConverterService],
+  providers: [
+    UserServiceService,
+    CurrencyExchangeRateService,
+    CurrencyConverterService,
+    AuthGuardServiceService,
+    AuthServiceService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
