@@ -1,0 +1,6 @@
+<ul>
+<li *ngFor="let mail of mails | async" >
+<a [routerLink]="[mail.id]">{{mail.title}} </a>
+
+</li>
+</ul>
