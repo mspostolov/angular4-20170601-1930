@@ -8,7 +8,6 @@ import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
 import { EmailsResolver } from './_resolves/emails.resolver';
-import { EmailResolver } from './_resolves/email.resolver';
 import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
