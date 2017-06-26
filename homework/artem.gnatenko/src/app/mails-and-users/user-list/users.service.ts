@@ -12,7 +12,13 @@ export class UsersService {
 
   public getUsersList(): Observable<IUser[]> {
     return this.http.get(this.usersUrl)
-                    .map((res: Response) => res.json());
+                    .map((res: Response) => res.json())
+                    .map((users: IUser[]): IUser[] => {
+                      return users.map((user, index) => { 
+                        user.id = index+1;
+                        return user;
+                      })
+                    });
   }
 
 }
