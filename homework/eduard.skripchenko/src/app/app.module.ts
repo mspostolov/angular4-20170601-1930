@@ -1,21 +1,27 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule, JsonpModule } from '@angular/http';
+
+import { AppRoutingModule } from 'app/app-routing/app-routing.module';
 
 import { AppComponent } from './app.component';
-import { SearchComponent } from './search/search.component';
-import { WikiSearchComponent } from './wiki-search/wiki-search.component';
+import { MailBoxComponent } from './mail-box/mail-box.component';
+import { MailDetailsComponent } from './mail-details/mail-details.component';
+import { UsersComponent } from './users/users.component';
+import { UserDetailsComponent } from './user-details/user-details.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
-        SearchComponent,
-        WikiSearchComponent
+        MailBoxComponent,
+        MailDetailsComponent,
+        UsersComponent,
+        UserDetailsComponent,
+        LoginComponent
     ],
     imports: [
         BrowserModule,
-        HttpModule,
-        JsonpModule
+        AppRoutingModule
     ],
     providers: [],
     bootstrap: [AppComponent]
