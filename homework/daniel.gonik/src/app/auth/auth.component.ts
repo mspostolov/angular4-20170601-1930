@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AuthService } from './auth.service';
+
 @Component({
   selector: 'dg-auth',
   templateUrl: './auth.component.html',
@@ -8,7 +10,9 @@ import { Component, OnInit } from '@angular/core';
 export class AuthComponent implements OnInit {
 
   public routeLinks: any[];
-  constructor() {
+  constructor(
+    private authService: AuthService
+  ) {
     this.routeLinks = [
       { label: 'Login', link: '/auth/login' },
       { label: 'Register', link: '/auth/register' }
@@ -16,6 +20,10 @@ export class AuthComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  get isAuthorized() {
+    return this.authService.isAuthorized;
   }
 
 }

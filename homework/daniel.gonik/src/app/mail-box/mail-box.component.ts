@@ -17,10 +17,10 @@ export class MailBoxComponent implements OnInit {
     private authService: AuthService
   ) {
     this.routeLinks = [
-      { label: 'Inbox', link: '/inbox' },
-      { label: 'Contacts', link: '/contacts' },
-      { label: 'Wiki', link: '/wiki' },
-      { label: 'Settings', link: '/settings' }
+      { label: 'Inbox', link: '/app/inbox' },
+      { label: 'Contacts', link: '/app/contacts' },
+      { label: 'Wiki', link: '/app/wiki' },
+      { label: 'Settings', link: '/app/settings' }
     ];
   }
 

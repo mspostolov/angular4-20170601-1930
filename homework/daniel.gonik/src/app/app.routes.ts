@@ -16,7 +16,7 @@ import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 const routes: Route[] = [
-  { path: '', redirectTo: '/inbox', pathMatch : 'full', canActivate: [AuthGuard] },
+  { path: '', redirectTo: '/app', pathMatch : 'full' },
   {
     path: 'auth',
     component: AuthComponent,
@@ -33,61 +33,69 @@ const routes: Route[] = [
       //   path: 'register',
       //   component: RegisterComponent
       //   data: {
-      //     title: 'Inbox'
+      //     title: 'Register'
       //   },
       // }
     ]
   },
   {
-    path: 'inbox',
-    component: MailListComponent,
-    resolve: {
-      emails: EmailsResolver,
-      authors: AuthorsResolver
-    },
-    data: {
-      title: 'Inbox'
-    },
-    // canActivate: [AuthGuardService]
+    path: 'app',
+    component: AuthComponent,
+    canActivate: [AuthGuard],
+    children: [
+      { path: '', redirectTo: '/app/inbox', pathMatch: 'full' },
+      {
+        path: 'inbox',
+        component: MailListComponent,
+        resolve: {
+          emails: EmailsResolver,
+          authors: AuthorsResolver
+        },
+        data: {
+          title: 'Inbox'
+        },
+        // canActivate: [AuthGuardService]
+      },
+      {
+        path: 'emails/:emailId',
+        component: MailViewComponent,
+        data: {
+          title: 'Email view'
+        }
+      },
+      {
+        path: 'contacts',
+        component: ContactsComponent,
+        resolve: {
+          contacts: ContactsResolver
+        },
+        data: {
+          title: 'Contacts'
+        }
+      },
+      {
+        path: 'contact/:contactId',
+        component: ContactViewComponent,
+        data: {
+          title: 'Contact view'
+        }
+      },
+      {
+        path: 'wiki',
+        component: WidgetComponent,
+        data: {
+          title: 'Wiki'
+        }
+      },
+      {
+        path: 'settings',
+        component: SettingsComponent,
+        data: {
+          title: 'Settings'
+        }
+      }
+    ]
   },
-  {
-    path: 'emails/:emailId',
-    component: MailViewComponent,
-    data: {
-      title: 'Email view'
-    }
-  },
-  {
-    path: 'contacts',
-    component: ContactsComponent,
-    resolve: {
-      contacts: ContactsResolver
-    },
-    data: {
-      title: 'Contacts'
-    }
-  },
-  {
-    path: 'contact/:contactId',
-    component: ContactViewComponent,
-    data: {
-      title: 'Contact view'
-    }
-  },
-  {
-    path: 'wiki',
-    component: WidgetComponent,
-    data: {
-      title: 'Wiki'
-    }
-  },
-  {
-    path: 'settings',
-    component: SettingsComponent,
-    data: {
-      title: 'Settings'
-    }
-  }
 ];
 
 export default routes;
