@@ -1,5 +1,7 @@
 import { Route } from '@angular/router';
 
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
 import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
@@ -13,6 +15,28 @@ import { ContactsResolver } from './_resolves/contacts.resolver';
 
 const routes: Route[] = [
   { path: '', redirectTo: '/inbox', pathMatch : 'full' },
+  {
+    path: 'auth',
+    component: AuthComponent,
+    children: [
+      { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
+      {
+        path: 'login',
+        component: LoginComponent,
+        data: {
+          title: 'Login'
+        },
+      },
+      // {
+      //   path: 'register',
+      //   component: RegisterComponent
+      //   data: {
+      //     title: 'Inbox'
+      //   },
+      // }
+    ]
+    // canActivate: [AuthGuardService]
+  },
   {
     path: 'inbox',
     component: MailListComponent,
@@ -29,7 +53,7 @@ const routes: Route[] = [
     path: 'emails/:emailId',
     component: MailViewComponent,
     data: {
-      title: 'Inbox'
+      title: 'Email view'
     }
   },
   {
@@ -46,7 +70,7 @@ const routes: Route[] = [
     path: 'contact/:contactId',
     component: ContactViewComponent,
     data: {
-      title: 'Contacts'
+      title: 'Contact view'
     }
   },
   {

@@ -16,10 +16,14 @@ import {
   MdToolbarModule,
   MdTabsModule,
   MdSliderModule,
+  MdSlideToggleModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
   MdIconModule
 } from '@angular/material';
+
+import { AuthComponent } from './auth/auth.component';
+import { LoginComponent } from './auth/login/login.component';
 import { MailBoxComponent } from './mail-box/mail-box.component';
 import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
@@ -32,6 +36,7 @@ import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
 import { MailBoxService } from './mail-box/_services/mail-box.service';
 import { ContactsService } from './mail-box/_services/contacts.service';
+import { AuthService } from './auth/auth.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { AutofocusDirective } from './_directives/autofocus.directive';
@@ -45,6 +50,8 @@ import routes from './app.routes';
 @NgModule({
   declarations: [
     AppComponent,
+    AuthComponent,
+    LoginComponent,
     MailBoxComponent,
     MailListComponent,
     MailViewComponent,
@@ -68,15 +75,17 @@ import routes from './app.routes';
     MdToolbarModule,
     MdTabsModule,
     MdSliderModule,
+    MdSlideToggleModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdIconModule,
     WikiModule
   ],
   providers: [
-    SweetAlertService,
+    AuthService,
     MailBoxService,
     ContactsService,
+    SweetAlertService,
     EmailsResolver,
     AuthorsResolver,
     ContactsResolver
