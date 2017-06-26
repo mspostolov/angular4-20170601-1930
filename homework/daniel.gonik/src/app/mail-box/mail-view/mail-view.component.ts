@@ -11,8 +11,8 @@ import { MailBoxService } from '../mail-box.service';
 })
 export class MailViewComponent implements OnInit {
 
-  public email;
-  public author;
+  public email = {};
+  public author = {};
 
   constructor(
     private route: ActivatedRoute,
@@ -20,8 +20,10 @@ export class MailViewComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.route.data.pluck('email').subscribe(email => {
-      this.email = email;
+    this.route.params.pluck('emailId').subscribe(emailId => {
+      const id = +emailId;
+      this.mailBoxService.getEmailById(id)
+        .subscribe(email => this.email = email);
     });
 
     this.route.queryParams.pluck('author').subscribe(authorId => {

@@ -29,9 +29,6 @@ const routes: Route[] = [
   {
     path: 'emails/:emailId',
     component: MailViewComponent,
-    resolve: {
-      email: EmailResolver
-    },
     data: {
       title: 'Inbox'
     }
