@@ -48,6 +48,7 @@ import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 import routes from './app.routes';
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import routes from './app.routes';
     WidgetComponent,
     RelativeDatePipe,
     AutofocusDirective,
-    SettingsComponent
+    SettingsComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

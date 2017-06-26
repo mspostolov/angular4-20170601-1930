@@ -10,6 +10,7 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
 
   public user;
+  public errorMsg;
 
   constructor(
     private router: Router,
@@ -24,13 +25,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.authService.login(this.user.username, this.user.password)
       .subscribe(
-        data => {
-          // this.returnUrl
-          this.router.navigate(['/inbox']);
-        },
-        error => {
-          console.error(error);
-        });
+        (data) => this.router.navigate(['/inbox']), // this.returnUrl
+        (error) => this.errorMsg = error
+      );
   }
 
 }
