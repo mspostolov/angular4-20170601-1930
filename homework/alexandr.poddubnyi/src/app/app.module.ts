@@ -5,22 +5,32 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MailboxModule } from 'app/mailbox/mailbox.module';
-import { Routing } from 'app/app-routing.module';
+import { AppRoutingModule } from 'app/app-routing.module';
 import { UsersCurrencyModule } from 'app/users-currency/users-currency.module';
+import { WikiRxSearchModule } from 'app/wiki-rx-search/wiki-rx-search.module';
+import { UsersRoutingModule } from 'app/users-routing/users-routing.module';
+import { UserComponent } from './users-routing/users/user/user.component';
+import { EmailComponent } from './users-routing/emails/email/email.component';
+import { LoginComponent } from './users-routing/login/login.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserComponent,
+    EmailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    Routing,
+    AppRoutingModule,
+
     MailboxModule,
-    UsersCurrencyModule
+    UsersCurrencyModule,
+    WikiRxSearchModule,
+    UsersRoutingModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
