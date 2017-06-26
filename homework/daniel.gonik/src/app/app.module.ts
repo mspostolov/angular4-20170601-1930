@@ -9,6 +9,7 @@ import { WikiModule } from './wiki/wiki.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {
+  MdCoreModule,
   MdInputModule,
   MdButtonModule,
   MdCardModule,
@@ -19,7 +20,8 @@ import {
   MdSlideToggleModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
-  MdIconModule
+  MdIconModule,
+  StyleModule
 } from '@angular/material';
 
 import { AuthComponent } from './auth/auth.component';
@@ -68,6 +70,7 @@ import routes from './app.routes';
     RouterModule.forRoot(routes),
     HttpModule,
     BrowserAnimationsModule,
+    MdCoreModule,
     MdInputModule,
     MdButtonModule,
     MdMenuModule,
@@ -79,6 +82,7 @@ import routes from './app.routes';
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdIconModule,
+    StyleModule,
     WikiModule
   ],
   providers: [
