@@ -1,14 +1,13 @@
 <!--The whole content below can be removed with the new code.-->
 <div class="page_layout">
   <div class="page_center_content">
-    <app-user-list
-      [coworkers]="coworkers"
-      (onUserSelected)="onUserSelected($event)">
-    </app-user-list>
-    <app-user-card *ngIf="!!selectedUser"
-      [user]="selectedUser">
-    </app-user-card>
+    <nav>
+      <ul>
+        <li><a [routerLink]="['/users']" href="">Users</a></li>
+        <li><a [routerLink]="['/mail']" href="">Mail</a></li>
+      </ul>
+    </nav>
+    <router-outlet></router-outlet>
   </div>
-  <app-currency-converter></app-currency-converter>
 </div>
 

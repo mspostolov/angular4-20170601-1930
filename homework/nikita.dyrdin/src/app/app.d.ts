@@ -10,10 +10,20 @@ declare namespace Dayoff{
     }
 
     interface User {
+        id?: number,
         firstName: string,
         surname: string,
         photo?: string,
         country: string
+    }
+}
+
+declare namespace MailBox{
+    interface Letter{
+        subject: string,
+        body?: string,
+        consumeDate: Date,
+        id: number
     }
 }
 
