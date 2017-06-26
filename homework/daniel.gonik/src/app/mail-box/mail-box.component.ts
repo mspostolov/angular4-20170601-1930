@@ -11,7 +11,6 @@ import { AuthService } from '../auth/auth.service';
 export class MailBoxComponent implements OnInit {
 
   public routeLinks: any[];
-  public isAuthorized = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,6 +25,9 @@ export class MailBoxComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.isAuthorized = this.authService.isAuthorized;
+  }
+
+  get isAuthorized() {
+    return this.authService.isAuthorized;
   }
 }
