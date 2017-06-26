@@ -1,24 +1,35 @@
-<md-card *ngFor="let user of users; let index = index;">
+<md-card *ngFor="let contact of contacts; let index = index;" class="row">
 
-  <md-card-header>
+  <md-card-header class="col-11 contact-details">
     <div md-card-avatar>
-      <i class="material-icons contact-avatar" *ngIf="!user.photo">account_circle</i>
-      <i class="contact-avatar-image" *ngIf="user.photo"
-         [style.backgroundImage]="'url(' + user.photo + ')'">
+      <i class="material-icons contact-avatar-icon" *ngIf="!contact.photo"
+         [routerLink]="['/contact', index]">
+        account_circle
+      </i>
+      <i class="contact-avatar-image" *ngIf="contact.photo"
+         [style.backgroundImage]="'url(' + contact.photo + ')'"
+         [routerLink]="['/contact', index]">
       </i>
     </div>
-    <md-card-title>{{ user.firstName + ' ' + user.surname }}</md-card-title>
-    <md-card-subtitle>{{ user.country | uppercase }}</md-card-subtitle>
+    <md-card-title [routerLink]="['/contact', index]" class="contact-name">
+      {{ contact.firstName + ' ' + contact.surname }}
+    </md-card-title>
+    <md-card-subtitle>{{ contact.country | uppercase }}</md-card-subtitle>
   </md-card-header>
 
-  <md-card-actions>
-    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
-      <i class="material-icons">create</i> WRITE
+  <button md-icon-button [mdMenuTriggerFor]="menu">
+    <md-icon>more_vert</md-icon>
+  </button>
+  <md-menu #menu="mdMenu">
+    <button md-menu-item disabled
+            mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
+      <md-icon>create</md-icon>
+      <span>Write</span>
     </button>
-    <!-- (click)="bookmark(index)" -->
-    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
-      <i class="material-icons">delete</i> DELETE
+    <button md-menu-item (click)="viewDetails(index)">
+      <md-icon>remove_red_eye</md-icon>
+      <span>View details</span>
     </button>
-  </md-card-actions>
+  </md-menu>
 
 </md-card>

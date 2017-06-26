@@ -14,8 +14,8 @@
   </md-card-content>
 
   <md-card-actions>
-    <button md-button mdTooltip="Not implemented yet" [mdTooltipPosition]="'below'">
-      <md-icon>remove_red_eye</md-icon> READ
+    <button md-button (click)="readEmail(email)">
+      <i class="material-icons">remove_red_eye</i> READ
     </button>
     <button md-button (click)="bookmark(index)"
             mdTooltip="{{ email.bookmarked ? 'Remove bookmark' : 'Add email to favorites' }}"
@@ -23,7 +23,7 @@
       <i class="material-icons" [innerHtml]="email.bookmarked ? 'bookmark' : 'bookmark_border'"></i> BOOKMARK
     </button>
     <button md-button (click)="removeEmail(index)">
-      <md-icon>delete</md-icon> DELETE
+      <i class="material-icons">delete</i> DELETE
     </button>
   </md-card-actions>
 

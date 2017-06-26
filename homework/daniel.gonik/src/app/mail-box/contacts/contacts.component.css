@@ -1,3 +1,20 @@
+.row {
+  display: flex;
+  margin: 0;
+  width: 684px;
+  // align-items: flex-start;
+}
+
+.contact-details {
+  // padding: 8px 16px;
+}
+
+.contact-controls {
+  text-align: right;
+  margin: -10px 0;
+  padding: 0;
+}
+
 .contact-avatar-icon {
   font-size: 40px;
 }
@@ -8,4 +25,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+
+[md-card-avatar],
+.contact-name {
+  cursor: pointer;
 }
