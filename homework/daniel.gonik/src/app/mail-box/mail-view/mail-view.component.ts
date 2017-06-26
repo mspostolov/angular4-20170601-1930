@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import 'rxjs/add/operator/pluck'
 
-import { MailBoxService } from '../mail-box.service';
+import { MailBoxService } from '../_services/mail-box.service';
 
 @Component({
   selector: 'dg-mail-view',

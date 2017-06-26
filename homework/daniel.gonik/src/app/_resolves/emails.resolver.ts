@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Resolve, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs/Rx';
-import { MailBoxService } from '../mail-box/mail-box.service';
+import { MailBoxService } from '../mail-box/_services/mail-box.service';
 
 @Injectable()
 export class EmailsResolver implements Resolve<any> {

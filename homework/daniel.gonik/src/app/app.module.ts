@@ -30,8 +30,8 @@ import { SettingsComponent } from './mail-box/settings/settings.component';
 
 import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
-import { MailBoxService } from './mail-box/mail-box.service';
-import { ContactsService } from './_services/contacts.service';
+import { MailBoxService } from './mail-box/_services/mail-box.service';
+import { ContactsService } from './mail-box/_services/contacts.service';
 import { SweetAlertService } from 'ng2-sweetalert2';
 
 import { AutofocusDirective } from './_directives/autofocus.directive';
