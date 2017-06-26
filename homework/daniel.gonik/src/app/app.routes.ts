@@ -9,12 +9,14 @@ import { ContactViewComponent } from './mail-box/contact-view/contact-view.compo
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
+import { AuthGuard } from './_guards/auth.guard';
+
 import { EmailsResolver } from './_resolves/emails.resolver';
 import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 const routes: Route[] = [
-  { path: '', redirectTo: '/inbox', pathMatch : 'full' },
+  { path: '', redirectTo: '/inbox', pathMatch : 'full', canActivate: [AuthGuard] },
   {
     path: 'auth',
     component: AuthComponent,
@@ -35,7 +37,6 @@ const routes: Route[] = [
       //   },
       // }
     ]
-    // canActivate: [AuthGuardService]
   },
   {
     path: 'inbox',

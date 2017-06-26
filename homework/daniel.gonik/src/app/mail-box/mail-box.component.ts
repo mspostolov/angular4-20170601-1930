@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
+import { AuthService } from '../auth/auth.service';
+
 @Component({
   selector: 'dg-mail-box',
   templateUrl: './mail-box.component.html',
@@ -9,9 +11,11 @@ import { ActivatedRoute } from '@angular/router';
 export class MailBoxComponent implements OnInit {
 
   public routeLinks: any[];
+  public isAuthorized = false;
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {
     this.routeLinks = [
       { label: 'Inbox', link: '/inbox' },
@@ -21,5 +25,7 @@ export class MailBoxComponent implements OnInit {
     ];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.isAuthorized = this.authService.isAuthorized;
+  }
 }

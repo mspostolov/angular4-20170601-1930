@@ -33,9 +33,11 @@ import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { ContactViewComponent } from './mail-box/contact-view/contact-view.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
+import { UserComponent } from './user/user.component';
 
 import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
+import { AuthGuard } from './_guards/auth.guard';
 import { MailBoxService } from './mail-box/_services/mail-box.service';
 import { ContactsService } from './mail-box/_services/contacts.service';
 import { AuthService } from './auth/auth.service';
@@ -48,7 +50,6 @@ import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 import routes from './app.routes';
-import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
@@ -88,6 +89,7 @@ import { UserComponent } from './user/user.component';
     WikiModule
   ],
   providers: [
+    AuthGuard,
     AuthService,
     MailBoxService,
     ContactsService,

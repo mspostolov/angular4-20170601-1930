@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
-import { UserComponent } from "../user/user.component";
+import { UserComponent } from '../user/user.component';
 
 const users = [
   new UserComponent('admin','admin'),
@@ -21,7 +21,7 @@ export class AuthService {
     return Observable.create(observer => {
       let result;
       if (authenticatedUser && authenticatedUser.password === password){
-        localStorage.setItem("user", authenticatedUser.username);
+        localStorage.setItem('user', authenticatedUser.username);
         observer.next(true);
       }
       observer.error('Wrong username or password!');
@@ -30,11 +30,11 @@ export class AuthService {
   }
 
   logout() {
-    localStorage.removeItem("user");
+    localStorage.removeItem('user');
     this._router.navigate(['/auth/login']);
   }
 
-  checkCredentials() {
-    return localStorage.getItem("user") === null;
+  get isAuthorized() {
+    return localStorage.getItem('user') !== null;
   }
 }
