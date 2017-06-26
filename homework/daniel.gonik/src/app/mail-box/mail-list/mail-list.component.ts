@@ -34,7 +34,7 @@ export class MailListComponent implements OnInit {
   }
 
   readEmail(email) {
-    this.router.navigate(['emails', email.id], {
+    this.router.navigate(['/app/emails', email.id], {
       queryParams: {
         author: email.userId
       }

@@ -49,7 +49,7 @@ import { EmailsResolver } from './_resolves/emails.resolver';
 import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
-import routes from './app.routes';
+import { routes } from './app.routes';
 
 @NgModule({
   declarations: [

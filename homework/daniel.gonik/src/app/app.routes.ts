@@ -15,8 +15,8 @@ import { EmailsResolver } from './_resolves/emails.resolver';
 import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
-const routes: Route[] = [
-  { path: '', redirectTo: '/app', pathMatch : 'full' },
+export const routes: Route[] = [
+  { path: '', redirectTo: '/app/inbox', pathMatch : 'full' },
   {
     path: 'auth',
     component: AuthComponent,
@@ -96,6 +96,6 @@ const routes: Route[] = [
       }
     ]
   },
+  { path:'**', redirectTo: '/app', pathMatch : 'full' }
 ];
 
-export default routes;

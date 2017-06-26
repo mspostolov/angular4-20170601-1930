@@ -1,9 +1,10 @@
-<form role="form" (submit)="login()"><br>
+<form role="form" (submit)="login()">
   <md-input-container class="half-width">
     <!-- placeholder="Username" -->
     <input mdInput type="text" required
            [(ngModel)]="user.username"
-           id="username" name="username">
+           id="username" name="username"
+           autofocus="autofocus">
     <md-hint align="start">Username</md-hint>
   </md-input-container><br><br>
   <md-input-container class="half-width">
@@ -22,4 +23,7 @@
   <md-slide-toggle color="primary">
     <small>Remember me!</small>
   </md-slide-toggle>
+
+  <br><br>
+  <small>Username: admin, password: admin</small>
 </form>
