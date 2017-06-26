@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { UserServiceService } from '../user-service.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-card',
@@ -6,11 +8,27 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./user-card.component.css']
 })
 export class UserCardComponent implements OnInit {
-  @Input() user: Dayoff.User;
+  user: Dayoff.User;
 
-  constructor() { }
+  constructor(
+    private userService: UserServiceService,
+    private route: ActivatedRoute,
+    private router: Router) { }
 
   ngOnInit() {
+    this.route.params
+      .map(params => params['id'])
+      .subscribe(id => {
+        this.userService.getUsers().subscribe(users => {
+          for(var i = 0; i < users.length; i++){
+            if(i == id - 1){
+              users[i].id = id;
+              this.user = users[i];
+              i = users.length;
+            }
+          }
+        })
+      })
   }
 
 }

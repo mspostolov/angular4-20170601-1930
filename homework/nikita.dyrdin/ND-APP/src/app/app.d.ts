@@ -10,6 +10,7 @@ declare namespace Dayoff{
     }
 
     interface User {
+        id?: number,
         firstName: string,
         surname: string,
         photo?: string,
