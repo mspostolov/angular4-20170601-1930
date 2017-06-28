@@ -1,5 +1,5 @@
 import {
-  Component, ElementRef, OnInit,
+  Component, ElementRef, OnInit, OnDestroy
   ViewChild
 } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
@@ -18,23 +18,26 @@ interface Entity {
   templateUrl: './wiki-rx-search.component.html',
   styleUrls: ['./wiki-rx-search.component.css']
 })
-export class WikiRxSearchComponent implements OnInit {
+export class WikiRxSearchComponent implements OnInit, OnDestroy {
   @ViewChild('search') search: ElementRef;
   entities: Entity[] = [];
 
   constructor(private wikiSearchService: WikiSearchService) { }
-
+  // entities |async
   ngOnInit() {
-    Observable.fromEvent<KeyboardEvent>(this.search.nativeElement, 'input')
+    this.entities = Observable.fromEvent<KeyboardEvent>(this.search.nativeElement, 'input')
       .map(event => (event.target as HTMLInputElement).value)
       .debounceTime(400)
       .distinctUntilChanged()
       .filter(term => term.trim().length != 0)
-      .subscribe((term: string) => {
-        this.wikiSearchService.getEntities(term.trim())
-          .subscribe((response) => {
-            this.entities = response;
-          });
-      });
+      .switchMap((term: string) => this.wikiSearchService.getEntities(term.trim()))
+      // .subscribe((response) => {
+      //   this.entities = response;
+      // });
+
+  }
+
+  ngOnDestroy() {
+   //this.subs.unsubscribe();
   }
 }

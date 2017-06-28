@@ -15,6 +15,8 @@ export class UserComponent implements OnInit {
     this.route.queryParams.pluck('x').subscribe(params => console.log(params));
 
     this.route.data.pluck('title').subscribe(params => console.log(params));
+
+    this.route.data.pluck('user').subscribe(params => console.log(params));
   }
 
   ngOnInit() {
