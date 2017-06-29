@@ -1,13 +1,14 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/switchMap';
+import { UserService } from '../../user.service';
+import { User } from '../../user'
 
-import { UserService } from '../user.service';
-import { User } from '../user';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/debounceTime';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
 
 @Component({
   selector: 'app-user-page',
@@ -16,26 +17,51 @@ import { User } from '../user';
 })
 export class UserPageComponent implements OnInit {
   user: User;
-  error: null;
+  emailIsUnique: boolean;
 
   constructor(
-    private route: ActivatedRoute,
     private router: Router,
-    private users: UserService
-  ) { }
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {
+    this.emailIsUnique = true;
+  }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.route.params
-      .switchMap(params => this.users.getUser(params.login))
-      .subscribe(
-        res => this.user = res,
-        error => this.error = error,
-        () => console.log('completed')
-      )
+      .switchMap(params => this.userService.getUser(params.id))
+      .subscribe(user => this.user = user);
   }
 
   goBack() {
     this.router.navigate(['/users']);
+  }
+
+  cancel() {
+    this.goBack();
+  }
+
+  updateInfo(f) {
+    const { firstName, surname, email } = f.form.controls;
+    if (this.emailIsUnique && f.valid) {
+      this.userService
+        .setUserData(
+          {
+            name: firstName.value,
+            surname: surname.value,
+            email: email.value
+          },
+          this.user.id
+        ).subscribe(_ => this.goBack());
+    } else {
+      alert('form is not valid');
+    }
+  }
+
+  checkEmailUnique(email: string): void {
+    if (email === this.user.email) { return }
+    this.userService.checkEmailUnique(email)
+      .subscribe(res => this.emailIsUnique = res);
   }
 
 }
