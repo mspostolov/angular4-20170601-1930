@@ -6,6 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { UsersComponent } from './users/users.component';
 import { UserComponent } from './user/user.component';
+import { EmailValidatorDirective } from './email-validator.directive';
 
 const routes: Routes = [
     { path: '', redirectTo: '/users', pathMatch: 'full' },
@@ -17,7 +18,8 @@ const routes: Routes = [
     declarations: [
         AppComponent,
         UsersComponent,
-        UserComponent
+        UserComponent,
+        EmailValidatorDirective
     ],
     imports: [
         BrowserModule,
