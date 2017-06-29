@@ -23,5 +23,9 @@ export class DataService {
         return this.getUsers().find(user => user.id === id);
     }
 
+    getUserByEmail(email: string, id: number): User {
+        return this.getUsers().find(user => user.email === email && user.id !== id);
+    }
+
     constructor() { }
 }

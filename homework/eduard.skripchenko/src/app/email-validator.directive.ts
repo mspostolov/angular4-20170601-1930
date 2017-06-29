@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, forwardRef, Input } from '@angular/core';
 import { NG_VALIDATORS, FormControl, NG_ASYNC_VALIDATORS } from '@angular/forms';
 
 import { Observable } from 'rxjs/Observable';
@@ -15,39 +15,44 @@ function emailValidator(control: FormControl) {
     return isValid ? null : { validEmail: false };
 }
 
-function emailUniqueValidator(control: FormControl, dataService: DataService) {
-    const email = control.value;
-    console.log(dataService);
+function validateUniqueEmailFactory(dataService: DataService, userId: number) {
+    return (control: FormControl) => {
+        const email = control.value;
 
-    return new Observable(observer => {
-        if (email === 'jh.watson@gmail.co.uk') {
-            observer.next({ validEmail: false });
-        } else {
-            observer.next(null);
-        }
+        return new Observable(observer => {
+            if (dataService.getUserByEmail(email, userId)) {
+                observer.next({ validEmail: false });
+            } else {
+                observer.next(null);
+            }
 
-    }).debounceTime(500).distinctUntilChanged().first();
+        }).debounceTime(500).distinctUntilChanged().first();
+    }
 }
 
 @Directive({
-    selector: '[appEmailValidator][ngModel]',
+    selector: '[appEmailValidator]',
     providers: [
         {
             provide: NG_VALIDATORS,
             useValue: emailValidator,
-            deps: [ DataService ],
             multi: true
         },
         {
             provide: NG_ASYNC_VALIDATORS,
-            useValue: emailUniqueValidator,
+            useExisting: forwardRef(() => EmailValidatorDirective),
             multi: true
         },
         DataService
     ]
 })
 export class EmailValidatorDirective {
+    validator: Function;
+    validate(control: FormControl) {
+        return this.validator(control);
+    }
 
-    constructor() { }
-
+    constructor(dataService: DataService) {
+        this.validator = validateUniqueEmailFactory(dataService, 1); // How to send parameters?
+    }
 }
