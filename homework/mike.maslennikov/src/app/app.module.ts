@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { JsonpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
@@ -13,12 +14,18 @@ import { MailDetailsComponent } from './mail-list/mail-details/mail-details.comp
 import { LoginComponent } from './login/login.component';
 import { AuthGuardService } from './login/auth-guard.service';
 import { AuthService } from './login/auth.service';
+import { UserEditComponent } from './user-list/user-edit/user-edit.component';
+
+
+import {UserEmailValidator} from './user-list/user-edit/user-email-validator';
+import { UserService } from './user-list/user.service';
 
 const appRoutes: Routes = [
   { path: 'mails', component: MailListComponent },
-  { path: 'mails/:id', component: MailDetailsComponent },
-  { path: 'users', component: UserListComponent,  canActivate: [AuthGuardService] },
-  { path: 'users/:id', component: UserDetailsComponent,  canActivate: [AuthGuardService] },
+  { path: 'mails/:id', component: MailDetailsComponent,canActivate: [AuthGuardService] },
+  { path: 'users', component: UserListComponent   },
+  { path: 'users/:id', component: UserDetailsComponent},
+  { path: 'users/edit/:id', component: UserEditComponent },
   { path: 'login', component: LoginComponent },
  
  
@@ -37,15 +44,18 @@ const appRoutes: Routes = [
     UserDetailsComponent,
     MailListComponent,
     MailDetailsComponent,
-    LoginComponent
+    LoginComponent,
+    UserEditComponent,
+    UserEmailValidator
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
+    FormsModule,
     JsonpModule
   ],
-  providers: [AuthGuardService, AuthService],
+  providers: [AuthGuardService, AuthService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
