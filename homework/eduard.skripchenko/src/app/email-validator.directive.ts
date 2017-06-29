@@ -31,7 +31,7 @@ function validateUniqueEmailFactory(dataService: DataService, userId: number) {
 }
 
 @Directive({
-    selector: '[appEmailValidator]',
+    selector: '[appEmailValidator][ngModel]',
     providers: [
         {
             provide: NG_VALIDATORS,

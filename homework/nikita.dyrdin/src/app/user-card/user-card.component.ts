@@ -17,7 +17,7 @@ export class UserCardComponent implements OnInit {
 
   ngOnInit() {
     this.route.params
-      .map(params => params['id'])
+      .pluck('id')
       .subscribe(id => {
         this.userService.getUsers().subscribe(users => {
           for(var i = 0; i < users.length; i++){
