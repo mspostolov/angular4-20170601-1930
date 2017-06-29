@@ -7,7 +7,7 @@ import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { UserProfileService } from './login/user-profile.service';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule, routableComponents } from './routing';
+import { routing } from './routing';
 
 import { UserListComponent } from './user-list/user-list.component';
 import { UserCardComponent } from './user-card/user-card.component';
@@ -20,6 +20,10 @@ import { CurrencyConverterComponent } from './currency-converter/currency-conver
 import { CanActivateAuthGuard } from './can-activate.service';
 import { MailboxDatePipe } from './mailbox-date.pipe';
 import { ItemComponent } from './mail-box/item/item.component';
+import { EditComponent } from './user-card/edit/edit.component';
+import { CiryllicNameDirective } from './ciryllic-name.directive';
+import { SearchComponent } from './search/search.component';
+import { WikiSearchService } from './wiki-search.service';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -36,15 +40,18 @@ const appRoutes: Routes = [
     MailBoxComponent,
     LoginComponent,
     MailboxDatePipe,
-    ItemComponent
+    ItemComponent,
+    EditComponent,
+    CiryllicNameDirective,
+    SearchComponent
   ],
   imports: [
-    AppRoutingModule,
+    routing,
     BrowserModule,
     HttpModule,
     FormsModule
   ],
-  providers: [UserServiceService, CurrencyConverterService, UserProfileService, CanActivateAuthGuard],
+  providers: [UserServiceService, CurrencyConverterService, UserProfileService, WikiSearchService, CanActivateAuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
