@@ -16,7 +16,7 @@ export class TemplateDrivenComponent implements OnInit {
   constructor() { }
 
   onSubmit(form: NgForm) {
-    debugger
+    //debugger
     console.log(form);
   }
 
