@@ -1,0 +1,18 @@
+<div>
+  <h1>Edit user form</h1>
+  <form #userEdit="ngForm" (ngSubmit)="updateUser()">
+    <div>
+      <label for="firstname">firstname</label>
+      <input name="firstname" [ngModel]="user.firstName" (input)="firstnameChange($event)" ciryllicName required/>
+    </div>
+    <div>
+      <label for="surname">surname</label>
+      <input name="surname" [ngModel]="user.surname" (input)="surnameChange($event)" required/>
+    </div>
+    <div>
+      <label for="country">country</label>
+      <input name="country" [ngModel]="user.country" (input)="countryChange($event)" required/>
+    </div>
+    <input type="submit" value="Update" [disabled]="!userEdit.form.valid"/>
+  </form>
+</div>
