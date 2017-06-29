@@ -1,0 +1,28 @@
+<form novalidate
+  #editUserForm="ngForm"
+  [class.submitted] = "submitted"
+  (ngSubmit)="saveUser(editUserForm)"
+>
+  <label>First name</label>
+  <input type="text" name="firstName" required
+    [(ngModel)]="user.firstName"
+  >
+  <label>Surname</label>
+  <input type="text" name="surname" required
+    [(ngModel)]="user.surname"
+  >
+  <label>Country</label>
+  <input type="text" name="country" required
+    [(ngModel)]="user.country"
+  >
+  <label>Email</label>
+  <input type="email" name="email" required pattern="\w{1,}[\w-\.]*@\w+\.[a-zA-Z]{2,}" 
+    asyncEmailValidator
+    [(ngModel)]="user.email"
+  >
+  <label>Photo URL</label>
+  <input type="text" name="photo"
+    [(ngModel)]="user.photo"
+  >
+  <input type="submit" value="Save">
+</form>
