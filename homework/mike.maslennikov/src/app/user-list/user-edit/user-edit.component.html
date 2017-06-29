@@ -1,0 +1,39 @@
+
+<form #userForm="ngForm"   (ngSubmit)="onSubmit(userForm)">
+
+<div>
+    <label for="name">Name</label>
+
+    <input type="text" id="name" 
+          required 
+          name="name" [ngModel]="user.name"
+          #name="ngModel" />
+
+    <div *ngIf="name.errors">
+    <div [hidden]="!name.errors.required">Name is required</div>
+    </div>
+
+</div>
+
+<div>
+
+    <label for="email">Email</label>
+
+    <input type="text" id="email" 
+          required 
+          pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$"
+          asyncEmailValidator
+          name="email" [ngModel]="user.email"
+          #email="ngModel" />
+
+    <div *ngIf="email.errors">
+    <div [hidden]="!email.errors.required">Email is required</div>
+     <div [hidden]="!email.errors.pattern">Email is not email</div>
+      <div [hidden]="!email.errors.asyncEmailValidator">Email is not uniq</div>
+    </div>
+
+</div>
+
+<input type="submit" value="Save" />
+
+</form>
