@@ -29,4 +29,15 @@ export class MailService {
   all() {
     return mails;
   }
+
+  getMail(id: number): Promise<Mail> {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        const mail = mails.find(function(mail) {
+          return mail.id == id;
+        });
+        resolve(mail);
+      }, 100)
+    });
+  }
 }

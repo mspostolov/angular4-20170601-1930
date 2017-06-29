@@ -1,3 +1,4 @@
 <div>
-  <a *ngFor="let mail of mails" [routerLink]="mail"> {{ mail.title }}</a>
+  <a *ngFor="let mail of mails" [routerLink]="'/mails/' + mail.id"> {{ mail.title }}</a>
+  <router-outlet></router-outlet>
 </div>

@@ -27,5 +27,16 @@ export class UserService {
     return users;
   }
 
+  getUser(id: number): Promise<User> {
+    return new Promise(function(resolve, reject) {
+      setTimeout(function() {
+        const user = users.find(function(user) {
+          return user.id == id;
+        });
+        resolve(user);
+      }, 1000)
+    });
+  }
+
 }
 

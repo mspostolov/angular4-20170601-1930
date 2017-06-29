@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule, JsonpModule } from '@angular/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MdButtonModule } from '@angular/material';
 import { RouterModule, Routes, Route } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -18,37 +19,9 @@ import { MailService } from './mail.service';
 import { UserService } from './user.service';
 import { MailComponent } from './mail/mail.component';
 import { UserComponent } from './user/user.component';
-
-const routes: Route[] = [
-  { path: '', redirectTo: '/mails', pathMatch: 'full' },
-  {
-    path: 'login',
-    data: {title: 'Login'},
-    component: LoginComponent,
-  }, {
-    path: 'users',
-    data: {title: 'Users'},
-    canActivate: [AuthGuard],
-    component: UsersListComponent,
-    children: [{
-      path: 'users/:id',
-      data: {title: 'Users'},
-      canActivate: [AuthGuard],
-      component: UserComponent
-    }]
-  }, {
-    path: 'mails',
-    data: {title: 'Mails'},
-    canActivate: [AuthGuard],
-    component: MailsListComponent,
-    children: [{
-      path: 'mails/:id',
-      data: {title: 'Mails'},
-      canActivate: [AuthGuard],
-      component: MailComponent
-    }]
-  }
-];
+import { UserFormComponent } from './user-form/user-form.component';
+import { routes } from "./app.routes";
+import { EmailValidatorDirective } from './email-validator.directive';
 
 
 @NgModule({
@@ -60,7 +33,9 @@ const routes: Route[] = [
     UsersListComponent,
     LoginComponent,
     MailComponent,
-    UserComponent
+    UserComponent,
+    UserFormComponent,
+    EmailValidatorDirective
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -68,7 +43,8 @@ const routes: Route[] = [
     HttpModule,
     JsonpModule,
     BrowserAnimationsModule,
-    MdButtonModule
+    MaterialModule,
+    FormsModule
   ],
   providers: [
     WikiSearchService,
