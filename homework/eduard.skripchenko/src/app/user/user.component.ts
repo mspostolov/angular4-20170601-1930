@@ -3,25 +3,29 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 
 import { DataService } from 'app/services/data.service';
-import { Email } from 'app/models/email';
+import { User } from 'app/models/user';
 
 @Component({
-    selector: 'app-mail-details',
-    templateUrl: './mail-details.component.html',
-    styleUrls: ['./mail-details.component.css'],
+    selector: 'app-user',
+    templateUrl: './user.component.html',
+    styleUrls: ['./user.component.css'],
     providers: [ DataService ]
 })
-export class MailDetailsComponent implements OnInit, OnDestroy {
-    private emailId: number;
-    private email: Email;
+export class UserComponent implements OnInit, OnDestroy {
+    private userId: number;
+    private user: User;
     private subscription: Subscription;
+
+    onSubmit(): void {
+        alert('Submit!');
+    }
 
     constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
     ngOnInit() {
         this.subscription = this.route.params.subscribe(params => {
-            this.emailId = +params['id'];
-            this.email = this.dataService.getEmail(this.emailId);
+            this.userId = +params['id'];
+            this.user = this.dataService.getUser(this.userId);
         });
     }
 
