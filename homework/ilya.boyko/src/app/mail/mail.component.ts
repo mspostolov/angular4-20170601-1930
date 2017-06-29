@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 
 import { Mail } from '../mail';
+import { MailService } from '../mail.service';
 
 @Component({
   selector: 'app-mail',
@@ -9,11 +11,14 @@ import { Mail } from '../mail';
 })
 export class MailComponent implements OnInit {
 
-  @Input() mail: Mail;
+  mail: Mail;
 
-  constructor() { }
+  constructor(private _route: ActivatedRoute, private _mails: MailService) {}
 
   ngOnInit() {
+    this._route.params
+    .switchMap((params: Params) => this._mails.getMail(+params['id']))
+    .subscribe(mail => this.mail = mail);
   }
 
 }

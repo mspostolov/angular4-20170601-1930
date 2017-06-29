@@ -11,6 +11,7 @@ import { User } from '../user';
 export class UsersListComponent implements OnInit {
 
   users: User[];
+
   constructor(private _users: UserService) {
     this.users = this._users.all();
   }
