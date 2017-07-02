@@ -42,7 +42,8 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
-  public onSave({ value, valid }: { value: User, valid: boolean }) {
+  public onSave({ value, valid, errors }: { value: User, valid: boolean, errors: Object }) {
+    console.log(arguments[0].controls.firstName.errors);
     const contact = value;
     contact.id = this.contact.id;
     if (valid) {
@@ -73,19 +74,19 @@ export class ContactEditComponent implements OnInit {
     });
 
     // this.contactModel.valueChanges.subscribe(console.log);
-    // this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
+    this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
   }
 
   private _countryAsyncValidator(formControl: FormControl) {
     if(!formControl.value){
-      return Observable.of({ myAsyncValidator: { error: 'error message' } });
+      return Observable.of({ country: { error: 'Country field cannot be empty!' } });
     }
     return Observable.of(null);
   }
 
   private _uniqueEmail(formControl: FormControl) {
     if(this.contactsService && !this.contactsService.isEmailUnique(formControl.value)) {
-      return Observable.of({ myAsyncValidator: { error: 'error message' } });
+      return Observable.of({ uniqueEmail: { error: 'Email has to be unique!' } });
     }
     return Observable.of(null);
   }

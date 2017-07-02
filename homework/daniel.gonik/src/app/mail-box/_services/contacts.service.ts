@@ -37,9 +37,7 @@ export class ContactsService {
   }
 
   isEmailUnique(email) {
-    return setTimeout(() => {
-      return !this._contacts.find(contact => contact.email === email);
-    }, 100);
+    return !this._contacts.find(contact => contact.email === email);
   }
 
   _getFromCache() {

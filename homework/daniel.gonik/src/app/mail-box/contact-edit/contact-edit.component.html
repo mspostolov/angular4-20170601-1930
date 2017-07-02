@@ -1,3 +1,7 @@
+<md-card *ngIf="!isLoading && !contactModel?.valid" class="errors-card">
+  The form has errors
+</md-card>
+
 <form (ngSubmit)="onSave(contactModel)" [formGroup]="contactModel" *ngIf="!isLoading">
   <md-input-container class="half-width">
     <input mdInput formControlName="firstName" autofocus>
