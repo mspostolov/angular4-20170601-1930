@@ -39,7 +39,7 @@ export class UserService {
   isUniqueField(fieldName: string, value: string) {
     let valid: any;
 
-    console.log(this.users);
+    console.log(this.users); // always undefined, how to use already existing service data
 
     return new Observable(observer => {
       if (this.users) {

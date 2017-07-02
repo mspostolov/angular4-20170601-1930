@@ -38,13 +38,18 @@ function isUnique(email: string, userService: UserService) {
       multi: true
     },
     UserService
+    // , {
+    //   provide: UserService,
+    //   useExisting: UserService
+    // }
   ]
 })
 export class EmailValidationDirective implements Validator {
   constructor(private userService: UserService) {}
 
   validate(control: FormControl): Observable<{ [key: string]: any }> | any {
-    return hasDotCom(control.value);
-  }
+    // return hasDotCom(control.value);
 
+    return isUnique(control.value, this.userService);
+  }
 }
