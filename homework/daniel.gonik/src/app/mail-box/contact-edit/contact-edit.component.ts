@@ -4,7 +4,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/pluck'
+import 'rxjs/add/operator/pluck';
+import 'rxjs/add/operator/startWith';
+import 'rxjs/add/operator/map';
 
 import { ContactsService } from '../_services/contacts.service';
 import { User } from '../../_models/user';
@@ -19,6 +21,8 @@ export class ContactEditComponent implements OnInit {
   public contact;
   public contactModel: FormGroup;
   public isLoading: Boolean = true;
+  public countries;
+  public filteredCountries: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -28,6 +32,7 @@ export class ContactEditComponent implements OnInit {
     public snackBar: MdSnackBar
   ) {
     this.contact = new User();
+    this.countries = this.contactsService.getCountries();
   }
 
   ngOnInit() {
@@ -74,6 +79,16 @@ export class ContactEditComponent implements OnInit {
 
     // this.contactModel.valueChanges.subscribe(console.log);
     this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
+    this.filteredCountries = this.contactModel.valueChanges
+      .pluck('country')
+      .startWith(null)
+      .map(search => this.filterCountries(search));
+  }
+
+  filterCountries(val) {
+    return val
+      ? this.countries.filter(s => s.toLowerCase().indexOf(val.toLowerCase()) === 0)
+      : this.countries;
   }
 
   private _countryAsyncValidator(formControl: FormControl) {

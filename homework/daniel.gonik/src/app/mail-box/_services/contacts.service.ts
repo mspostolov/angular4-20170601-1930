@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import { countries } from '../../_data/countries';
+
 @Injectable()
 export class ContactsService {
 
@@ -20,6 +22,10 @@ export class ContactsService {
 
   getUserById(id) {
     return this._getFromCacheById(id);
+  }
+
+  getCountries() {
+    return countries.map(country => country.code);
   }
 
   saveContact(contact) {

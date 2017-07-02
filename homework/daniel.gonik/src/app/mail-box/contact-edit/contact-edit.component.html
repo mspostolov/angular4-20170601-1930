@@ -23,9 +23,19 @@
   </div>
 
   <md-input-container class="half-width">
-    <input mdInput formControlName="country">
+    <input mdInput [mdAutocomplete]="auto" formControlName="country">
     <md-hint align="start" class="text-muted">Country</md-hint>
   </md-input-container>
+
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let country of filteredCountries | async" [value]="country">
+      {{ country }}
+    </md-option>
+  </md-autocomplete>
+  <!-- <md-input-container class="half-width">
+    <input mdInput formControlName="country">
+    <md-hint align="start" class="text-muted">Country</md-hint>
+  </md-input-container> -->
   <div class="error-msg" *ngIf="contactModel.get('country').hasError('country') && contactModel.get('country').touched">
     Country is required
   </div>

@@ -21,6 +21,7 @@ import {
   MdProgressSpinnerModule,
   MdTooltipModule,
   MdDatepickerModule,
+  MdAutocompleteModule,
   MdSnackBarModule,
   MdIconModule,
   StyleModule
@@ -88,6 +89,7 @@ import { routes } from './app.routes';
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdDatepickerModule,
+    MdAutocompleteModule,
     MdSnackBarModule,
     MdIconModule,
     StyleModule,
