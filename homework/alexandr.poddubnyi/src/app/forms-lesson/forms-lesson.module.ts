@@ -6,6 +6,7 @@ import { UserService } from 'app/users-currency/user.service';
 import { FormsLessonRoutingModule } from 'app/forms-lesson/forms-lesson-routing.module';
 import { FormsLessonComponent } from './forms-lesson.component';
 import { FormsModule } from '@angular/forms';
+import { EmailValidationDirective } from './shared/email-validation.directive';
 
 @NgModule({
   imports: [
@@ -13,7 +14,7 @@ import { FormsModule } from '@angular/forms';
     FormsLessonRoutingModule,
     FormsModule
   ],
-  declarations: [UsersListComponent, UserFormComponent, FormsLessonComponent],
+  declarations: [UsersListComponent, UserFormComponent, FormsLessonComponent, EmailValidationDirective],
   providers: [UserService]
 })
 export class FormsLessonModule { }

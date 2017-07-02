@@ -17,7 +17,7 @@ export class UserService {
   getUsers(): Observable<IUser[]> {
     if (!this.users) {
       return this.http.get(this.apiUrl)
-        .map(res =>  res.json())
+        .map(res => res.json())
         .map((users) => {
           users.map((user) => user.email = 'example@gmail.com');
           return users;
@@ -26,14 +26,32 @@ export class UserService {
         .catch(this.handleError);
     } else {
       return new Observable(observer => {
-          observer.next(this.users);
-        });
+        observer.next(this.users);
+      });
     }
   }
 
   updateUser(index, user) {
     this.users[index] = user;
     return user;
+  }
+
+  isUniqueField(fieldName: string, value: string) {
+    let isValid: boolean;
+
+    if (this.users) {
+      for (const user of this.users) {
+        if (user[fieldName] === value) {
+          break;
+        }
+      }
+    } else {
+      isValid = false;
+    }
+
+    return new Observable(observer => {
+      observer.next(isValid);
+    });
   }
 
   private handleError(error: any) {
