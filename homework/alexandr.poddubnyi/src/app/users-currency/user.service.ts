@@ -37,21 +37,24 @@ export class UserService {
   }
 
   isUniqueField(fieldName: string, value: string) {
-    let isValid: boolean;
+    let valid: any;
 
-    if (this.users) {
-      for (const user of this.users) {
-        if (user[fieldName] === value) {
-          break;
-        }
-      }
-    } else {
-      isValid = false;
-    }
+    console.log(this.users);
 
     return new Observable(observer => {
-      observer.next(isValid);
-    });
+      if (this.users) {
+        for (const user of this.users) {
+          if (user[fieldName] === value) {
+            valid = { asyncInvalid: true };
+            break;
+          }
+        }
+      }
+
+      valid = valid || null;
+
+      observer.next(valid);
+    }).debounceTime(1000).first();
   }
 
   private handleError(error: any) {

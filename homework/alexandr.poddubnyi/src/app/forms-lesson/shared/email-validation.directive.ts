@@ -11,15 +11,18 @@ function minLengthValidation(control: FormControl) {
   return (control.value && control.value.length >= 3) ? null : { minLengthValidation: true };
 }
 
-function isUnique(email: string) {
-  console.log(email);
+function hasDotCom(email: string) {
   return new Observable(observer => {
     if (email.search('.com') === -1) {
-      observer.next({ asyncInvalid: true });
+      observer.next({ async_hasDotCom: true });
     } else {
       observer.next(null);
     }
   }).debounceTime(1000).first();
+}
+
+function isUnique(email: string, userService: UserService) {
+  return userService.isUniqueField('email', email);
 }
 
 @Directive({
@@ -38,14 +41,10 @@ function isUnique(email: string) {
   ]
 })
 export class EmailValidationDirective implements Validator {
-  // constructor(userService: UserService) {
-  //   this.v = isUnique(userService);
-  // }
-
-  constructor() {}
+  constructor(private userService: UserService) {}
 
   validate(control: FormControl): Observable<{ [key: string]: any }> | any {
-    return isUnique(control.value);
+    return hasDotCom(control.value);
   }
 
 }
