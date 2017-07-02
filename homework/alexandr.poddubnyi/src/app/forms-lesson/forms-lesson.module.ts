@@ -5,11 +5,13 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserService } from 'app/users-currency/user.service';
 import { FormsLessonRoutingModule } from 'app/forms-lesson/forms-lesson-routing.module';
 import { FormsLessonComponent } from './forms-lesson.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsLessonRoutingModule
+    FormsLessonRoutingModule,
+    FormsModule
   ],
   declarations: [UsersListComponent, UserFormComponent, FormsLessonComponent],
   providers: [UserService]

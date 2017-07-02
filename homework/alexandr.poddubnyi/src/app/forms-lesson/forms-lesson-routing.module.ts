@@ -6,11 +6,11 @@ import { UserFormComponent } from 'app/forms-lesson/user-form/user-form.componen
 
 const routes: Routes = [
    {
-    path: '',
+    path: 'forms-lesson',
     component: FormsLessonComponent,
-    // children: [
-    //   { path: 'user/:index', component: UserFormComponent },
-    // ]
+    children: [
+      { path: 'user/:index', component: UserFormComponent },
+    ]
   }
 ];
 

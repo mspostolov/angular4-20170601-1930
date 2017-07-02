@@ -15,10 +15,25 @@ export class UserService {
   constructor(private http: Http) { }
 
   getUsers(): Observable<IUser[]> {
-    return this.http.get(this.apiUrl)
-      .map(res => res.json())
-      .map(users => this.users = users)
-      .catch(this.handleError);
+    if (!this.users) {
+      return this.http.get(this.apiUrl)
+        .map(res =>  res.json())
+        .map((users) => {
+          users.map((user) => user.email = 'example@gmail.com');
+          return users;
+        })
+        .map(users => this.users = users)
+        .catch(this.handleError);
+    } else {
+      return new Observable(observer => {
+          observer.next(this.users);
+        });
+    }
+  }
+
+  updateUser(index, user) {
+    this.users[index] = user;
+    return user;
   }
 
   private handleError(error: any) {
