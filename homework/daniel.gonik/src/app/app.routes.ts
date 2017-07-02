@@ -65,20 +65,25 @@ export const routes: Route[] = [
       },
       {
         path: 'contacts',
-        component: ContactsComponent,
-        resolve: {
-          contacts: ContactsResolver
-        },
-        data: {
-          title: 'Contacts'
-        }
-      },
-      {
-        path: 'contact/:contactId',
-        component: ContactViewComponent,
-        data: {
-          title: 'Contact view'
-        }
+        children: [
+          {
+            path: '',
+            component: ContactsComponent,
+            resolve: {
+              contacts: ContactsResolver
+            },
+            data: {
+              title: 'Contacts list'
+            }
+          },
+          {
+            path: ':contactId',
+            component: ContactViewComponent,
+            data: {
+              title: 'Contact view'
+            }
+          },
+        ]
       },
       {
         path: 'wiki',
