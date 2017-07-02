@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule, JsonpModule } from "@angular/http";
 import { ReactiveFormsModule } from "@angular/forms";
@@ -23,6 +24,7 @@ import { MailBoxModule } from "./mail-box/mail-box.module";
 import { UsersModule } from './users/users.module';
 import { UserService } from './users/user.service';
 import { CurrencyModule } from './currency/currency.module';
+import {routes} from "./app.routes";
 
 @NgModule({
   declarations: [
@@ -39,7 +41,8 @@ import { CurrencyModule } from './currency/currency.module';
     TimeAgoModule,
     UsersModule,
     CurrencyModule,
-    SearchModule
+    SearchModule,
+    RouterModule.forRoot(routes)
   ],
   exports: [],
   providers: [
