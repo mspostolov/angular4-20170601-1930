@@ -43,7 +43,6 @@ export class ContactEditComponent implements OnInit {
   }
 
   public onSave({ value, valid, errors }: { value: User, valid: boolean, errors: Object }) {
-    console.log(arguments[0].controls.firstName.errors);
     const contact = value;
     contact.id = this.contact.id;
     if (valid) {
