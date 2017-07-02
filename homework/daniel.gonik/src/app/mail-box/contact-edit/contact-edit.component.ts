@@ -1,6 +1,7 @@
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { MdSnackBar } from '@angular/material';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/pluck'
@@ -23,7 +24,8 @@ export class ContactEditComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private contactsService: ContactsService,
-    private _formBuilder: FormBuilder
+    private _formBuilder: FormBuilder,
+    public snackBar: MdSnackBar
   ) {
     this.contact = new User();
   }
@@ -46,10 +48,20 @@ export class ContactEditComponent implements OnInit {
     if (valid) {
       this.contactsService.saveContact(contact)
         .subscribe(
-          () => this.router.navigate(['/app/contacts']),
-          (error) => console.error(error)
+          () => {
+            this.router.navigate(['/app/contacts']);
+            // TODO: 'Undo' - action
+            this.snackBar.open('Contact changes has been saved!', '', {
+              duration: 2000
+            });
+          },
+          (error) => this.snackBar.open(error)
         );
     }
+  }
+
+  public undo() {
+    console.log('undo');
   }
 
   private _initFormGroup() {

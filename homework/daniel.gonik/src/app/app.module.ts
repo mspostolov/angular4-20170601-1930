@@ -21,6 +21,7 @@ import {
   MdProgressSpinnerModule,
   MdTooltipModule,
   MdDatepickerModule,
+  MdSnackBarModule,
   MdIconModule,
   StyleModule
 } from '@angular/material';
@@ -87,6 +88,7 @@ import { routes } from './app.routes';
     MdProgressSpinnerModule,
     MdTooltipModule,
     MdDatepickerModule,
+    MdSnackBarModule,
     MdIconModule,
     StyleModule,
     WikiModule
