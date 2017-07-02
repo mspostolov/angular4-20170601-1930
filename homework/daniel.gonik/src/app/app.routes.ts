@@ -6,6 +6,7 @@ import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { ContactViewComponent } from './mail-box/contact-view/contact-view.component';
+import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 
@@ -77,12 +78,19 @@ export const routes: Route[] = [
             }
           },
           {
-            path: ':contactId',
-            component: ContactViewComponent,
+            path: 'edit/:contactId',
+            component: ContactEditComponent,
             data: {
               title: 'Contact view'
             }
           },
+          {
+            path: 'view/:contactId',
+            component: ContactViewComponent,
+            data: {
+              title: 'Contact view'
+            }
+          }
         ]
       },
       {

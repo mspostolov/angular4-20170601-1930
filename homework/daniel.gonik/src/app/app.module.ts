@@ -31,6 +31,7 @@ import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { ContactViewComponent } from './mail-box/contact-view/contact-view.component';
+import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
 import { UserComponent } from './user/user.component';
@@ -50,7 +51,6 @@ import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 import { routes } from './app.routes';
-import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [

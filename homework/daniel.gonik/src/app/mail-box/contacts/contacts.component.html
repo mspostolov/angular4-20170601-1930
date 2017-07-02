@@ -3,15 +3,15 @@
   <md-card-header class="col-11 contact-details">
     <div md-card-avatar>
       <i class="material-icons contact-avatar-icon" *ngIf="!contact.photo"
-         [routerLink]="['/app/contacts', index]">
+         [routerLink]="['/app/contacts/view', index]">
         account_circle
       </i>
       <i class="contact-avatar-image" *ngIf="contact.photo"
          [style.backgroundImage]="'url(' + contact.photo + ')'"
-         [routerLink]="['/app/contacts', index]">
+         [routerLink]="['/app/contacts/view', index]">
       </i>
     </div>
-    <md-card-title [routerLink]="['/app/contacts', index]" class="contact-name">
+    <md-card-title [routerLink]="['/app/contacts/view', index]" class="contact-name">
       {{ contact.firstName + ' ' + contact.surname }}
     </md-card-title>
     <md-card-subtitle>{{ contact.country | uppercase }}</md-card-subtitle>
