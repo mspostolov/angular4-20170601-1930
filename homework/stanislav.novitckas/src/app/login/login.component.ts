@@ -12,7 +12,6 @@ export class LoginComponent implements OnInit {
 
   constructor(public authServiceService: AuthServiceService) { }
   public tryLogIn(loginPassword: NgForm) {
-    console.log('данные', loginPassword.value);
     this.authServiceService.authorize(loginPassword.value.login, loginPassword.value.password)
   }
   ngOnInit() {
