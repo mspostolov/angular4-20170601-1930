@@ -20,6 +20,7 @@ import {
   MdSlideToggleModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
+  MdDatepickerModule,
   MdIconModule,
   StyleModule
 } from '@angular/material';
@@ -34,7 +35,6 @@ import { ContactViewComponent } from './mail-box/contact-view/contact-view.compo
 import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
-import { UserComponent } from './user/user.component';
 
 import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
@@ -66,7 +66,6 @@ import { routes } from './app.routes';
     RelativeDatePipe,
     AutofocusDirective,
     SettingsComponent,
-    UserComponent,
     ContactEditComponent
   ],
   imports: [
@@ -87,6 +86,7 @@ import { routes } from './app.routes';
     MdSlideToggleModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
+    MdDatepickerModule,
     MdIconModule,
     StyleModule,
     WikiModule

@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router } from '@angular/router';
 
-import { UserComponent } from '../user/user.component';
+import { User } from '../_models/user';
 
 const users = [
-  new UserComponent('admin','admin'),
-  new UserComponent('root','12345')
+  new User('admin', 'admin', '', '', ''),
+  new User('root', '12345', '', '', '')
 ];
 
 @Injectable()

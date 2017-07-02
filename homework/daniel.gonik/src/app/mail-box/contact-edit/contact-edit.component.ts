@@ -1,4 +1,12 @@
+import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/of';
+import 'rxjs/add/operator/pluck'
+
+import { ContactsService } from '../_services/contacts.service';
+import { User } from '../../_models/user';
 
 @Component({
   selector: 'dg-contact-edit',
@@ -7,9 +15,64 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContactEditComponent implements OnInit {
 
-  constructor() { }
+  public contact;
+  public contactModel: FormGroup;
+  public isLoading: Boolean = true;
 
-  ngOnInit() {
+  constructor(
+    private route: ActivatedRoute,
+    private contactsService: ContactsService,
+    private _formBuilder: FormBuilder
+  ) {
+    this.contact = {
+      username: '',
+      password: '',
+      firstName: '',
+      surname: '',
+      country: ''
+    }
   }
 
+  ngOnInit() {
+    this.route.params.pluck('contactId').subscribe(contactId => {
+      const id = +contactId;
+      this.contactsService.getUserById(id)
+        .subscribe(contact => {
+          this.contact = contact;
+          this._initFormGroup();
+          this.isLoading = false;
+        });
+    });
+  }
+
+  public onSave({ value, valid }: { value: User, valid: boolean }) {
+    console.log(value, valid);
+  }
+
+  private _initFormGroup() {
+    this.contactModel = new FormGroup({
+      firstName: new FormControl(this.contact.firstName, [Validators.required, Validators.minLength(2)]),
+      surname: new FormControl(this.contact.surname, [Validators.required]),
+      country: new FormControl(this.contact.surname, null, countryAsyncValidator)
+    });
+
+    this.contactModel.valueChanges.subscribe(console.log);
+    this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
+  }
+
+}
+
+
+function someValidator(formControl: FormControl) {
+  if(!formControl.value){
+    return { someValidator : { error : 'error message'} }
+  }
+  return null;
+}
+
+function countryAsyncValidator(formControl: FormControl) {
+  if(!formControl.value){
+    return Observable.of({ myAsyncValidator : { error : 'error message'} });
+  }
+  return Observable.of(null);
 }
