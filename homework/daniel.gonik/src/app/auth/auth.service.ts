@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { User } from '../_models/user';
 
 const users = [
-  new User('admin', 'admin', '', '', ''),
-  new User('root', '12345', '', '', '')
+  new User(0, 'admin', 'admin', '', '', ''),
+  new User(1, 'root', '12345', '', '', '')
 ];
 
 @Injectable()

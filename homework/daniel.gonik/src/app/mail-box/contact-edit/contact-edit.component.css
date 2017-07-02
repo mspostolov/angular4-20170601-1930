@@ -1,3 +1,7 @@
 form {
   padding: 20px;
 }
+
+md-input-container {
+  margin-bottom: 15px;
+}

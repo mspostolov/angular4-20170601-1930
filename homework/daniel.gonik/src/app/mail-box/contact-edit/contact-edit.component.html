@@ -1,11 +1,27 @@
-<form (ngSubmit)="onSave(contact)" [formGroup]="contactModel" *ngIf="!isLoading">
+<form (ngSubmit)="onSave(contactModel)" [formGroup]="contactModel" *ngIf="!isLoading">
   <md-input-container class="half-width">
-    <input mdInput formControlName="firstName">
+    <input mdInput formControlName="firstName" autofocus>
     <md-hint align="start" class="text-muted">First name</md-hint>
   </md-input-container>
+
   <md-input-container class="half-width">
     <input mdInput formControlName="surname">
     <md-hint align="start" class="text-muted">Last name</md-hint>
   </md-input-container>
-  <!--<h1>{{name.errors?.myValidator.error}}</h1>-->
+
+  <md-input-container class="half-width">
+    <input mdInput formControlName="country">
+    <md-hint align="start" class="text-muted">Country</md-hint>
+  </md-input-container>
+
+  <md-input-container class="half-width">
+    <input mdInput formControlName="email">
+    <md-hint align="start" class="text-muted">Email</md-hint>
+  </md-input-container>
+
+  <!-- <p>{{contactModel.errors | json}}</p> -->
+  <br>
+  <button md-raised-button color="info" type="submit" name="action">
+    SAVE
+  </button>
 </form>

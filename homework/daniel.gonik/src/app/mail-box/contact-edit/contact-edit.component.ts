@@ -1,6 +1,6 @@
 import { FormControl, FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/pluck'
@@ -21,16 +21,11 @@ export class ContactEditComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private contactsService: ContactsService,
     private _formBuilder: FormBuilder
   ) {
-    this.contact = {
-      username: '',
-      password: '',
-      firstName: '',
-      surname: '',
-      country: ''
-    }
+    this.contact = new User();
   }
 
   ngOnInit() {
@@ -46,33 +41,42 @@ export class ContactEditComponent implements OnInit {
   }
 
   public onSave({ value, valid }: { value: User, valid: boolean }) {
-    console.log(value, valid);
+    const contact = value;
+    contact.id = this.contact.id;
+    if (valid) {
+      this.contactsService.saveContact(contact)
+        .subscribe(
+          () => this.router.navigate(['/app/contacts']),
+          (error) => console.error(error)
+        );
+    }
   }
 
   private _initFormGroup() {
     this.contactModel = new FormGroup({
       firstName: new FormControl(this.contact.firstName, [Validators.required, Validators.minLength(2)]),
       surname: new FormControl(this.contact.surname, [Validators.required]),
-      country: new FormControl(this.contact.surname, null, countryAsyncValidator)
+      country: new FormControl(this.contact.country, null, this._countryAsyncValidator.bind(this)),
+      email: new FormControl(this.contact.email, null, this._uniqueEmail.bind(this))
     });
 
-    this.contactModel.valueChanges.subscribe(console.log);
-    this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
+    // this.contactModel.valueChanges.subscribe(console.log);
+    // this.contactModel.statusChanges.subscribe(() => console.log(this.contactModel.errors))
   }
 
-}
-
-
-function someValidator(formControl: FormControl) {
-  if(!formControl.value){
-    return { someValidator : { error : 'error message'} }
+  private _countryAsyncValidator(formControl: FormControl) {
+    if(!formControl.value){
+      return Observable.of({ myAsyncValidator: { error: 'error message' } });
+    }
+    return Observable.of(null);
   }
-  return null;
-}
 
-function countryAsyncValidator(formControl: FormControl) {
-  if(!formControl.value){
-    return Observable.of({ myAsyncValidator : { error : 'error message'} });
+  private _uniqueEmail(formControl: FormControl) {
+    if(this.contactsService && !this.contactsService.isEmailUnique(formControl.value)) {
+      return Observable.of({ myAsyncValidator: { error: 'error message' } });
+    }
+    return Observable.of(null);
   }
-  return Observable.of(null);
+
+
 }
