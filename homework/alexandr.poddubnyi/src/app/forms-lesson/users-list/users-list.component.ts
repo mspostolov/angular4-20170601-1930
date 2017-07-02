@@ -24,4 +24,7 @@ export class UsersListComponent implements OnInit {
     this.router.navigate(['user', index], { relativeTo: this.activatedRoute });
   }
 
+  editUserReactive(index: number) {
+    this.router.navigate(['user-reactive', index], { relativeTo: this.activatedRoute });
+  }
 }

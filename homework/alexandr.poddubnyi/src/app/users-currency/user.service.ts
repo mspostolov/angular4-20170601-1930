@@ -37,23 +37,20 @@ export class UserService {
   }
 
   isUniqueField(fieldName: string, value: string) {
-    let valid: any;
 
-    console.log(this.users); // always undefined, how to use already existing service data
+    // console.log(this.users); // always undefined, how to use already existing service data
 
     return new Observable(observer => {
-      if (this.users) {
-        for (const user of this.users) {
-          if (user[fieldName] === value) {
-            valid = { asyncInvalid: true };
-            break;
-          }
+      for (const user of this.users) {
+        if (user[fieldName] === value) {
+          observer.next(false);
+          observer.complete();
+          break;
         }
       }
 
-      valid = valid || null;
+      observer.next(true);
 
-      observer.next(valid);
     }).debounceTime(1000).first();
   }
 
