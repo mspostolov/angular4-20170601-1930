@@ -1,7 +1,7 @@
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { WikiModule } from './wiki/wiki.module';
@@ -50,6 +50,7 @@ import { AuthorsResolver } from './_resolves/authors.resolver';
 import { ContactsResolver } from './_resolves/contacts.resolver';
 
 import { routes } from './app.routes';
+import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 
 @NgModule({
   declarations: [
@@ -65,11 +66,13 @@ import { routes } from './app.routes';
     RelativeDatePipe,
     AutofocusDirective,
     SettingsComponent,
-    UserComponent
+    UserComponent,
+    ContactEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpModule,
     BrowserAnimationsModule,
