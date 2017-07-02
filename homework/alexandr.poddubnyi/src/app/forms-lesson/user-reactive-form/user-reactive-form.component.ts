@@ -18,7 +18,6 @@ export class UserReactiveFormComponent implements OnInit {
   user: IUser;
   userIndex: string;
   userForm: FormGroup;
-  validFunc: Function;
 
   constructor(private activatedRoute: ActivatedRoute,
               private userService: UserService,
@@ -27,13 +26,11 @@ export class UserReactiveFormComponent implements OnInit {
   ngOnInit() {
     this.getUserData();
 
-    this.validFunc = this.customAsyncValidator.bind(this);
-
     this.userForm = this.fb.group({
       firstName: ['', Validators.required],
       surname: ['', [Validators.required]],
       country: ['', [Validators.required]],
-      email: ['', [Validators.required], this.validFunc],
+      email: ['', [Validators.required], this.customAsyncValidator.bind(this)],
     });
   }
 
