@@ -36,8 +36,8 @@ export class ContactsService {
     });
   }
 
-  isEmailUnique(email) {
-    return !this._contacts.find(contact => contact.email === email);
+  isEmailUnique(email, id) {
+    return !this._contacts.find(contact => contact.email === email && contact.id !== id);
   }
 
   _getFromCache() {
@@ -51,7 +51,10 @@ export class ContactsService {
     return this.http.get('https://learn.javascript.ru/courses/groups/api/participants?key=1fxf2pg')
       .map(response => {
         this._contacts = response.json();
-        this._contacts.forEach((user, index) => user.id = index);
+        this._contacts.forEach((user, index) => {
+          user.id = index;
+          user.email = `test${index}@email.com`;
+        });
         return Object.assign([], this._contacts);
       });
   }

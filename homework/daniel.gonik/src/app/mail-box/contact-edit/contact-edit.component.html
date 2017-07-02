@@ -1,4 +1,4 @@
-<md-card *ngIf="!isLoading && !contactModel.valid" class="errors-card">
+<md-card *ngIf="!isLoading && !contactModel.valid && contactModel.touched" class="errors-card">
   The form has errors
 </md-card>
 
@@ -36,6 +36,9 @@
   </md-input-container>
   <div class="error-msg" *ngIf="contactModel.get('email').hasError('uniqueEmail') && contactModel.get('email').touched">
     Email should be unique
+  </div>
+  <div class="error-msg" *ngIf="contactModel.get('email').hasError('email') && contactModel.get('email').touched">
+    Incorrect email format
   </div>
 
   <br>

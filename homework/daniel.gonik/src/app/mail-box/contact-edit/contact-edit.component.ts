@@ -69,7 +69,7 @@ export class ContactEditComponent implements OnInit {
       firstName: new FormControl(this.contact.firstName, [Validators.required, Validators.minLength(2)]),
       surname: new FormControl(this.contact.surname, [Validators.required]),
       country: new FormControl(this.contact.country, null, this._countryAsyncValidator.bind(this)),
-      email: new FormControl(this.contact.email, null, this._uniqueEmail.bind(this))
+      email: new FormControl(this.contact.email, Validators.email, this._uniqueEmail.bind(this))
     });
 
     // this.contactModel.valueChanges.subscribe(console.log);
@@ -84,7 +84,7 @@ export class ContactEditComponent implements OnInit {
   }
 
   private _uniqueEmail(formControl: FormControl) {
-    if(this.contactsService && !this.contactsService.isEmailUnique(formControl.value)) {
+    if(this.contactsService && !this.contactsService.isEmailUnique(formControl.value, this.contact.id)) {
       return Observable.of({ uniqueEmail: { error: 'Email has to be unique!' } });
     }
     return Observable.of(null);
