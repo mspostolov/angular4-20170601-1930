@@ -1,5 +1,6 @@
 import {Component, DoCheck, OnChanges, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UserServiceService} from "./user-service.service";
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,13 @@ import {Router} from "@angular/router";
 export class AppComponent implements OnInit, DoCheck {
   public loginPage: boolean = false;
   title = 'app';
-  constructor(public router: Router){}
+  constructor(public router: Router, public userService: UserServiceService){}
   ngOnInit() {
+    this.userService.getUserList()
+      .subscribe();
   }
 
   ngDoCheck() {
-    console.log('ngDoCheck', this.router.url);
     this.loginPage = this.router.url === '/login';
   }
 }

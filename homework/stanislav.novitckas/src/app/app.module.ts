@@ -25,13 +25,14 @@ import {AuthGuardServiceService} from "./auth-guard-service.service";
 import {AuthServiceService} from "./auth-service.service";
 import {FormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
+import { UserCardDetailComponent } from './user-list/user-card-detail/user-card-detail.component';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'mail-box', component: MailboxComponent, canActivate: [AuthGuardServiceService]},
   {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
-  {path: 'user-list/:id', component: UserListComponent, canActivate: [AuthGuardServiceService]},
+  {path: 'user-list/:id', component: UserCardDetailComponent, canActivate: [AuthGuardServiceService]},
 ]
 
 @NgModule({
@@ -46,7 +47,8 @@ const routes: Route[] = [
     SearchComponent,
     WikiSearchComponent,
     LoginComponent,
-    DialogComponent
+    DialogComponent,
+    UserCardDetailComponent
   ],
   entryComponents: [DialogComponent],
   imports: [
