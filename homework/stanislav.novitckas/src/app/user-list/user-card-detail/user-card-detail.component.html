@@ -2,5 +2,14 @@
   <div>
     <img class="avatar" md-card-avatar src={{user.photo}}>
   </div>
-  asdfsgfwef32</md-card>
+  <fieldset [formGroup]="fullName">
+    <md-input-container>
+      <input formControlName="first" mdInput placeholder="Имя">
+    </md-input-container>
+    <md-input-container>
+      <input formControlName="last" mdInput placeholder="Фамилия">
+    </md-input-container>
+  </fieldset>
+  <button (click)="onSubmit()" md-raised-button>Сохранить</button>
+</md-card>
 

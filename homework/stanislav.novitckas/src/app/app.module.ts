@@ -23,7 +23,7 @@ import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthGuardServiceService} from "./auth-guard-service.service";
 import {AuthServiceService} from "./auth-service.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
 import { UserCardDetailComponent } from './user-list/user-card-detail/user-card-detail.component';
 
@@ -63,6 +63,7 @@ const routes: Route[] = [
     MdListModule,
     MdDialogModule,
     MdTabsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [

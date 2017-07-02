@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Location }                 from '@angular/common';
 import {UserServiceService} from "../../user-service.service";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-user-card-detail',
@@ -9,18 +10,39 @@ import {UserServiceService} from "../../user-service.service";
   styleUrls: ['./user-card-detail.component.css']
 })
 export class UserCardDetailComponent implements OnInit {
-  public user: {} = {
-    photo: ''
-  };
+  public user;
+  public firstName: FormControl;
+  public surname: FormControl;
+  public urlParam: number;
+  public fullName: FormGroup;
 
-  constructor(public route: ActivatedRoute, public userService: UserServiceService) { }
+  constructor(public route: ActivatedRoute, public userService: UserServiceService) {
+    this.user = {
+      photo: '',
+      firstName: '',
+      surname: ''
+    };
+    this.firstName = new FormControl(this.user.firstName);
+    this.surname = new FormControl(this.user.surname);
+    this.fullName = new FormGroup({
+      first: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)]),
+      last: new FormControl('', [Validators.required, Validators.minLength(3), Validators.maxLength(24)])
+    })
+  }
 
   ngOnInit() {
     this.route.paramMap
-      .subscribe((params: ParamMap) => {
-      this.user = this.userService.getUser(+params.get('id')) || {photo: ''};
-      console.log('detaildetail', this.user)
+      .switchMap((params: ParamMap) => {
+      this.urlParam = +params.get('id');
+        return this.userService.getUserList()
       })
+      .subscribe((data) => {
+        this.user = this.userService.getUser(this.urlParam);
+        this.fullName.setValue({first: this.user.firstName, last: this.user.surname})
+        this.firstName.setValue(this.user.firstName);
+        this.surname.setValue(this.user.surname);
+      });
   }
+  public onSubmit(){}
 
 }
