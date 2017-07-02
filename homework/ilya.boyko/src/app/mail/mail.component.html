@@ -1,15 +1,17 @@
-<p>
-  Title: {{ mail.title }}
-</p>
+<div *ngIf="mail">
+  <p>
+    Title: {{ mail.title }}
+  </p>
 
-<p>
-  From: {{ mail.from }}
-</p>
+  <p>
+    From: {{ mail.from }}
+  </p>
 
-<p>
-  To: {{ mail.to }}
-</p>
+  <p>
+    To: {{ mail.to }}
+  </p>
 
-<p>
-  Body: {{ mail.body }}
-</p>
+  <p>
+    Body: {{ mail.body }}
+  </p>
+</div>

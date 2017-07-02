@@ -12,7 +12,7 @@ export class AuthGuardService {
   }
 
   isAutnenticated() {
-    return localStorage.activated;
+    return localStorage.authenticated == "true";
   }
 
 }

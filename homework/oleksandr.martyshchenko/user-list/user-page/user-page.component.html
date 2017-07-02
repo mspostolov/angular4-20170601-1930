@@ -1,10 +1,19 @@
-<div>
-  <p *ngIf="!user">...loading</p>
-  <p *ngIf="error">error</p>
-  <div *ngIf="user">
-    <p>{{user.name}}</p>
-    <p>{{user.id}}</p>
-    <p>{{user.login}}</p>
-  </div>
-  <button type="button" (click)="goBack()">Back</button>
+<div *ngIf="user">
+  <p>{{user.surname}} {{user.name}}</p>
+  <p>{{user.email}}</p>
+  <form #f="ngForm" (ngSubmit)="updateInfo(f)">
+    <input #nameModel="ngModel" name="surname" type="text"
+      [ngModel]="user.surname" minlength="6" required
+    >
+    <input #surnameModel="ngModel" name="firstName" type="text"
+      [ngModel]="user.name" minlength="6" required
+    >
+    <input
+      emailValidator #emailModel="ngModel" name="email" type="email"
+      [ngModel]="user.email" (keyup)="checkEmailUnique(emailModel.value)"
+      [class.error]="!emailIsUnique" required
+    >
+    <input type="submit" value="update" [disabled]="!f.valid">
+  </form>
+  <button type="button" (click)="cancel()">cancel</button>
 </div>

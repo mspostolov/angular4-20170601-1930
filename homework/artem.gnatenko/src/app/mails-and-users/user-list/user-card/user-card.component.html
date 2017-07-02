@@ -11,5 +11,6 @@
     <h5>First Name : {{userCard.firstName}}</h5>
     <h5>Last Name : {{userCard.surname}}</h5>
     <h5>Country : {{userCard.country | countryfromISO}}</h5>
+    <a [routerLink]="'/mails-and-users/users-list/edit-user/'+userCard.id">Edit user</a>
   </div>
 </div>
