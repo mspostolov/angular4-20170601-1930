@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { JsonpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
 
@@ -17,7 +17,7 @@ import { AuthService } from './login/auth.service';
 import { UserEditComponent } from './user-list/user-edit/user-edit.component';
 
 
-import {UserEmailValidator} from './user-list/user-edit/user-email-validator';
+
 import { UserService } from './user-list/user.service';
 
 const appRoutes: Routes = [
@@ -45,14 +45,15 @@ const appRoutes: Routes = [
     MailListComponent,
     MailDetailsComponent,
     LoginComponent,
-    UserEditComponent,
-    UserEmailValidator
+    UserEditComponent
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     JsonpModule
   ],
   providers: [AuthGuardService, AuthService, UserService],
