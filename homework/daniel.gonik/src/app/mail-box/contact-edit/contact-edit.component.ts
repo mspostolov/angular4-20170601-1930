@@ -47,11 +47,10 @@ export class ContactEditComponent implements OnInit {
     });
   }
 
-  public onSave({ value, valid, errors }: { value: User, valid: boolean, errors: Object }) {
-    const contact = value;
-    contact.id = this.contact.id;
-    if (valid) {
-      this.contactsService.saveContact(contact)
+  public onSave() {
+    this.contactModel.value.id = this.contact.id;
+    if (this.contactModel.valid) {
+      this.contactsService.saveContact(this.contactModel.value)
         .subscribe(
           () => {
             this.router.navigate(['/app/contacts']);
