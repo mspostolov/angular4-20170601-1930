@@ -52,7 +52,8 @@
   </div>
 
   <br>
-  <button md-raised-button color="info" type="submit" name="action">
+  <button md-raised-button color="info" type="submit" name="save"
+          [disabled]="contactModel.invalid">
     SAVE
   </button>
 </form>
