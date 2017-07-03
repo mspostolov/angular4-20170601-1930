@@ -69,11 +69,11 @@ export class ContactEditComponent implements OnInit {
   }
 
   private _initFormGroup() {
-    this.contactModel = new FormGroup({
-      firstName: new FormControl(this.contact.firstName, [Validators.required, Validators.minLength(2)]),
-      surname: new FormControl(this.contact.surname, [Validators.required]),
-      country: new FormControl(this.contact.country, null, this._countryAsyncValidator.bind(this)),
-      email: new FormControl(this.contact.email, Validators.email, this._uniqueEmail.bind(this))
+    this.contactModel = this._formBuilder.group({
+      firstName: [this.contact.firstName, [Validators.required, Validators.minLength(2)]],
+      surname: [this.contact.surname, [Validators.required]],
+      country: [this.contact.country, null, this._countryAsyncValidator.bind(this)],
+      email: [this.contact.email, Validators.email, this._uniqueEmail.bind(this)]
     });
 
     // this.contactModel.valueChanges.subscribe(console.log);
