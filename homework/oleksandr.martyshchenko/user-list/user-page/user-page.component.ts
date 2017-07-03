@@ -23,6 +23,7 @@ export class UserPageComponent implements OnInit {
   emailInvalid: boolean;
   nameInvalid: boolean;
   surnameInvalid: boolean;
+  nameError: string = null;
 
   constructor(
     private router: Router,
@@ -53,6 +54,26 @@ export class UserPageComponent implements OnInit {
 
     this.userForm.controls.email.statusChanges
       .subscribe(status => this.emailInvalid = (status === 'VALID') ? false : true);
+
+    // ************ вопрос: можно ли делать так, как это сделано ниже?
+    // ************ есть ли пособ ставить интевралы и фильтры
+    // ************ на инпуты через сам валидатор?
+    // ************ ничего страшного в добавлении ошибок руками?
+
+    this.userForm.controls.name.valueChanges
+      .debounceTime(500)
+      .distinctUntilChanged()
+      .filter(val => val && val.length > 4)
+      .switchMap(value => this.userService.checkNameUnique(value, this.user.id))
+      .subscribe(res => {
+        if(res) {
+          this.nameError = 'name already exists';
+          this.nameInvalid = true;
+          this.userForm.controls.name.setErrors({error: 'name exists'});
+        } else {
+          this.nameError = null;
+        }
+      })
 
     this.userForm.controls.name.statusChanges
       .subscribe(status => this.nameInvalid = (status === 'VALID') ? false : true);
