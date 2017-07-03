@@ -44,10 +44,10 @@
     <input mdInput formControlName="email">
     <md-hint align="start" class="text-muted">Email</md-hint>
   </md-input-container>
-  <div class="error-msg" *ngIf="contactModel.get('email').hasError('uniqueEmail') && contactModel.get('email').touched">
+  <div class="error-msg" *ngIf="contactModel.get('email').hasError('uniqueEmail') && contactModel.get('email').invalid">
     Email should be unique
   </div>
-  <div class="error-msg" *ngIf="contactModel.get('email').hasError('email') && contactModel.get('email').touched">
+  <div class="error-msg" *ngIf="contactModel.get('email').hasError('email') && contactModel.get('email').invalid">
     Incorrect email format
   </div>
 
