@@ -1,7 +1,7 @@
 import 'hammerjs';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 import { WikiModule } from './wiki/wiki.module';
@@ -20,6 +20,9 @@ import {
   MdSlideToggleModule,
   MdProgressSpinnerModule,
   MdTooltipModule,
+  MdDatepickerModule,
+  MdAutocompleteModule,
+  MdSnackBarModule,
   MdIconModule,
   StyleModule
 } from '@angular/material';
@@ -31,9 +34,9 @@ import { MailListComponent } from './mail-box/mail-list/mail-list.component';
 import { MailViewComponent } from './mail-box/mail-view/mail-view.component';
 import { ContactsComponent } from './mail-box/contacts/contacts.component';
 import { ContactViewComponent } from './mail-box/contact-view/contact-view.component';
+import { ContactEditComponent } from './mail-box/contact-edit/contact-edit.component';
 import { WidgetComponent } from './wiki/widget/widget.component';
 import { SettingsComponent } from './mail-box/settings/settings.component';
-import { UserComponent } from './user/user.component';
 
 import { RelativeDatePipe } from './_pipes/relative-date.pipe';
 
@@ -65,11 +68,12 @@ import { routes } from './app.routes';
     RelativeDatePipe,
     AutofocusDirective,
     SettingsComponent,
-    UserComponent
+    ContactEditComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes),
     HttpModule,
     BrowserAnimationsModule,
@@ -84,6 +88,9 @@ import { routes } from './app.routes';
     MdSlideToggleModule,
     MdProgressSpinnerModule,
     MdTooltipModule,
+    MdDatepickerModule,
+    MdAutocompleteModule,
+    MdSnackBarModule,
     MdIconModule,
     StyleModule,
     WikiModule

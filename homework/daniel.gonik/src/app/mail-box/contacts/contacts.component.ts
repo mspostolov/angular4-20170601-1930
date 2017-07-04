@@ -22,7 +22,11 @@ export class ContactsComponent implements OnInit {
   }
 
   viewDetails(index) {
-    this.router.navigate(['/app/contact', index]);
+    this.router.navigate(['/app/contacts/view', index]);
+  }
+
+  edit(index) {
+    this.router.navigate(['/app/contacts/edit', index]);
   }
 
 }

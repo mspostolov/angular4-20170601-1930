@@ -1,0 +1,59 @@
+<md-card *ngIf="!isLoading && !contactModel.valid && contactModel.touched" class="errors-card">
+  The form has errors
+</md-card>
+
+<form (ngSubmit)="onSave(contactModel)" [formGroup]="contactModel" *ngIf="!isLoading">
+  <md-input-container class="half-width">
+    <input mdInput formControlName="firstName" autofocus>
+    <md-hint align="start" class="text-muted">First name</md-hint>
+  </md-input-container>
+  <div class="error-msg" *ngIf="contactModel.get('firstName').hasError('required') && contactModel.get('firstName').touched">
+    Name is required
+  </div>
+  <div class="error-msg" *ngIf="contactModel.get('firstName').hasError('minlength') && contactModel.get('firstName').touched">
+    Minimum of 2 characters
+  </div>
+
+  <md-input-container class="half-width">
+    <input mdInput formControlName="surname">
+    <md-hint align="start" class="text-muted">Last name</md-hint>
+  </md-input-container>
+  <div class="error-msg" *ngIf="contactModel.get('surname').hasError('required') && contactModel.get('surname').touched">
+    Surname is required
+  </div>
+
+  <md-input-container class="half-width">
+    <input mdInput [mdAutocomplete]="auto" formControlName="country">
+    <md-hint align="start" class="text-muted">Country</md-hint>
+  </md-input-container>
+
+  <md-autocomplete #auto="mdAutocomplete">
+    <md-option *ngFor="let country of filteredCountries | async" [value]="country">
+      {{ country }}
+    </md-option>
+  </md-autocomplete>
+  <!-- <md-input-container class="half-width">
+    <input mdInput formControlName="country">
+    <md-hint align="start" class="text-muted">Country</md-hint>
+  </md-input-container> -->
+  <div class="error-msg" *ngIf="contactModel.get('country').hasError('country') && contactModel.get('country').touched">
+    Country is required
+  </div>
+
+  <md-input-container class="half-width">
+    <input mdInput formControlName="email">
+    <md-hint align="start" class="text-muted">Email</md-hint>
+  </md-input-container>
+  <div class="error-msg" *ngIf="contactModel.get('email').hasError('uniqueEmail') && contactModel.get('email').invalid">
+    Email should be unique
+  </div>
+  <div class="error-msg" *ngIf="contactModel.get('email').hasError('email') && contactModel.get('email').invalid">
+    Incorrect email format
+  </div>
+
+  <br>
+  <button md-raised-button color="info" type="submit" name="save"
+          [disabled]="contactModel.invalid">
+    SAVE
+  </button>
+</form>

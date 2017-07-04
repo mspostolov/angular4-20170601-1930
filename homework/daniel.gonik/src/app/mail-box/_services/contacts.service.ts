@@ -2,18 +2,20 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
+import { countries } from '../../_data/countries';
+
 @Injectable()
 export class ContactsService {
 
-  private _cache = [];
+  private _contacts = [];
   constructor(private http: Http) {
-    if (!this._cache.length) {
+    if (!this._contacts.length) {
       this._fetchData();
     }
   }
 
   getUsers() {
-    return this._cache.length
+    return this._contacts.length
       ? this._getFromCache()
       : this._fetchData();
   }
@@ -22,9 +24,31 @@ export class ContactsService {
     return this._getFromCacheById(id);
   }
 
+  getCountries() {
+    return countries.map(country => country.code);
+  }
+
+  saveContact(contact) {
+    return Observable.create(observer => {
+      const index = this._contacts.findIndex(item => item.id === contact.id);
+      if (index !== -1) {
+        this._contacts[index] = contact;
+        observer.next(contact);
+        observer.complete();
+      } else {
+        observer.error({ error: 'wrong index' });
+        observer.complete();
+      }
+    });
+  }
+
+  isEmailUnique(email, id) {
+    return !this._contacts.find(contact => contact.email === email && contact.id !== id);
+  }
+
   _getFromCache() {
     return Observable.create(observer => {
-      observer.next(this._cache);
+      observer.next(this._contacts);
       observer.complete();
     });
   }
@@ -32,16 +56,19 @@ export class ContactsService {
   _fetchData() {
     return this.http.get('https://learn.javascript.ru/courses/groups/api/participants?key=1fxf2pg')
       .map(response => {
-        this._cache = response.json();
-        this._cache.forEach((user, index) => user.id = index);
-        return Object.assign([], this._cache);
+        this._contacts = response.json();
+        this._contacts.forEach((user, index) => {
+          user.id = index;
+          user.email = `test${index}@email.com`;
+        });
+        return Object.assign([], this._contacts);
       });
   }
 
   private _getFromCacheById(id) {
     return Observable.create(observer => {
-      if (this._cache.length) {
-        const cached = this._cache.find(user => user.id === id);
+      if (this._contacts.length) {
+        const cached = this._contacts.find(user => user.id === id);
         observer.next(cached);
         observer.complete();
       } else {
