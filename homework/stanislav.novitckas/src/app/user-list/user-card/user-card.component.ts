@@ -20,6 +20,7 @@ export class UserCardComponent implements OnInit, Input {
     ) { }
 
   ngOnInit() {
+    console.log('d12122d', this.user)
     this.route.paramMap
       .subscribe((data: ParamMap) => {
     });

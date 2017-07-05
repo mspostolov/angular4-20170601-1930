@@ -26,13 +26,23 @@ import {AuthServiceService} from "./auth-service.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
 import { UserCardDetailComponent } from './user-list/user-card-detail/user-card-detail.component';
+import { ChildrenTestComponent } from './user-list/children-test/children-test.component';
+import { PopupUserDetailComponent } from './user-list/popup-user-detail/popup-user-detail.component';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'mail-box', component: MailboxComponent, canActivate: [AuthGuardServiceService]},
-  {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
-  {path: 'user-list/:id', component: UserCardDetailComponent, canActivate: [AuthGuardServiceService]},
+  {
+    path: 'user-list',
+    component: UserListComponent,
+    canActivate: [AuthGuardServiceService],
+    children: [{
+      path: ':id',
+      component: ChildrenTestComponent
+    }]
+  },
+  // {path: 'user-list/:id', component: UserCardDetailComponent, canActivate: [AuthGuardServiceService]},
 ]
 
 @NgModule({
@@ -48,9 +58,15 @@ const routes: Route[] = [
     WikiSearchComponent,
     LoginComponent,
     DialogComponent,
+    UserCardDetailComponent,
+    ChildrenTestComponent,
+    PopupUserDetailComponent
+  ],
+  entryComponents: [
+    DialogComponent,
+    PopupUserDetailComponent,
     UserCardDetailComponent
   ],
-  entryComponents: [DialogComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
