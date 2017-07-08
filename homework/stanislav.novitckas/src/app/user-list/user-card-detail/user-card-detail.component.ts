@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Inject, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap, RouterModule} from '@angular/router';
 import { Location }                 from '@angular/common';
 import {UserServiceService} from "../../user-service.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MD_DIALOG_DATA} from "@angular/material";
 
 @Component({
   selector: 'app-user-card-detail',
@@ -16,7 +17,12 @@ export class UserCardDetailComponent implements OnInit {
   public urlParam: number;
   public fullName: FormGroup;
 
-  constructor(public router: RouterModule, public route: ActivatedRoute, public userService: UserServiceService) {
+  constructor(
+    public router: RouterModule,
+    public route: ActivatedRoute,
+    public userService: UserServiceService,
+    @Inject(MD_DIALOG_DATA) public data: any
+  ) {
     this.user = {
       photo: '',
       firstName: '',
@@ -31,20 +37,10 @@ export class UserCardDetailComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('рутеры',  this.route, this.router)
-    this.route.paramMap
-      .switchMap((params: ParamMap) => {
-        this.urlParam = +params.get('id');
-        console.log('urlParam', this.urlParam, params)
-        return this.userService.getUserList()
-      })
-      .subscribe((data) => {
-        this.user = this.userService.getUser(this.urlParam);
-        console.log('currentUser', this.user)
-        this.fullName.setValue({first: this.user.firstName, last: this.user.surname})
-        this.firstName.setValue(this.user.firstName);
-        this.surname.setValue(this.user.surname);
-      });
+    this.user = this.userService.getUser(this.data);
+    this.fullName.setValue({first: this.user.firstName, last: this.user.surname})
+    this.firstName.setValue(this.user.firstName);
+    this.surname.setValue(this.user.surname);
   }
   public onSubmit(){}
 

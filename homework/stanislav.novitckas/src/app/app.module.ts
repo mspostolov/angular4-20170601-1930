@@ -27,7 +27,6 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
 import { UserCardDetailComponent } from './user-list/user-card-detail/user-card-detail.component';
 import { ChildrenTestComponent } from './user-list/children-test/children-test.component';
-import { PopupUserDetailComponent } from './user-list/popup-user-detail/popup-user-detail.component';
 
 const routes: Route[] = [
   {path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -60,11 +59,9 @@ const routes: Route[] = [
     DialogComponent,
     UserCardDetailComponent,
     ChildrenTestComponent,
-    PopupUserDetailComponent
   ],
   entryComponents: [
     DialogComponent,
-    PopupUserDetailComponent,
     UserCardDetailComponent
   ],
   imports: [

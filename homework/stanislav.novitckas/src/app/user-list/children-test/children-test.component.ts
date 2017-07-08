@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {MdDialog} from "@angular/material";
 import {PopupUserDetailComponent} from "../popup-user-detail/popup-user-detail.component";
 import {UserCardDetailComponent} from "../user-card-detail/user-card-detail.component";
-import {ActivatedRoute, ActivatedRouteSnapshot, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap} from "@angular/router";
+import {UserServiceService} from "../../user-service.service";
 
 @Component({
   selector: 'app-children-test',
@@ -10,19 +11,26 @@ import {ActivatedRoute, ActivatedRouteSnapshot, ParamMap} from "@angular/router"
   styleUrls: ['./children-test.component.css']
 })
 export class ChildrenTestComponent implements OnInit {
-
-  constructor(public dialog: MdDialog, public route: ActivatedRoute, public snapShot: ActivatedRouteSnapshot) { }
+  public urlParam;
+  constructor(
+    public dialog: MdDialog,
+    public route: ActivatedRoute,
+    public userService: UserServiceService
+  ) { }
 //Здесь закончил!!!
   ngOnInit() {
-    console.log('snapShot', this.snapShot);
+    this.route.params
+      .subscribe((data) => console.log('asdasdas', data))
+    // console.log('snapShot', this.snapShot);
     this.route.paramMap
-      .switchMap((params: ParamMap) => {
+      .subscribe((params: ParamMap) => {
         this.urlParam = +params.get('id');
-        console.log('urlParam', this.urlParam, params)
-        return this.userService.getUserList()
+        console.log('urlParamChildrenTest', this.urlParam, params)
+        this.dialog.open(UserCardDetailComponent, {
+          data: this.urlParam
+        })
       })
-    this.dialog.open(UserCardDetailComponent, {
-    })
+
   }
 
 }
