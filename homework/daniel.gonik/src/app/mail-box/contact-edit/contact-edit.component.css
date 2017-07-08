@@ -1,0 +1,18 @@
+form {
+  padding: 20px;
+}
+
+md-input-container {
+  margin-bottom: 15px;
+}
+
+.errors-card {
+  background: rgba(169, 68, 66, .3);
+  color: white;
+}
+
+.error-msg {
+  color: red;
+  font-size: 12px;
+  margin: -5px 0;
+}
