@@ -15,20 +15,33 @@ import {CurrencyConverterService} from "./currency-converter.service";
 import { SearchComponent } from './wiki-search/search/search.component';
 import { WikiSearchComponent } from './wiki-search/wiki-search.component';
 import { LoginComponent } from './login/login.component';
-import {MdButtonModule, MdDialogModule, MdInputModule, MdTabsModule} from "@angular/material";
+import {
+  MdButtonModule, MdCardModule, MdDialogModule, MdInputModule, MdListModule,
+  MdTabsModule
+} from "@angular/material";
 import {Route, RouterModule} from "@angular/router";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {AuthGuardServiceService} from "./auth-guard-service.service";
 import {AuthServiceService} from "./auth-service.service";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DialogComponent } from './dialog/dialog.component';
+import { UserCardDetailComponent } from './user-list/user-card-detail/user-card-detail.component';
+import { ChildrenTestComponent } from './user-list/children-test/children-test.component';
 
 const routes: Route[] = [
-  {path: '', component: LoginComponent},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'mail-box', component: MailboxComponent, canActivate: [AuthGuardServiceService]},
-  {path: 'user-list', component: UserListComponent, canActivate: [AuthGuardServiceService]},
-  {path: 'user-list/popup', component: UserListComponent, canActivate: [AuthGuardServiceService]},
+  {
+    path: 'user-list',
+    component: UserListComponent,
+    canActivate: [AuthGuardServiceService],
+    children: [{
+      path: ':id',
+      component: ChildrenTestComponent
+    }]
+  },
+  // {path: 'user-list/:id', component: UserCardDetailComponent, canActivate: [AuthGuardServiceService]},
 ]
 
 @NgModule({
@@ -43,9 +56,14 @@ const routes: Route[] = [
     SearchComponent,
     WikiSearchComponent,
     LoginComponent,
-    DialogComponent
+    DialogComponent,
+    UserCardDetailComponent,
+    ChildrenTestComponent,
   ],
-  entryComponents: [DialogComponent],
+  entryComponents: [
+    DialogComponent,
+    UserCardDetailComponent
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -54,8 +72,11 @@ const routes: Route[] = [
     MdInputModule,
     MdButtonModule,
     FormsModule,
+    MdCardModule,
+    MdListModule,
     MdDialogModule,
     MdTabsModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [
