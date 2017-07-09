@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {MdDialog} from "@angular/material";
 import {DialogComponent} from "../../dialog/dialog.component";
-import {Router} from "@angular/router";
+import {Router, ActivatedRoute, ParamMap} from "@angular/router";
+import 'rxjs/add/operator/switchMap';
 
 
 @Component({
@@ -11,9 +12,18 @@ import {Router} from "@angular/router";
 })
 export class UserCardComponent implements OnInit, Input {
   @Input() user;
-  constructor(public dialog: MdDialog, public router: Router) { }
+  @Input() index;
+  constructor(
+    public dialog: MdDialog,
+    public router: Router,
+    public route: ActivatedRoute,
+    ) { }
 
   ngOnInit() {
+    console.log('d12122d', this.user)
+    this.route.paramMap
+      .subscribe((data: ParamMap) => {
+    });
   }
 
   public openPopUp() {
@@ -22,6 +32,9 @@ export class UserCardComponent implements OnInit, Input {
       height: '400px',
       width: '600px',
     })
+  }
+  public openUserCard(index) {
+    this.router.navigate(['/user-list', index])
   }
 
 }

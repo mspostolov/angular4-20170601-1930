@@ -6,6 +6,9 @@ import {AuthServiceService} from "./auth-service.service";
 export class AuthGuardServiceService implements CanActivate{
   constructor(public authServiceService: AuthServiceService, public router: Router) { }
   canActivate():boolean {
-    return this.authServiceService.loggedIn;
+    if (sessionStorage.getItem('loggedIn') === 'true') {return true}
+    else {
+      return this.authServiceService.loggedIn;
+    }
   }
 }
