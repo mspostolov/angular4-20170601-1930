@@ -29,6 +29,7 @@ git
 
 10.07
 [имя] [github] [github-pages]
+Cаша Мартищенко https://github.com/Ketler13/ng-glog https://ketler-ng-glog.herokuapp.com
 
 13.07
 [имя] [github] [github-pages]
