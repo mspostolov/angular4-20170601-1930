@@ -33,7 +33,7 @@ Cаша Мартищенко https://github.com/Ketler13/ng-glog https://ketler-
 
 13.07
 [имя] [github] [github-pages]
-
+Никита Дырдин   https://github.com/r3dfurry/test-mail-client.git https://r3dfurry.github.io/test-mail-client
 
 Как задавать вопрос
 - групповой чат
