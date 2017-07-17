@@ -1,0 +1,4 @@
+<md-list>
+  <app-user-card *ngFor="let user of users; let i = index" [user]="user" [index]="i"></app-user-card>
+</md-list>
+<router-outlet></router-outlet>

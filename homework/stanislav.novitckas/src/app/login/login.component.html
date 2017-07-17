@@ -1,0 +1,15 @@
+<md-card class="login-card">
+  <form (ngSubmit)="tryLogIn(authForm)" #authForm="ngForm">
+  <div>
+    <md-input-container>
+      <input ngModel name="login" mdInput placeholder="Логин">
+    </md-input-container>
+  </div>
+    <div>
+      <md-input-container>
+        <input ngModel name="password" type="password" mdInput placeholder="Пароль">
+      </md-input-container>
+    </div>
+  <button class="submit-btn" type="submit" md-raised-button>Войти</button>
+  </form>
+</md-card>

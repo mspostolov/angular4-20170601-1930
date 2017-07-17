@@ -1,0 +1,6 @@
+<div class="mail" *ngIf="!deleted">
+  <span><b>Отправитель: </b>{{mail.sender}}</span>
+  <span><b>Тема: </b>"{{mail.theme}}"</span>
+  <span><b>Время получения: </b>{{mail.receiveDate | myDatePipe}}</span>
+  <button (click)="deleteThisMail()">Удалить</button>
+</div>

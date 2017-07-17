@@ -1,0 +1,6 @@
+<div>
+  <img *ngIf="user && user.photo" [src]="user.photo" alt="user photo" [style.height.px]="'200'"/>
+  <p><strong>Username: </strong>{{user.firstName}}</p>
+  <p><strong>Surname: </strong>{{user.surname}}</p>
+  <p><strong>Country: </strong>{{user.country}}</p>
+</div>

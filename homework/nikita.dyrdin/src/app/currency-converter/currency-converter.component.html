@@ -1,0 +1,19 @@
+<div>
+  <div>
+    <div>From</div>
+    <select [(ngModel)]="fromCurrency">
+      <option *ngFor="let c of currencies" [value]="c.value">{{c.name}}</option>
+    </select>
+  </div>
+  <div>
+    <div>To</div>
+    <select [(ngModel)]="toCurrency">
+      <option *ngFor="let c of currencies" [value]="c.value" >{{c.name}}</option>
+    </select>
+  </div>
+  <div>
+    <div>How much</div>
+    <input type="number" [(ngModel)]="inputValue"/>
+  </div>
+  <h1>Result is {{ inputValue * toCurrency / fromCurrency }}</h1>
+</div>

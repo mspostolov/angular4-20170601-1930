@@ -1,0 +1,34 @@
+<nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
+  <div class="collapse navbar-collapse">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a routerLink="login" routerLinkActive="active" class="nav-link">Login</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="users"
+           routerLinkActive="active"
+           [class.disabled]="!dataService.isLoggedIn"
+           class="nav-link">Users</a>
+      </li>
+      <li class="nav-item">
+        <a routerLink="emails"
+           routerLinkActive="active"
+           [class.disabled]="!dataService.isLoggedIn"
+           class="nav-link">Emails</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="jumbotron jumbotron-fluid">
+  <div class="container">
+    <router-outlet>
+    </router-outlet>
+    <!--<p *ngIf="!dataService.isLoggedIn">You are not authorized Emails is not available for you!</p>-->
+    <!--<p *ngIf="dataService.isLoggedIn">Emails is available for you!</p>-->
+    <!-- WTF ? // TODO 'ngIf' since it isn't a known property of 'p'
+      Can't bind to 'ngIf' since it isn't a known property of 'p'
+
+      Property binding ngIf not used by any directive on an embedded template. Make sure that the property name is spelled correctly and all directives are listed in the "@NgModule.declarations"
+     -->
+  </div>
+</div>

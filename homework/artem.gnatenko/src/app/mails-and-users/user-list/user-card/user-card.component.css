@@ -1,0 +1,9 @@
+.cardBox {
+    display: flex;
+    align-items: flex-start;
+}
+.cardBox img {
+    width: 150px;
+    height: auto;
+    padding-right: 20px;
+}

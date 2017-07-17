@@ -1,0 +1,11 @@
+<div>
+  <a class="mailbox_item" [routerLink]="['/mail', letter.id]">
+    <div class="mailbox_item_photo">
+      {{letter.subject}}
+    </div>
+    <div class="mailbox_item_name">
+      {{letter.consumeDate | mailboxDate }}
+    </div>
+  </a>
+  <div (click)="deleteLetter(letter)">Delete</div>
+</div>

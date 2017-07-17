@@ -1,0 +1,17 @@
+<input type="text" [formControl]="name">
+<!--<h1>{{name.errors?.myValidator.error}}</h1>-->
+
+<fieldset [formGroup]="fullname">
+<input type="text" formControlName="first">
+<input type="text" formControlName="last">
+</fieldset>
+
+<form [formGroup]="userlistForm">
+   <ul formArrayName="users">
+     <li *ngFor="let user of userlistForm.controls.users.controls; let i = index">
+        <input type="text" formControlName="{{i}}">
+        <button (click)="removeUser(i)">Remove</button>
+     </li>
+   </ul>
+</form>
+<button (click)="addUser()">Add user</button>

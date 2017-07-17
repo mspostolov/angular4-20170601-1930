@@ -1,0 +1,19 @@
+<md-card>
+  <md-card-header>
+    <md-card-title>{{ contact.firstName + ' ' + contact.surname }}</md-card-title>
+    <md-card-subtitle>{{ contact.country | uppercase }}</md-card-subtitle>
+  </md-card-header>
+  <img md-card-image *ngIf="contact.photo"
+       [src]="contact.photo"
+       class="contact-avatar-image">
+  <md-card-content>
+    <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ex voluptates expedita natus, at quas repudiandae atque,
+      neque officiis illum tempore eius, magnam reprehenderit consequatur deserunt laboriosam eos debitis maxime.
+    </p>
+  </md-card-content>
+  <md-card-actions>
+    <button md-button>LIKE</button>
+    <button md-button>SHARE</button>
+  </md-card-actions>
+</md-card>
