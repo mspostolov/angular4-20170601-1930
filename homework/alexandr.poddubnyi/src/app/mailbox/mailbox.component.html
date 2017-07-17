@@ -1,8 +1,0 @@
-<section>
-  <h1 class="text-center mb-5">Mails</h1>
-
-  <mail *ngFor="let mail of mails" [mail]="mail"
-        (deleteMail)="deleteMail($event)"
-        (showMailLifeTime)="showMailLifeTime($event)"
-  ></mail>
-</section>

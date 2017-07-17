@@ -1,6 +1,0 @@
-.ng-invalid.ng-touched, .submitted .ng-invalid {
-  border-color: red;
-}
-label {
-    display: block;
-}
